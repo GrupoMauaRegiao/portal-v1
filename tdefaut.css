@@ -1,0 +1,156 @@
+#slide{
+	margin:12px 0 0 0;
+	width:645px;
+	height:231px;
+	background:transparent ;
+}
+
+	.nivoSlider {
+	    position:relative;
+	    background:url('http://portalmauaeregiao.com.br/paginas/images/loading.gif') no-repeat 50% 50%;
+	}
+	.nivoSlider img {
+	    position:absolute;
+	    top:0px;
+	    left:0px;
+	    display:none;
+	    width:644px !important;
+	    height:231px !important;
+	}
+	.nivoSlider a {
+	    border:0;
+	    display:block;
+	}
+
+	.nivo-controlNav{
+		position:absolute;
+		bottom:20px;
+		right:20px;
+		z-index:9999;
+	}
+
+		.nivo-controlNav a{
+			width:15px;
+			height:15px;
+			text-indent:-9999em;
+			cursor:pointer;
+			float:left;
+			display:block;
+			margin-left:5px;
+			background:url('http://portalmauaeregiao.com.br/paginas/images/bullets-nivo-1.png') no-repeat 0 0;
+		}
+
+		.nivo-controlNav a.active{
+			background:url('http://portalmauaeregiao.com.br/paginas/images/bullets-nivo-1.png') no-repeat 0 -30px;
+		}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+
+}
+
+/* The slices and boxes in the Slider */
+
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+
+}
+
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+
+}
+
+/* Caption styles */
+
+.nivo-caption{
+	position:absolute;
+	background:rgba(54,136,199,0.7);
+	color:#222;
+	z-index:8;
+	width:200px;
+	height:191px;
+	padding:20px;
+	overflow: hidden;
+}
+
+.nivo-caption p {
+	margin:5px 0 0 15px !important;
+}
+
+.nivo-caption a {
+	font:bold 25px/25px 'Lato',Arial,sans-serif;
+	padding:0 !important;
+	margin:0 0 0 12px !important;
+	text-decoration:none;
+	color:rgb(255,255,255);
+	-webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+	cursor:pointer;
+}
+
+.nivo-caption a:hover{
+	color:rgb(230,230,230);
+	text-shadow:0 0 10px rgb(255,255,255);
+	-webkit-text-shadow:0 0 10px rgb(255,255,255);
+	-moz-text-shadow:0 0 10px rgb(255,255,255);
+	-o-text-shadow:0 0 10px rgb(255,255,255);
+}
+
+.nivo-html-caption {
+    display:none;
+}
+
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:0;
+	z-index:9;
+	cursor:pointer;
+	text-indent: -10000px;
+	width:35px;
+	height:231px;
+	display:none;
+}
+
+.nivo-prevNav,
+.nivo-nextNav{
+	background: url("../images/setas-banner-noticias.png") no-repeat;
+}
+
+.nivo-prevNav {
+	background-position:-1px center;
+	left:0;
+}
+
+.nivo-nextNav {
+	background-position:-34px center;
+	right:0;
+}
+
+#line {
+float:left;
+width:100%;
+height:13px;
+background: url(../images/topmenu.jpg) 0 0 repeat-x;
+
+}
+/**********************/

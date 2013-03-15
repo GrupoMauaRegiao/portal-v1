@@ -1,0 +1,8 @@
+.nivo-caption{
+  zoom:1 !important;
+  filter:alpha(opacity=70) !important;
+  opacity:0.7 !important;
+  background:rgb(54,136,199) !important;
+  height:191px !important;
+}
+.nivo-caption a{ font-size:20px !important; }
