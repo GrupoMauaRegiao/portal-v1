@@ -165,675 +165,188 @@ jQuery(document).ready(function() {
 });
 
 // FUNCOES QUE VALIDAM CPF E CNPJ
-
-
-
-  function gE(ID) { 
-
-
-
-  return document.getElementById(ID);
-
-
-
+  function gE(ID) {
+    return document.getElementById(ID);
   }
 
+  function checa() {
+    msg = "";
 
+    if (gE('cnpj').value === "") {
+      msg = msg+"O preenchimento do campo ["+gE('cnpj').value+"] é obrigatório.\n";
+    }
 
-  
-
-
-
-  // INICIO
-
-
-
-  function checa(){
-
-
-
-  msg = "";
-
-
-
-
-
-
-
-  if(gE('cnpj').value == ""){
-
-
-
-  msg = msg+"O preenchimento do campo ["+gE('cnpj').value+"] é obrigatório.\n";
-
-
-
-  }
-
-
-
-    if(msg != ""){
-
-
-
-    alert(msg);
-
-
-
-    return false;
-
-
-
+    if (msg !== "") {
+      alert(msg);
+      return false;
     } else {
-
-
-
-    return true;
-
-
-
+        return true;
     }
-
-
-
   }
 
-
-
-  
-
-
-
-  // INICIO
-
-
-
-  function TESTA(CNUMB,CTYPE){
-
-
-
-    if(CNUMB==""){
-
-
-
-    return true;
-
-
-
+  function TESTA(CNUMB, CTYPE) {
+    if (CNUMB === "") {
+      return true;
     }
-
-
 
     bok = false;
-
-
-
     bok = isCpfCnpj(ParseNumb(CNUMB));
-
-
-
-      if(!bok){
-
-
-
+    
+    if (!bok) {
       alert(CTYPE+" inválido!");
-
-
-
       gE('cnpj').value = "";
+    }
 
-
-
-            }
-
-
-
-  return bok;
-
-
-
+    return bok;
   }
 
-
-
-    
-
-
-
-  // INICIO 
-
-
-
-  function ClearStr(str,char){
-
-
-
-    while((cx=str.indexOf(char))!=-1){
-
-
-
-    str = str.substring(0,cx)+str.substring(cx+1);
-
-
-
+  function ClearStr(str, char) {
+    while((cx = str.indexOf(char)) !== -1) {
+      str = str.substring(0, cx) + str.substring(cx + 1);
     }
+    return str;
+  }
 
+  function ParseNumb(c) {
+    c = ClearStr(c, '-');
+    c = ClearStr(c, '/');
+    c = ClearStr(c, ',');
+    c = ClearStr(c, '.');
+    c = ClearStr(c, '(');
+    c = ClearStr(c, ')');
+    c = ClearStr(c, ' ');
 
-
-  return str;
-
-
-
-    }
-
-
-
-
-
-
-
-  // INICIO
-
-
-
-  function ParseNumb(c){
-
-
-
-  c=ClearStr(c,'-');
-
-
-
-  c=ClearStr(c,'/');
-
-
-
-  c=ClearStr(c,',');
-
-
-
-  c=ClearStr(c,'.');
-
-
-
-  c=ClearStr(c,'(');
-
-
-
-  c=ClearStr(c,')');
-
-
-
-  c=ClearStr(c,' ');
-
-
-
-    if((parseFloat(c) / c != 1)){
-
-
-
-      if(parseFloat(c) * c == 0){
-
-
-
+    if ((parseFloat(c) / c !== 1)) {
+      if (parseFloat(c) * c === 0) {
+        return(c);
+      } else {
+        return(0);
+      }
+    } else {
       return(c);
-
-
-
-      } else {
-
-
-
-      return(0);
-
-
-
-      }
-
-
-
-    } else {
-
-
-
-    return(c);
-
-
-
     }
-
-
-
   }
 
-
-
-
-
-
-
-  // INICIO
-
-
-
-  function Verify(CNUMB,CTYPE){
-
-
-
-  CNUMB=ParseNumb(CNUMB)
-
-
-
-    if(CNUMB == 0){
-
-
-
-    return(false);
-
-
-
-    } else {
-
-
-
-    g=CNUMB.length-2;
-
-
-
-      if(TestDigit(CNUMB,CTYPE,g)){
-
-
-
-      g=CNUMB.length-1;
-
-
-
-        if(TestDigit(CNUMB,CTYPE,g)){
-
-
-
-        return(true);
-
-
-
-        } else {
-
-
-
-        return(false);
-
-
-
-        }
-
-
-
-      } else {
-
-
-
-      return(false);
-
-
-
-      }
-
-
-
-    }
-
-
-
-  }
-
-
-
-  
-
-
-
-  // INICIO
-
-
-
-  function TestDigit(CNUMB,CTYPE,g){
-
-
-
-  var dig = 0;
-
-
-
-  var ind = 2;
-
-
-
-    if (CTYPE!='CNPJ'){
-
-
-
-    var a = true;
-
-
-
-      for (t=0; t<CNUMB.length-1; t++){
-
-
-
-        if (CNUMB.substring(t,t+1)!=CNUMB.substring(t+1,t+2)){
-
-
-
-        a = false;
-
-
-
-        }
-
-
-
-          if (a) {
-
-
-
-          return false;
-
-
-
-          }
-
-
-
-      }
-
-
-
-    }
-
-
-
+  function Verify(CNUMB, CTYPE) {
+    CNUMB = ParseNumb(CNUMB);
     
+    if (CNUMB === 0) {
+      return false;
+    } else {
+      g = CNUMB.length - 2;
 
+      if (TestDigit(CNUMB, CTYPE, g)) {
+        g = CNUMB.length - 1;
 
-
-    for(f=g;f>0;f--){
-
-
-
-    dig+=parseInt(CNUMB.charAt(f-1))*ind;
-
-
-
-      if (CTYPE=='CNPJ'){
-
-
-
-        if(ind>8){
-
-
-
-        ind = 2
-
-
-
+        if (TestDigit(CNUMB, CTYPE, g)) {
+          return true;
         } else {
-
-
-
-        ind++
-
-
-
-        }
-
-
-
-      } else {
-
-
-
-      ind++
-
-
-
-      }
-
-
-
-    }
-
-
-
-        
-
-
-
-    dig%=11;
-
-
-
-    if(dig<2){
-
-
-
-    dig=0;
-
-
-
-    } else {
-
-
-
-    dig=11-dig;
-
-
-
-    }
-
-
-
-      if(dig!=parseInt(CNUMB.charAt(g))){
-
-
-
-      return(false);
-
-
-
-      } else {
-
-
-
-      return(true);
-
-
-
-      }
-
-
-
-  }
-
-
-
-
-
-
-
-    pj = 'Digite o CNPJ:';
-
-
-
-    pf = 'Digite o CPF:';
-
-
-
-
-
-
-
-  // INICIO
-
-
-
-  function escreveLayer(tipo){
-
-
-
-  vbrowser = (document.getElementById)?0:((document.all)?0:1);
-
-
-
-    if(vbrowser==0){
-
-
-
-    MM_findObj('fgpto').innerHTML=tipo;
-
-
-
-    } else {
-
-
-
-    MM_findObj('fgpto').document.open();
-
-
-
-    MM_findObj('fgpto').document.write(tipo);
-
-
-
-    MM_findObj('fgpto').document.close();
-
-
-
-    }
-
-
-
-  }
-
-
-
-  
-
-
-
-  // INICIO
-
-
-
-  function formataCNPJ(cp,tipo){
-
-
-
-    if ((event.keyCode<48) || (event.keyCode>57)){
-
-
-
-    return false;
-
-
-
-    } else {
-
-
-
-    var v = cp.value;
-
-
-
-      if (tipo=="CNPJ"){
-
-
-
-      var maxlen = 18;
-
-
-
-        if (v.length>=maxlen)
-
-
-
-        return false;
-
-
-
-          if (v.length==2 || v.length==6)
-
-
-
-          cp.value = v +'.';
-
-
-
-          else if (v.length==10)
-
-
-
-          cp.value = v +'/';
-
-
-
-          else if (v.length==15)
-
-
-
-          cp.value = v +'-';
-
-
-
-          } else {
-
-
-
-          var maxlen = 14;
-
-
-
-          if (v.length>=maxlen)
-
-
-
           return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }
 
+  function TestDigit(CNUMB, CTYPE, g) {
+    var dig = 0;
+    var ind = 2;
 
+    if (CTYPE !== 'CNPJ') {
+      var a = true;
 
-          if (v.length==3 || v.length==7)
-
-
-
-          cp.value = v +'.';
-
-
-
-          else if (v.length==11)
-
-
-
-          cp.value = v +'-';
-
-
-
-          }
-
-
-
+      for (t = 0; t < CNUMB.length - 1; t += 1) {
+        if (CNUMB.substring(t, t + 1) !== CNUMB.substring( t + 1, t + 2)) {
+          a = false;
         }
 
+        if (a) {
+          return false;
+        }
+      }
+    }
 
+    for (f = g; f > 0; f -= 1) {
+      dig += parseInt(CNUMB.charAt(f - 1)) * ind;
 
+      if (CTYPE === 'CNPJ') {
+        if (ind > 8) {
+          ind = 2;
+        } else {
+          ind += 1;
+        }
+      } else {
+        ind += 1;
+      }
+    }
+
+    dig %= 11;
+
+    if (dig < 2) {
+      dig = 0;
+    } else {
+      dig = 11 - dig;
+    }
+
+    if (dig !== parseInt(CNUMB.charAt(g))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  pj = 'Digite o CNPJ:';
+  pf = 'Digite o CPF:';
+
+  function escreveLayer(tipo) {
+    vbrowser = (document.getElementById) ? 0 : ((document.all) ? 0 : 1);
+    
+    if (vbrowser === 0){
+      MM_findObj('fgpto').innerHTML = tipo;
+    } else {
+      MM_findObj('fgpto').document.open();
+      MM_findObj('fgpto').document.write(tipo);
+      MM_findObj('fgpto').document.close();
+    }
+  }
+
+  function formataCNPJ(cp, tipo) {
+    if ((event.keyCode < 48) || (event.keyCode > 57)){
+      return false;
+    } else {
+      var v = cp.value;
+      
+      if (tipo === 'CNPJ') {
+        var maxlen = 18;
+        
+        if (v.length >= maxlen) {
+          return false;
+        }
       }
 
+      if (v.length === 2 || v.length === 6) {
+        cp.value = v + '.';
+      } else if (v.length === 10) {
+        cp.value = v + '/';
+      } else if (v.length == 15) {
+        cp.value = v + '-';
+      } else {
+        var maxlen = 14;
 
+        if (v.length >= maxlen) {
+          return false;
+        }
+      }
 
-       
+      if (v.length === 3 || v.length === 7) {
+        cp.value = v + '.';
+      } else if (v.length === 11) {
+        cp.value = v + '-';
+      }
 
-
-
-  // INICIO      
-
+    }
+  }
 
 
   function MM_findObj(n, d) {
