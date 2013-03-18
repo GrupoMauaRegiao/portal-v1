@@ -250,7 +250,7 @@ nForm.elements['imagem'].className = "inputon";
             <td >Tamanho: <br />
               <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
                 <option value="728" <?=($dados[formato] == 640) ? selected : ""; ?>>
-                  Banner Topo (640 x 200)
+                  Banner Home (640 x 200)
                 </option>
                 <option value="728" <?=($dados[formato] == 728) ? selected : ""; ?>>
                   Banner Topo (728 x 90)
