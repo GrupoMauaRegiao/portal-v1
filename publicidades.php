@@ -22,7 +22,7 @@ if ($acao== "insertbd") {
     }
   }
 
-$sql = "INSERT INTO $tabela (nome , tipo, formato, pagina, posicao,  imagem, url, link, cliques, html, status)VALUES ('$nome', '$tipo', '$formato', '$pagina', '$posicao', '$imagem1', '$url', '$link', '0', '$html', 'S')";
+$sql = "INSERT INTO $tabela (nome , tipo, formato, pagina, posicao,  imagem, url, link, cliques, html, status) VALUES ('$nome', '$tipo', '$formato', '$pagina', '$posicao', '$imagem1', '$url', '$link', '0', '$html', 'S')";
 
 echo $sql;
 
@@ -233,13 +233,13 @@ nForm.elements['imagem'].className = "inputon";
             <tr>
               <td>Tipo: <br />
                 <select name="tipo" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-                  <option value="imagem" <?=($dados[tipo] == imagem)?selected:"";?>>
+                  <option value="imagem" <?=($dados[tipo] == imagem) ? selected : ""; ?>>
                     Imagem (JPG, GIF)
                   </option>
-                  <option value="flash" <?=($dados[tipo] == flash)?selected:"";?>>
+                  <option value="flash" <?=($dados[tipo] == flash) ? selected : ""; ?>>
                     Flash (SWF)
                   </option>
-                  <option value="html" <?=($dados[tipo] == html)?selected:"";?>>
+                  <option value="html" <?=($dados[tipo] == html) ? selected : ""; ?>>
                     HTML
                   </option>
                 </select>
@@ -249,21 +249,25 @@ nForm.elements['imagem'].className = "inputon";
           <tr>
             <td >Tamanho: <br />
               <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-                <option value="728" <?=($dados[formato] == 728)?selected:"";?>>
-                  Banner Topo (728x90)
+                <option value="728" <?=($dados[formato] == 640) ? selected : ""; ?>>
+                  Banner Topo (640 x 200)
                 </option>
-                <option value="300" <?=($dados[formato] == 300)?selected:"";?>>
-                  Banner Meio Home (300x250)
+                <option value="728" <?=($dados[formato] == 728) ? selected : ""; ?>>
+                  Banner Topo (728 x 90)
                 </option>
-                <option value="180" <?=($dados[formato] == 180)?selected:"";?>>
-                  Banner Lateral Direito(180x100)
+                <option value="300" <?=($dados[formato] == 300) ? selected : ""; ?>>
+                  Banner Meio Home (300 x 250)
                 </option>
-                <option value="1802" <?=($dados[formato] == 1802)?selected:"";?>>
-                  Banner Lateral Direito (180x150)
+                <option value="180" <?=($dados[formato] == 180) ? selected : ""; ?>>
+                  Banner Lateral Direito(180 x 100)
                 </option>
-                <option value="140" <?=($dados[formato] == 140)?selected:"";?>>
-                  Banner Lateral Esquerdo (140x160)
+                <option value="1802" <?=($dados[formato] == 1802) ? selected : ""; ?>>
+                  Banner Lateral Direito (180 x 150)
                 </option>
+                <option value="140" <?=($dados[formato] == 140) ? selected : ""; ?>>
+                  Banner Lateral Esquerdo (140 x 160)
+                </option>
+
               </select>
             </td>
           </tr>
@@ -302,21 +306,21 @@ nForm.elements['imagem'].className = "inputon";
           <td>Posição: <br />
           
             <select name="posicao" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-              <option value='1' <?=($dados[posicao] == 1)?selected:"";?>>1</option>
-              <option value='2' <?=($dados[posicao] == 2)?selected:"";?>>2</option>
-              <option value='3' <?=($dados[posicao] == 3)?selected:"";?>>3</option>
-              <option value='4' <?=($dados[posicao] == 4)?selected:"";?>>4</option>
-              <option value='5' <?=($dados[posicao] == 5)?selected:"";?>>5</option>
-              <option value='6' <?=($dados[posicao] == 6)?selected:"";?>>5</option>
-              <option value='7' <?=($dados[posicao] == 7)?selected:"";?>>7</option>
-              <option value='8' <?=($dados[posicao] == 8)?selected:"";?>>8</option>
-              <option value='9' <?=($dados[posicao] == 9)?selected:"";?>>9</option>
-              <option value='10' <?=($dados[posicao] == 10)?selected:"";?>>10</option>
-              <option value='11' <?=($dados[posicao] == 11)?selected:"";?>>11</option>
-              <option value='12' <?=($dados[posicao] == 12)?selected:"";?>>12</option>
+              <option value='1' <?=($dados[posicao] == 1) ? selected : ""; ?>>1</option>
+              <option value='2' <?=($dados[posicao] == 2) ? selected : ""; ?>>2</option>
+              <option value='3' <?=($dados[posicao] == 3) ? selected : ""; ?>>3</option>
+              <option value='4' <?=($dados[posicao] == 4) ? selected : ""; ?>>4</option>
+              <option value='5' <?=($dados[posicao] == 5) ? selected : ""; ?>>5</option>
+              <option value='6' <?=($dados[posicao] == 6) ? selected : ""; ?>>5</option>
+              <option value='7' <?=($dados[posicao] == 7) ? selected : ""; ?>>7</option>
+              <option value='8' <?=($dados[posicao] == 8) ? selected : ""; ?>>8</option>
+              <option value='9' <?=($dados[posicao] == 9) ? selected : ""; ?>>9</option>
+              <option value='10' <?=($dados[posicao] == 10) ? selected : ""; ?>>10</option>
+              <option value='11' <?=($dados[posicao] == 11) ? selected : ""; ?>>11</option>
+              <option value='12' <?=($dados[posicao] == 12) ? selected : ""; ?>>12</option>
             </select>
 
-            Caso cadastre varios banners na mesma posi&ccedil;&atilde;o eles iram randomizar
+            Caso cadastre varios banners na mesma posi&ccedil;&atilde;o eles ir&atilde;o randomizar
 
           </td>
         </tr>
@@ -411,7 +415,7 @@ nForm.elements['imagem'].className = "inputon";
 
       <tr>
         <td>URL do Banner: <br />
-            <input name="url" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[url]?>" />Utilizar apenas para pegar banners externos. Exemplo: http://www.diariominas.com.br/banner.gif
+            <input name="url" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[url]?>" /> Utilizar apenas para pegar banners externos. Exemplo: http://www.diariominas.com.br/banner.gif
         </td> 
       </tr>
 
