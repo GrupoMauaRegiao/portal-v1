@@ -267,10 +267,6 @@ nForm.elements['imagem'].className = "inputon";
                 <option value="1802" <?=($dados[formato] == 1802) ? selected : ""; ?>>
                   Banner: lateral direita II (180 x 150 px)
                 </option>
-                <option value="140" <?=($dados[formato] == 140) ? selected : ""; ?>>
-                  Banner: lateral esquerda (140 x 160 px)
-                </option>
-
               </select>
             </td>
           </tr>

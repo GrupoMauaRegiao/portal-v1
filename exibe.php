@@ -39,11 +39,6 @@ if ($acao == "exibe") {
       $altura = "250";
   }
 
-  if ($formato == "140") {
-    $largura = "140";
-    $altura = "160";
-  }
-
   if (!empty($posicao)) {
     $posicao = "AND posicao ='$posicao'";
   }
