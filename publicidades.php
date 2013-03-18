@@ -250,22 +250,25 @@ nForm.elements['imagem'].className = "inputon";
             <td >Tamanho: <br />
               <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
                 <option value="728" <?=($dados[formato] == 640) ? selected : ""; ?>>
-                  Banner Home (640 x 200)
+                  Banner: abaixo das notícias (640 x 200 px)
+                </option>
+                <option value="728" <?=($dados[formato] == 6402) ? selected : ""; ?>>
+                  Banner: abaixo do guia comercial (640 x 200 px)
                 </option>
                 <option value="728" <?=($dados[formato] == 728) ? selected : ""; ?>>
-                  Banner Topo (728 x 90)
+                  Banner: topo (728 x 90 px)
                 </option>
                 <option value="300" <?=($dados[formato] == 300) ? selected : ""; ?>>
-                  Banner Meio Home (300 x 250)
+                  Banner: meio da home (300 x 250 px)
                 </option>
                 <option value="180" <?=($dados[formato] == 180) ? selected : ""; ?>>
-                  Banner Lateral Direito(180 x 100)
+                  Banner: lateral direita I (180 x 100 px)
                 </option>
                 <option value="1802" <?=($dados[formato] == 1802) ? selected : ""; ?>>
-                  Banner Lateral Direito (180 x 150)
+                  Banner: lateral direita II (180 x 150 px)
                 </option>
                 <option value="140" <?=($dados[formato] == 140) ? selected : ""; ?>>
-                  Banner Lateral Esquerdo (140 x 160)
+                  Banner: lateral esquerda (140 x 160 px)
                 </option>
 
               </select>
@@ -337,6 +340,16 @@ nForm.elements['imagem'].className = "inputon";
         if ($dados[formato] == "728") {
           $largura = "728";
           $altura = "90";
+        }
+
+        if ($formato == "640") {
+          $largura = "640";
+          $altura = "200";
+        }
+
+        if ($formato == "6402") {
+          $largura = "640";
+          $altura = "200";
         }
         
         if ($formato == "180") {
@@ -666,6 +679,3 @@ echo "&nbsp;|&nbsp;<font color='$corcelula2'>Pr&oacute;xima &raquo;</font>";
 </fieldset>
 
 </form><br/>
-
-
-
