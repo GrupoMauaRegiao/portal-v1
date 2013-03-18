@@ -213,320 +213,223 @@ nForm.elements['imagem'].className = "inputon";
 
 </script>
 
-
-
-<form action="?pg=<?=$file?>" method="post" enctype="multipart/form-data" name="<?=$form1?>">
-
-<fieldset style="width:100%;">
-
-
-
-<input name="acao" type="hidden" value="<?=(empty($id))?"insertbd":"updatebd";?>">
-
-<input name="id" type="hidden" value="<?=$id?>">
-
-<input name="imagem_antiga" type="hidden" value="<?=$dados[imagem]?>">
-
-<table width="99%" align="center" cellpadding="0" cellspacing="0">
-
-<tr><td><font class="titulos"><?=(empty($id))?"Cadastrar":"Alterar";?> <?="$palavra"; ?>
-
-</font> (<a href="<?="?pg=$file";?>">Cadastrar Novo</a>)</td>
-
-  </tr>
-
-</table>
-
-<table width="99%" border="0" align="center" cellpadding="2" cellspacing="0">
-
-
-
-<tr>
-  <td>Tipo: <br />
-    <select name="tipo" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-      <option value="imagem" <?=($dados[tipo] == imagem)?selected:"";?>>
-        Imagem (JPG, GIF)
-      </option>
-      <option value="flash" <?=($dados[tipo] == flash)?selected:"";?>>
-        Flash (SWF)
-      </option>
-      <option value="html" <?=($dados[tipo] == html)?selected:"";?>>
-        HTML
-      </option> 
-    </select>
-  </td>
-</tr>
-
-  <tr>
-    <td >Tamanho: <br />
-      <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-        <option value="728" <?=($dados[formato] == 728)?selected:"";?>>
-          Banner Topo (728x90)
-        </option>
-        <option value="300" <?=($dados[formato] == 300)?selected:"";?>>
-          Banner Meio Home (300x250)
-        </option>
-        <option value="180" <?=($dados[formato] == 180)?selected:"";?>>
-          Banner Lateral Direito(180x100)
-        </option>
-        <option value="1802" <?=($dados[formato] == 1802)?selected:"";?>>
-          Banner Lateral Direito (180x150)
-        </option>
-        <option value="140" <?=($dados[formato] == 140)?selected:"";?>>
-          Banner Lateral Esquerdo (140x160)
-        </option>
-      </select>
-    </td>
-  </tr>
-
-  <tr>
-    <td valign="middle">Páginas Internas: <br />
-      <select id="p" name="pagina" class="input" onblur="this.className='input';" onfocus="this.className='inputon';" >
-<?
-
-$caminho = "../estrutura";
-$rep = opendir($caminho);
-
-while ($file5 = readdir($rep)) {
-  $tipo = explode(".", $file5);
-
-  if ($file5 != '..' && $file5 !='.' && $file5 !='' && $file5 != 'Thumbs.db' && $tipo[1] == "php") {
-    if (!is_dir($file5)) {
-      $arquivo5 = explode(".", $file5);
-?>
-      <option value='<?=$arquivo5[0]?>' <?=($dados[pagina] == "$arquivo5[0]")?"selected":"";?>>
-        <?=$arquivo5[0];?>
-      </option>
-<?
-    }
-  }
-}
-
-closedir($rep);
-
-?>
-      </select>
-    </td>
-  </tr>
-
-  <tr>
-    <td>Posição: <br />
-
-<select name="posicao" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-
-<option value='1' <?=($dados[posicao] == 1)?selected:"";?>>1</option>
-
-<option value='2' <?=($dados[posicao] == 2)?selected:"";?>>2</option>
-
-<option value='3' <?=($dados[posicao] == 3)?selected:"";?>>3</option>
-
-<option value='4' <?=($dados[posicao] == 4)?selected:"";?>>4</option>
-
-<option value='5' <?=($dados[posicao] == 5)?selected:"";?>>5</option>
-
-<option value='6' <?=($dados[posicao] == 6)?selected:"";?>>5</option>
-
-<option value='7' <?=($dados[posicao] == 7)?selected:"";?>>7</option>
-
-<option value='8' <?=($dados[posicao] == 8)?selected:"";?>>8</option>
-
-<option value='9' <?=($dados[posicao] == 9)?selected:"";?>>9</option>
-
-<option value='10' <?=($dados[posicao] == 10)?selected:"";?>>10</option>
-<option value='11' <?=($dados[posicao] == 11)?selected:"";?>>11</option>
-<option value='12' <?=($dados[posicao] == 12)?selected:"";?>>12</option>
-
-</select> 
-
-caso cadastre varios banners na mesma posi&ccedil;&atilde;o eles iram randomizar</td>
-
-  </tr>
-
-
-
-<tr> 
-
-<td>
-
-<fieldset><legend>Imagem:&nbsp;</legend>
-
-<? 
-
-if(!empty($id)){
-
-
-
-  if($dados[formato]=="728"){ $largura = "728"; $altura = "90";}
-
-    if($formato=="180"){ $largura = "180"; $altura = "60";}
-
-      if($formato=="1802"){ $largura = "180"; $altura = "150";}
-
-        if($formato=="300"){ $largura = "300"; $altura = "250";}
-
-    if($dados[tipo] == 'imagem'){
-
-      if(!empty($dados[url])){
-
-      echo "<img width='$largura' height='$altura' name='imagem1' src='../images/publicidades/$dados[url]' border='0'>";
-
-      } else {
-
-      echo "<img width='$largura' height='$altura' name='imagem1' src='../images/publicidades/$dados[imagem]' border='0'>";
-
-      }
-
-    } 
-
-    if($dados[tipo] == 'flash'){
-
-      if(!empty($dados[url])){
-
-      echo "<embed src='$dados[url]' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='$largura' height='$altura'></embed>";
-
-      } else {
-
-      echo "<embed src='../images/publicidades/$dados[imagem]' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='$largura' height='$altura'></embed>";
-
-      }
-
-    }
-
-    if($dados[tipo] == 'html'){
-
-    echo $dados[html];
-
-    } 
-
-}
-
-  ?>
-
-  <table border="0" cellspacing="0" cellpadding="0">
-
-    <tr>
-
-      <td valign="middle"><table border="0" cellspacing="0" cellpadding="0">
+      <form action="?pg=<?=$file?>" method="post" enctype="multipart/form-data" name="<?=$form1?>">
+        <fieldset style="width:100%;">
+          <input name="acao" type="hidden" value="<?=(empty($id))?"insertbd":"updatebd";?>">
+          <input name="id" type="hidden" value="<?=$id?>">
+          <input name="imagem_antiga" type="hidden" value="<?=$dados[imagem]?>">
+
+          <table width="99%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <font class="titulos">
+                  <?=(empty($id))?"Cadastrar":"Alterar";?> <?="$palavra"; ?>
+                </font> (<a href="<?="?pg=$file";?>">Cadastrar Novo</a>)
+              </td>
+            </tr>
+          </table>
+
+          <table width="99%" border="0" align="center" cellpadding="2" cellspacing="0">
+            <tr>
+              <td>Tipo: <br />
+                <select name="tipo" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
+                  <option value="imagem" <?=($dados[tipo] == imagem)?selected:"";?>>
+                    Imagem (JPG, GIF)
+                  </option>
+                  <option value="flash" <?=($dados[tipo] == flash)?selected:"";?>>
+                    Flash (SWF)
+                  </option>
+                  <option value="html" <?=($dados[tipo] == html)?selected:"";?>>
+                    HTML
+                  </option>
+                </select>
+              </td>
+            </tr>
+
+          <tr>
+            <td >Tamanho: <br />
+              <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
+                <option value="728" <?=($dados[formato] == 728)?selected:"";?>>
+                  Banner Topo (728x90)
+                </option>
+                <option value="300" <?=($dados[formato] == 300)?selected:"";?>>
+                  Banner Meio Home (300x250)
+                </option>
+                <option value="180" <?=($dados[formato] == 180)?selected:"";?>>
+                  Banner Lateral Direito(180x100)
+                </option>
+                <option value="1802" <?=($dados[formato] == 1802)?selected:"";?>>
+                  Banner Lateral Direito (180x150)
+                </option>
+                <option value="140" <?=($dados[formato] == 140)?selected:"";?>>
+                  Banner Lateral Esquerdo (140x160)
+                </option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td valign="middle">Páginas Internas: <br />
+              <select id="p" name="pagina" class="input" onblur="this.className='input';" onfocus="this.className='inputon';" >
+        <?
+
+        $caminho = "../estrutura";
+        $rep = opendir($caminho);
+
+        while ($file5 = readdir($rep)) {
+          $tipo = explode(".", $file5);
+
+          if ($file5 != '..' && $file5 !='.' && $file5 !='' && $file5 != 'Thumbs.db' && $tipo[1] == "php") {
+            if (!is_dir($file5)) {
+              $arquivo5 = explode(".", $file5);
+        ?>
+              <option value='<?=$arquivo5[0]?>' <?=($dados[pagina] == "$arquivo5[0]")?"selected":"";?>>
+                <?=$arquivo5[0];?>
+              </option>
+        <?
+            }
+          }
+        }
+
+        closedir($rep);
+
+        ?>
+              </select>
+            </td>
+          </tr>
 
         <tr>
-
-          <td valign="middle"><? if(empty($id)){?>
-
-      <input class="inputon" name='imagem' type='file' size="16">
-
-      <? } else {?>
-
-      Trocar  
-
-            Imagem?:
-
-                <input name="nova_imagem" type="radio" value="N" checked="checked" onclick="javascript:DesabilitarFoto()" />
-
-                N&atilde;o
-
-                <input name="nova_imagem" type="radio" value="S" onclick="javascript: HabilitarFoto();" >
-
-            Sim<br />
-
-                <input class="inputon" name='imagem' type='file' size="16" disabled="disabled">
-
-        <? }?></td>
-
-        </tr>
-
-      </table></td>
-
-    </tr>
-
-  </table>
-
-  </fieldset>  </td> 
-
-</tr>
-
-
-
-
-
-<tr>
-
-<td> 
-
-HTML: usar para google adsence<br />
-
-<textarea name="html" style="width:350px; height:100px;" cols="55" rows="3" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"><? echo $dados[html]?></textarea></td>
-
-</tr>
-
-
-
-<tr>
-
-  <td>Nome Cliente: <br />
-
-      <input name="nome" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[nome]?>" /></td> 
-
-</tr>
-
-<tr>
-
-  <td>URL do Banner: <br />
-
-      <input name="url" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[url]?>" /> 
-
-      usar apenas para pegar banners externos, tipo www.diariominas.com.br/banner.gif</td> 
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-  <td>Link: <br />
-
-      <input name="link" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados["link"]?>" /></td> 
-
-</tr>
-
-  
-
-        
-
+          <td>Posição: <br />
           
+            <select name="posicao" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
+              <option value='1' <?=($dados[posicao] == 1)?selected:"";?>>1</option>
+              <option value='2' <?=($dados[posicao] == 2)?selected:"";?>>2</option>
+              <option value='3' <?=($dados[posicao] == 3)?selected:"";?>>3</option>
+              <option value='4' <?=($dados[posicao] == 4)?selected:"";?>>4</option>
+              <option value='5' <?=($dados[posicao] == 5)?selected:"";?>>5</option>
+              <option value='6' <?=($dados[posicao] == 6)?selected:"";?>>5</option>
+              <option value='7' <?=($dados[posicao] == 7)?selected:"";?>>7</option>
+              <option value='8' <?=($dados[posicao] == 8)?selected:"";?>>8</option>
+              <option value='9' <?=($dados[posicao] == 9)?selected:"";?>>9</option>
+              <option value='10' <?=($dados[posicao] == 10)?selected:"";?>>10</option>
+              <option value='11' <?=($dados[posicao] == 11)?selected:"";?>>11</option>
+              <option value='12' <?=($dados[posicao] == 12)?selected:"";?>>12</option>
+            </select>
 
-        <tr>
+            Caso cadastre varios banners na mesma posi&ccedil;&atilde;o eles iram randomizar
 
-          <td valign="middle"><input style="width:110px;" type="submit" class="input" onblur="this.className='input';" onfocus="this.className='inputon';" name='btgravar' value="<?=(empty($id))?"Cadastrar":"Alterar";?>" /></td>
-
+          </td>
         </tr>
 
-  </table>
+        <tr>
+          <td>
+            <fieldset>
+              <legend>
+                Imagem:&nbsp;
+              </legend>
+      <?
 
-  
+      if (!empty($id)) {
+        if ($dados[formato] == "728") {
+          $largura = "728";
+          $altura = "90";
+        }
+        
+        if ($formato == "180") {
+          $largura = "180";
+          $altura = "60";
+        }
 
-</fieldset>
+        if ($formato == "1802"){
+          $largura = "180";
+          $altura = "150";
+        }
+        
+        if ($formato=="300"){
+          $largura = "300";
+          $altura = "250";
+        }
 
+        if ($dados[tipo] == 'imagem') {
+          if(!empty($dados[url])) {
+            echo "<img width='$largura' height='$altura' name='imagem1' src='../images/publicidades/$dados[url]' border='0'>";
+          } else {
+            echo "<img width='$largura' height='$altura' name='imagem1' src='../images/publicidades/$dados[imagem]' border='0'>";
+          }
+        } 
+
+        if ($dados[tipo] == 'flash') {
+            if (!empty($dados[url])) {
+              echo "<embed src='$dados[url]' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='$largura' height='$altura'></embed>";
+            } else {
+              echo "<embed src='../images/publicidades/$dados[imagem]' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='$largura' height='$altura'></embed>";
+            }
+          }
+
+          if ($dados[tipo] == 'html') {
+            echo $dados[html];
+          }
+      }
+
+      ?>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td valign="middle">
+                  <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td valign="middle">
+                        <? if (empty($id)) { ?>
+                          <input class="inputon" name='imagem' type='file' size="16">
+                        <? } else { ?>
+                          Trocar Imagem?:
+                          <input name="nova_imagem" type="radio" value="N" checked="checked" onclick="javascript:DesabilitarFoto()" />N&atilde;o
+                          <input name="nova_imagem" type="radio" value="S" onclick="javascript: HabilitarFoto();" >Sim <br />
+                          <input class="inputon" name='imagem' type='file' size="16" disabled="disabled">
+                        <? } ?>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          HTML: usar para Google AdSense <br />
+          <textarea name="html" style="width:350px; height:100px;" cols="55" rows="3" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"><? echo $dados[html]?></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Nome do cliente: <br />
+          <input name="nome" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[nome]?>" />
+        </td> 
+      </tr>
+
+      <tr>
+        <td>URL do Banner: <br />
+            <input name="url" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados[url]?>" />Utilizar apenas para pegar banners externos. Exemplo: http://www.diariominas.com.br/banner.gif
+        </td> 
+      </tr>
+
+      <tr>
+        <td>Link: <br />
+          <input name="link" type="text" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"  size="35" value="<?=$dados["link"]?>" />
+        </td>
+      </tr>
+
+      <tr>
+        <td valign="middle">
+          <input style="width:110px;" type="submit" class="input" onblur="this.className='input';" onfocus="this.className='inputon';" name='btgravar' value="<?=(empty($id))?"Cadastrar":"Alterar";?>" />
+        </td>
+      </tr>
+
+    </table>
+  </fieldset>
 </form>
-
-
-
-<?
-
-//} // fim da acao FORM DE CADASTRO E ALTERAR
-
-?>
-
-
-
-
-
-
 
 <?
 
