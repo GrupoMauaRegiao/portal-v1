@@ -249,10 +249,10 @@ nForm.elements['imagem'].className = "inputon";
           <tr>
             <td >Tamanho: <br />
               <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
-                <option value="728" <?=($dados[formato] == 640) ? selected : ""; ?>>
+                <option value="640" <?=($dados[formato] == 640) ? selected : ""; ?>>
                   Banner: abaixo das notícias (640 x 200 px)
                 </option>
-                <option value="728" <?=($dados[formato] == 6402) ? selected : ""; ?>>
+                <option value="6402" <?=($dados[formato] == 6402) ? selected : ""; ?>>
                   Banner: abaixo do guia comercial (640 x 200 px)
                 </option>
                 <option value="728" <?=($dados[formato] == 728) ? selected : ""; ?>>
