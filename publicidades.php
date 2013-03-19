@@ -249,6 +249,12 @@ nForm.elements['imagem'].className = "inputon";
           <tr>
             <td >Tamanho: <br />
               <select name="formato" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
+                <option value="200" <?=($dados[formato] == 200) ? selected : ""; ?>>
+                  Banner responsivo: lateral esquerda (200 x 500 px)
+                </option>
+                <option value="2002" <?=($dados[formato] == 2002) ? selected : ""; ?>>
+                  Banner responsivo: lateral direita (200 x 500 px)
+                </option>
                 <option value="640" <?=($dados[formato] == 640) ? selected : ""; ?>>
                   Banner: abaixo das notícias (640 x 200 px)
                 </option>
@@ -348,6 +354,16 @@ nForm.elements['imagem'].className = "inputon";
           $altura = "200";
         }
         
+        if ($formato == "200") {
+          $largura = "200";
+          $altura = "500";
+        }
+
+        if ($formato == "2002") {
+          $largura = "200";
+          $altura = "500";
+        }
+
         if ($formato == "180") {
           $largura = "180";
           $altura = "60";

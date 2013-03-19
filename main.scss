@@ -1,7 +1,7 @@
 @media (min-width:1663px) {
   .banner-lateral-direita,
   .banner-lateral-esquerda{
-    background:rgb(200,200,200);
+    background:rgb(255,255,255);
     position:absolute;
     width:200px;
     height:500px;
@@ -9,7 +9,14 @@
   }
   .banner-lateral-esquerda{ left:100px; }
   .banner-lateral-direita{ right:100px; }
+
+  .banner-lateral-esquerda:hover,
+  .banner-lateral-direita:hover{
+    outline: 1px solid rgb(136,182,219);
+  }
 }
+
+
 
 .banner-publicidade{
   margin:20px 0 0 0;

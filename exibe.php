@@ -27,6 +27,16 @@ if ($acao == "exibe") {
   if ($formato == "6402"){
     $largura = "640";
     $altura = "200";
+  }  
+
+  if ($formato == "200"){
+    $largura = "200";
+    $altura = "500";
+  }
+  
+  if ($formato == "2002"){
+    $largura = "200";
+    $altura = "500";
   }
 
   if ($formato == "1802") {
