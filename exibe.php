@@ -14,27 +14,27 @@ if ($acao == "exibe") {
     $altura = "90";
   }
 
-  if ($formato == "180"){
+  if ($formato == "180") {
     $largura = "180";
     $altura = "100";
   }
   
-  if ($formato == "640"){
+  if ($formato == "640") {
     $largura = "640";
     $altura = "200";
   }
   
-  if ($formato == "6402"){
+  if ($formato == "6402") {
     $largura = "640";
     $altura = "200";
   }  
 
-  if ($formato == "200"){
+  if ($formato == "200") {
     $largura = "200";
     $altura = "500";
   }
   
-  if ($formato == "2002"){
+  if ($formato == "2002") {
     $largura = "200";
     $altura = "500";
   }
@@ -69,9 +69,15 @@ if ($acao == "exibe") {
     // Exibir banner imagem
     if ($dados[tipo] == 'imagem') {
       if (!empty($dados[url])) {
-        echo "<a href='$dados[link]' target='_blank'><img width='$largura' height='$altura' name='imagem1' src='$dados[url]' border='0'></a>";
+        echo "
+        <a href=\"$dados[link]\" target=\"_blank\">
+          <img width=\"$largura\" height=\"$altura\" name=\"imagem1\" src=\"$dados[url]\" border=\"0\">
+        </a>";
       } else {
-        echo "<a href='$dados[link]' target='_blank'><img width='$largura' height='$altura' name='imagem1' src='".$usite."images/publicidades/$dados[imagem]' border='0'></a>";
+        echo "
+        <a href=\"$dados[link]\" target=\"_blank\">
+          <img width=\"$largura\" height=\"$altura\" name=\"imagem1\" src=\"".$usite."images/publicidades/$dados[imagem]\" border=\"0\">
+        </a>";
       }
     }
 

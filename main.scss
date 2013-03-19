@@ -1,22 +1,25 @@
-@media (min-width:1663px) {
-  .banner-lateral-direita,
-  .banner-lateral-esquerda{
-    background:rgb(255,255,255);
+@media screen and (min-width:1510px) {
+  .banner-lateral-direita a,
+  .banner-lateral-esquerda a{
+    background:transparent;
     position:absolute;
     width:200px;
     height:500px;
     top:237px;
   }
-  .banner-lateral-esquerda{ left:100px; }
-  .banner-lateral-direita{ right:100px; }
+  .banner-lateral-esquerda a{ left:20px; }
+  .banner-lateral-direita a{ right:20px; }
 
-  .banner-lateral-esquerda:hover,
-  .banner-lateral-direita:hover{
+  .banner-lateral-esquerda a:hover,
+  .banner-lateral-direita a:hover{
     outline: 1px solid rgb(136,182,219);
   }
 }
 
-
+@media screen and (max-width:1510px) {
+  .banner-lateral-esquerda,
+  .banner-lateral-direita{ display:none; }
+}
 
 .banner-publicidade{
   margin:20px 0 0 0;
