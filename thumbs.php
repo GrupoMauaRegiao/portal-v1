@@ -40,7 +40,7 @@
     imageline($img, 0, $i, $wid, $i, $c);
   }
 
-  imagecopyresampled($img,$im,0,0,$x1,$y1,$wid,$hei,$x2-$x1,$y2-$y1); 
+  imagecopyresampled($img, $im, 0, 0, $x1, $y1, $wid, $hei, $x2 - $x1, $y2 - $y1);
   imagejpeg($img, '', 95);
 
 ?>
