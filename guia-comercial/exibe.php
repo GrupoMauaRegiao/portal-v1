@@ -1,318 +1,170 @@
 <script type="text/javascript" language="javascript" src="/rate/js/behavior.js"></script>
-
 <script type="text/javascript" language="javascript" src="/rate/js/rating.js"></script>
-
 <link rel="stylesheet" type="text/css" href="/rate/css/rating.css" />
 
-<?
+<?php
+$variables = (strtolower($_SERVER['REQUEST_METHOD']) == 'GET') ? $_GET : $_POST;
 
-$variables=(strtolower($_SERVER['REQUEST_METHOD'])== 'GET') ? $_GET : $_POST;
-
-foreach ($variables as $k=> $v)
-
+foreach ($variables as $k => $v)
 $$k=$v;
 
-
-
 $tabela1 = "tb_guia";
-
 $tabela2 = $tabela1."_categorias";
-
-
-
 $file = "guia";
 
+if ($acao == "listar") {
+  if (!empty($categoria)) {
+    $wh2 = "AND id_categoria='$categoria'";
+  }
 
+  if (!empty($subcategoria)) {
+    $wh3 = "AND id_subcategoria='$subcategoria'";
+  }
 
-
-
-// FIM DA ACAO LISTAR
-
-if($acao == "listar"){
-
-
-
-	if(!empty($categoria)){
-
-	$wh2 = "AND id_categoria='$categoria'";
-
-	}
-
-	if(!empty($subcategoria)){
-
-	$wh3 = "AND id_subcategoria='$subcategoria'";
-
-	}
-
-	if(!empty($produto)){
-
-	$wh4 = "AND nome LIKE '%$produto%'";
-
-	}
-
-
+  if (!empty($produto)) {
+    $wh4 = "AND nome LIKE '%$produto%'";
+  }
 
 $busca = "SELECT * FROM $tabela1 WHERE status='S' $wh2 $wh3 $wh4 order by nome";
 
+  if ($paginacao == "S") {
+    $total_reg = $qts_ultimos;
 
+    if (!$page) {
+      $page = "1";
+    }
 
-	if($paginacao == "S"){
-
-	
-
-		$total_reg = $qts_ultimos;
-
-	
-
-		if(!$page){
-
-		$page = "1";
-
-		}
-
-
-
-		$inicio = $page-1;
-
-		$inicio = $inicio*$total_reg;
-
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
-
-	} else {
-
-		$limite = mysql_query("$busca");
-
-	} 
-
-
+    $inicio = $page - 1;
+    $inicio = $inicio * $total_reg;
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+  } else {
+    $limite = mysql_query("$busca");
+  }
 
 $todos = mysql_query("$busca");
-
-
-
 $tr = mysql_num_rows($todos);
-
-
-
 $tp = @ceil($tr / $total_reg);
 
-
-
-
-
-if($tr > 0){
-
+if ($tr > 0) {
 ?>
 
 
 
 <form id="busca" name="busca" method="get">
-
-<input name="pg" type="hidden" value="<?=$tabela1?>_busca">
-
-<input name="acao" type="hidden" value="listar">
-
-  
+  <input name="pg" type="hidden" value="<?=$tabela1?>_busca">
+  <input name="acao" type="hidden" value="listar">
 
   <table border="0" cellpadding="2" cellspacing="0">
-
     <tr>
+      <td class="laranja">
+        <b>Pesquisar:</b>
+      </td>
+      <td>
+        <input name="produto" type="text" class="input" onfocus="this.className='inputon';" onblur="this.className='input';" size="45" >
+      </td>
 
-
-
-	  <td class="laranja"><b>Pesquisar:</b></td>
-
-      <td><input name="produto" type="text" class="input" onfocus="this.className='inputon';" onblur="this.className='input';" size="45" ></td>
-
-
-
-      <td align="right"><input type="submit" value="Buscar" class="input" onblur="this.className='input';" onfocus="this.className='inputon';"></td>
-
+      <td align="right">
+        <input type="submit" value="Buscar" class="input" onblur="this.className='input';" onfocus="this.className='inputon';">
+      </td>
     </tr>
-
   </table>
-
 </form>
 
-
-
-
-
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="right">
+      Foram encontradas (<strong><? echo $tr;?></strong>) registros.
+    </td>
+  </tr>
 
-<tr><td align="right">Foram encontradas (<strong><? echo $tr;?></strong>) registros.</td></tr>
-
-<tr><td bgcolor="<?=$coronmouse?>" height="1"></td></tr></table>
-
-
+  <tr>
+    <td bgcolor="<?=$coronmouse?>" height="1"></td>
+  </tr>
+</table>
 
 <table border="0" cellpadding="1" cellspacing="0">
 
-  <?
+<?php
 
-// Agora vamos montar o c&oacute;digo. Pegue o valor total de resultados: 
+$total = mysql_num_rows($limite);
 
-$total = mysql_num_rows($limite); 
-
-// Defina o n&uacute;mero de colunas que voc&ecirc; deseja exibir: 
-
-//$colunas = "3"; 
-
-//$colunas = "$qts_colunas"; 
-
-// Agora vamos ao "truque": 
-
-if ($total>0) { 
-
-for ($i = 0; $i < $total; $i++) { 
-
-if (($i%$colunas)==0) { 
-
-
-
-$colspan = $colunas+$colunas+$colunas;
-
+if ($total > 0) {
+  for ($i = 0; $i < $total; $i+=1) {
+    if (($i%$colunas) == 0) {
+      $colspan = $colunas + $colunas + $colunas;
 ?>
-
   <tr>
+<?php } ?>
 
-    <? }?>
+<?php $dados = mysql_fetch_array($limite); ?>
 
-    <?
+  <td align="center" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="<?=$largura+5;?>" height="<?=$altura+8;?>" align="left" valign="middle">
+          <a href='<?="?pg=$link_page&id=$dados[id]";?>'>
+          <img src="<?=($img_thumb=="S")?"thumbs.php?w=$largura&h=$altura&imagem=":""; echo (!empty($dados[foto01]))?"images/$tabela1/$dados[id]/$dados[foto01]":"images/layout/img_local_semfoto.jpg";?>" border="0" width="<?=$largura?>" height="<?=$altura?>" /></a></td>
+          <td width="<?=$largura_coluna?>" valign="middle">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+<?php
 
-$dados = mysql_fetch_array($limite) ;
+echo "<font class='titulos red'>$dados[nome]</font><br />";
 
+  $contatamanho1 = strlen($dados[descricao_pequena]);
+  
+  if ($contatamanho1 > $qt_letras1) {
+    $descricao = substr_replace($dados[descricao_pequena], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
+  } else {
+    $descricao = $dados[descricao_pequena];
+  }
 
+echo "$descricao<br /><br />";
+
+if ($dados[preco_normal] != "0.00") {}
+
+if ($dados[preco_oferta] != "0.00") {
+  echo "<font class='titulos red'>À Vista R$ " . number_format($dados[preco_oferta], '2',',','.')."</font><br />";
+  $taxa = "2.2";
+  $divisao = "6";
+  $valoravista = $dados[preco_oferta];
+  $porcentagem = "1.".$taxa*$divisao;
+  $valor_com_juros1 = $valoravista * $porcentagem;
+  $valor_com_juros2 = number_format($valor_com_juros1, '2', ',', '.');
+  $valormensal1 = $valor_com_juros1 / $divisao;
+  $valormensal2 = number_format($valormensal1, '2', ',', '.');
+  echo "ou 6x de R$ $valormensal2<br /><br />";
+} else {
+  echo "<a href='?pg=fale_conosco&produto=$id'><font class='titulos'><strong>Consulte-nos!</strong></font></a><br><br>";
+}
+
+echo "<a href='?pg=$link_page&id=$dados[id]'><img src='images/layout/bt_detalhes.gif' border='0'></a>";
 
 ?>
-
-    <td align="center" valign="top"><table border="0" cellpadding="0" cellspacing="0">
-
-      <tr>
-
-        <td width="<?=$largura+5;?>" height="<?=$altura+8;?>" align="left" valign="middle">
-
-		<a href='<?="?pg=$link_page&id=$dados[id]";?>'>
-
-		<img src="<?=($img_thumb=="S")?"thumbs.php?w=$largura&h=$altura&imagem=":""; echo (!empty($dados[foto01]))?"images/$tabela1/$dados[id]/$dados[foto01]":"images/layout/img_local_semfoto.jpg";?>" border="0" width="<?=$largura?>" height="<?=$altura?>" /></a></td>
-
-        <td width="<?=$largura_coluna?>" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-            <tr>
-
-              <td>
-
-<?
-
-echo "<font class='titulos red'>$dados[nome]</font><br>";
-
-
-
-$contatamanho1 = strlen($dados[descricao_pequena]);
-
-if($contatamanho1 > $qt_letras1){
-
-$descricao = substr_replace($dados[descricao_pequena], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
-
-} else {
-
-$descricao = $dados[descricao_pequena];
-
-}
-
-echo "$descricao<br><br>";
-
-
-
-if($dados[preco_normal] != "0.00"){ 
-
-//echo "<font class='titulos'><s>de R$ $dados[preco_normal]</s></font><br>";
-
-}
-
-if($dados[preco_oferta] != "0.00"){ 
-
-echo "<font class='titulos red'>À Vista R$ ".number_format($dados[preco_oferta], '2',',','.')."</font><br>";
-
-	$taxa = "2.2";
-
-	$divisao = "6";
-
-	$valoravista = $dados[preco_oferta];
-
-	//echo "VALOR A VISTA: $valoravista<br><br>";
-
-	$porcentagem = "1.".$taxa*$divisao;
-
-	//echo "PORCENTAGEM: $taxa x 6 = $porcentagem<br><br>";
-
-	$valor_com_juros1 = $valoravista*$porcentagem;
-
-	$valor_com_juros2 = number_format($valor_com_juros1, '2',',','.');
-
-	//echo "VALOR COM JUROS: $valor_com_juros2<br><br>";
-
-	
-
-	$valormensal1 = $valor_com_juros1/$divisao;
-
-	$valormensal2 = number_format($valormensal1, '2',',','.');
-
-	//echo "MENSAL: $valormensal<br><br>";
-
-
-
-echo "ou 6x de R$ $valormensal2<br><br>";
-
-
-
-} else {
-
-echo "<a href='?pg=fale_conosco&produto=$id'><font class='titulos'><strong>Consulte-nos!</strong></font></a><br><br>";
-
-}
-
-
-
-	
-
-echo "<a href='?pg=$link_page&id=$dados[id]'><img src='images/layout/bt_detalhes.gif' border='0'></a>";	
-
-
-
-?></td>
-
-            </tr>
-
-			
-
-        </table></td>
-
-        <td width="5"></td>
-
-      </tr>
-
-	  	  <tr><td colspan="3"><img src="images/layout/img_cantored_b.gif" width="<?=$largura_coluna?>" height="8" /><img src="images/layout/img_cantored_4.gif" width="8" height="8" /></td>
-
-	  </tr>
-
-	  <tr>
-
-	    <td height="5" colspan="3"></td>
-
-	    </tr>
-
-    </table></td>
-
-    <? }?>
-
-  </TR>
-
-  <? }?>
-
+                </td>
+              </tr>
+            </table>
+          </td>
+          
+          <td width="5"></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <img src="images/layout/img_cantored_b.gif" width="<?=$largura_coluna?>" height="8" />
+            <img src="images/layout/img_cantored_4.gif" width="8" height="8" />
+          </td>
+        </tr>
+
+        <tr>
+          <td height="5" colspan="3"></td>
+        </tr>
+      </table>
+    </td>
+  <?php } ?>
+  </tr>
+<?php } ?>
 </table>
-
-
 
 <? if($paginacao == "S"){?>
 
@@ -324,15 +176,15 @@ echo "<a href='?pg=$link_page&id=$dados[id]'><img src='images/layout/bt_detalhes
 
     <td align="center">
 
-	
+  
 
-	
+  
 
 <table border="0" cellpadding="2" cellspacing="1">
 
-<tr>	
+<tr>  
 
-	<? 
+  <? 
 
 for($i=1; $i<$page; $i++)
 
@@ -378,7 +230,7 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? } else {?>
+  <? } else {?>
 
 
 
@@ -394,7 +246,7 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? }?>
+  <? }?>
 
 
 
@@ -414,11 +266,11 @@ if($acao == "ver1"){
 
 
 
-	if(!empty($id_cat)){
+  if(!empty($id_cat)){
 
-	$wh2 = "AND id_categoria='$id_cat'";
+  $wh2 = "AND id_categoria='$id_cat'";
 
-	}
+  }
 
 
 
@@ -426,33 +278,33 @@ $busca = "SELECT * FROM $tabela1 WHERE status='S' AND destacar='S' $wh2 ORDER by
 
 
 
-	if($paginacao == "S"){
+  if($paginacao == "S"){
 
-	
+  
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
-	
+  
 
-		if(!$page){
+    if(!$page){
 
-		$page = "1";
+    $page = "1";
 
-		}
+    }
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
-	} else {
+  } else {
 
-		$limite = mysql_query("$busca");
+    $limite = mysql_query("$busca");
 
-	} 
+  } 
 
 
 
@@ -588,15 +440,15 @@ echo "<div class='guiatitulo'>$nome</b></div>";
 
     <td align="center">
 
-	
+  
 
-	
+  
 
 <table border="0" cellpadding="2" cellspacing="1">
 
-<tr>	
+<tr>  
 
-	<? 
+  <? 
 
 for($i=1; $i<$page; $i++)
 
@@ -642,7 +494,7 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? } else {?>
+  <? } else {?>
 
 
 
@@ -658,7 +510,7 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? }?>
+  <? }?>
 
 
 
@@ -678,59 +530,59 @@ if($acao == "ver2"){
 
 
 
-	
+  
 
 $busca = "SELECT * FROM $tabela1 WHERE status='S' ORDER by RAND()";
 
 
 
-	if($paginacao == "S"){
+  if($paginacao == "S"){
 
 
 
-		$total_reg = $qts_ultimos;
-
-
-
-
-
-		if(!$page){
-
-
-
-		$page = "1";
-
-
-
-		}
+    $total_reg = $qts_ultimos;
 
 
 
 
 
-
-
-		$inicio = $page-1;
-
-
-
-		$inicio = $inicio*$total_reg;
+    if(!$page){
 
 
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $page = "1";
 
 
 
-	} else {
+    }
 
 
 
-		$limite = mysql_query("$busca LIMIT $limite2");
 
 
 
-	} 
+
+    $inicio = $page-1;
+
+
+
+    $inicio = $inicio*$total_reg;
+
+
+
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+
+
+
+  } else {
+
+
+
+    $limite = mysql_query("$busca LIMIT $limite2");
+
+
+
+  } 
 
 
 
@@ -896,13 +748,13 @@ echo "<font size='2' color='$cortitulo'><b>$nome</b></font><br>";
 
     <td align="center">
 
-	
+  
 
-	
+  
 
 <table border="0" cellpadding="2" cellspacing="1">
 
-<tr>	
+<tr>  
 
 <?
 
@@ -916,7 +768,7 @@ if($paginacao == "S"){
 
 
 
-	include "paginas/paginacao.php";
+  include "paginas/paginacao.php";
 
 
 
@@ -952,7 +804,7 @@ if($paginacao == "S"){
 
 
 
-	<? } else {?>
+  <? } else {?>
 
 
 
@@ -968,7 +820,7 @@ if($paginacao == "S"){
 
 
 
-	<? }?>
+  <? }?>
 
 
 
@@ -990,9 +842,9 @@ if($acao == "ver3"){
 
 if(!empty($id_cat)){
 
-	$wh2 = "AND id_categoria='$id_cat'";
+  $wh2 = "AND id_categoria='$id_cat'";
 
-	}
+  }
 
 
 
@@ -1000,33 +852,33 @@ $busca = "SELECT * FROM $tabela1 WHERE status='S' $wh2 ORDER by RAND()";
 
 
 
-	if($paginacao == "S"){
+  if($paginacao == "S"){
 
-	
+  
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
-	
+  
 
-		if(!$page){
+    if(!$page){
 
-		$page = "1";
+    $page = "1";
 
-		}
+    }
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
-	} else {
+  } else {
 
-		$limite = mysql_query("$busca");
+    $limite = mysql_query("$busca");
 
-	} 
+  } 
 
 
 
@@ -1174,17 +1026,17 @@ echo "<font size='2' color='$cortitulo'><b>$nome</b></font><br>";
 
     <td align="center">
 
-	
+  
 
-	
+  
 
 <table border="0" cellpadding="2" cellspacing="1">
 
-<tr>	
+<tr>  
 
-<?	if($paginacao == "S"){
+<?  if($paginacao == "S"){
 
-		 
+     
 
 for($i=1; $i<$page; $i++)
 
@@ -1210,7 +1062,7 @@ echo "<td width='12' align='center' style='border:1px solid #cccccc;'><a href='$
 
 }
 
-	?>
+  ?>
 
 
 
@@ -1234,7 +1086,7 @@ echo "<td width='12' align='center' style='border:1px solid #cccccc;'><a href='$
 
 
 
-	<? } else {?>
+  <? } else {?>
 
 
 
@@ -1250,7 +1102,7 @@ echo "<td width='12' align='center' style='border:1px solid #cccccc;'><a href='$
 
 
 
-	<? }?>
+  <? }?>
 
 
 
@@ -1270,39 +1122,39 @@ if($acao == "ver4"){
 
 
 
-	
+  
 
 $busca = "SELECT * FROM $tabela1 WHERE status='S' ORDER by RAND() LIMIT $limite2";
 
 
 
-	if($paginacao == "S"){
+  if($paginacao == "S"){
 
-	
+  
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
-	
+  
 
-		if(!$page){
+    if(!$page){
 
-		$page = "1";
+    $page = "1";
 
-		}
+    }
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
-	} else {
+  } else {
 
-		$limite = mysql_query("$busca");
+    $limite = mysql_query("$busca");
 
-	} 
+  } 
 
 
 
@@ -1440,15 +1292,15 @@ echo "<font size='2' color='$cortitulo'><b>$nome</b></font><br>";
 
     <td align="center">
 
-	
+  
 
-	
+  
 
 <table border="0" cellpadding="2" cellspacing="1">
 
-<tr>	
+<tr>  
 
-	<? 
+  <? 
 
 for($i=1; $i<$page; $i++)
 
@@ -1494,7 +1346,7 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? } else {?>
+  <? } else {?>
 
 
 
@@ -1510,4 +1362,4 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-	<? } }?>
+  <? } }?>
