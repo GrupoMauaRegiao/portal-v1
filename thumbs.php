@@ -41,6 +41,6 @@
   }
 
   imagecopyresampled($img, $im, 0, 0, $x1, $y1, $wid, $hei, $x2 - $x1, $y2 - $y1);
-  imagejpeg($img, '', 95);
+  imagejpeg($img, '', 80);
 
 ?>
