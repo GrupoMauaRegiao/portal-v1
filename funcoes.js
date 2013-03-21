@@ -162,6 +162,21 @@ jQuery(document).ready(function() {
   cleanField('#nome');
   cleanField('#email');
 
+  function randomizarGuiaComercial(){
+    function indexAleatorio(limite) {
+      return Math.floor(Math.random()*limite);
+    }
+
+    var itemGuiaComercial, limite;
+    itemGuiaComercial = jQuery('.item-guia-comercial');
+    limite = itemGuiaComercial.length;
+
+    itemGuiaComercial.removeClass('item-destacado');
+    itemGuiaComercial.eq(indexAleatorio(limite)).addClass('item-destacado');
+  }
+
+  randomizarGuiaComercial();
+
 });
 
 // FUNCOES QUE VALIDAM CPF E CNPJ

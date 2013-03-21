@@ -1,3 +1,9 @@
+<?php
+/*
+    /home/paginas/guia/exibe.php
+*/
+?>
+
 <script type="text/javascript" language="javascript" src="/rate/js/behavior.js"></script>
 <script type="text/javascript" language="javascript" src="/rate/js/rating.js"></script>
 <link rel="stylesheet" type="text/css" href="/rate/css/rating.css" />
@@ -274,7 +280,7 @@ if($acao == "ver1"){
 
 
 
-$busca = "SELECT * FROM $tabela1 WHERE status='S' AND destacar='S' $wh2 ORDER by RAND() LIMIT $limite2";
+$busca = "SELECT * FROM $tabela1 WHERE status='S' AND destacar='S' AND foto1 != '' $wh2 ORDER by RAND() LIMIT $limite2";
 
 
 
@@ -304,113 +310,49 @@ $busca = "SELECT * FROM $tabela1 WHERE status='S' AND destacar='S' $wh2 ORDER by
 
     $limite = mysql_query("$busca");
 
-  } 
-
-
+  }
 
 $todos = mysql_query("$busca");
-
-
-
 $tr = mysql_num_rows($todos);
-
-
-
 $tp = @ceil($tr / $total_reg);
-
-
-
-
-
-if($tr > 0){
 
 ?>
 
-<table border="0" cellpadding="1" cellspacing="2">
+<?php // # Guia Comercial ?>
 
 <?php
 
-$total = mysql_num_rows($limite); 
+$total = mysql_num_rows($limite);
 
 if ($total > 0) {
-  for ($i = 0; $i < $total; $i +=1) {
+  for ($i = 0; $i < $total; $i += 1) {
     if (($i % $colunas) == 0) {
-      $colspan = $colunas+$colunas+$colunas;
-?>
-  <tr>
-    <?php } ?>
+      $colspan = $colunas + $colunas + $colunas;
+    }
 
-    <?php $dados = mysql_fetch_array($limite); ?>
-
-    <td align="center" valign="top" width="208"  onMouseOver="this.style.backgroundColor='#E4EAED';" onMouseOut="this.style.backgroundColor='#F7F7F7';"><table width="208" border="0" cellspacing="0" cellpadding="0" bgcolor="#F7F7F7">
-
-  <tr>
-
-    <td width="70" align="left" valign="top" >
-
-    <?php 
-      $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
-      $dados22 = mysql_fetch_array(mysql_query($sql22)); 
-    ?>
-
-<?php // Guia Comercial da Home ?>
-
-    <a href='<?="/guia/$dados22[nome]/$dados[id]";?>-<?= str_replace(" ","_",$dados['nome']); ?>.html' >
-      <img src="<?=($img_thumb == "S") ? "/thumbs.php?w=$largura&h=$altura&imagem=" : ""; echo (!empty($dados[foto0])) ? "images/guia/$dados[id]/$dados[foto0]" : "images/layout/img_local_semfoto.jpg"; ?>" border="0" width="<?=$largura ?>" height="<?=$altura ?>" />
-    </a>
-
-</td>
-
-    <td width="4">&nbsp;</td>
-
-    <td width="170" align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
-
-      <tr>
-
-        <td align="left" valign="top"><?
-
-$contatamanho0 = strlen($dados[nome]);
-
-if($contatamanho0 > $qt_letras0){
-
-$nome = substr_replace($dados[nome], "...", $qt_letras0, $contatamanho0 - $qt_letras0);
-
-} else {
-
-$nome = $dados[nome];
-
-}
-
-echo "<div class='guiatitulo'>$nome</b></div>";
-
+    $dados = mysql_fetch_array($limite);
+    $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
+    $dados22 = mysql_fetch_array(mysql_query($sql22));
 ?>
 
-<? echo "<div class='guiafone'>Tel: <b>($dados[ddd1]) $dados[fone1]</b></div>";?></td>
+  <div class="item-guia-comercial">
+    <div class="imagem-comercial">
+        <img src="/timthumb.php?w=$largura&amp;h=$altura&amp;src=images/guia/<?php echo $dados[id]; ?>/<?php echo $dados[foto0]; ?>" width="<?php echo $largura ?>" height="<?php echo $altura ?>" alt="" />
+    </div>
 
-      </tr>
+    <div class="informacao-comercial">
+      <div class="guia-titulo">
+        <a href="/guia/<?php echo $dados22[nome]; ?>/<?php echo $dados[id]; ?>-<?php echo str_replace(" ", "_", $dados["nome"]); ?>.html">
+          <?php echo normalizaTituloTamanho($dados[nome], 35); ?>
+        </a>
+      </div>
+    </div>
+  </div> <!-- # Item do Guia Comercial -->
 
+  <?php }  // # fim loop ?>
+<?php } // # fim `IF > 0` ?>
 
-
-    </table></td>
-
-  </tr>
-
-  <tr>
-
-    <td colspan="3" height="5px"></td>
-
-  </tr>
-
-</table></td>
-
-    <?php }  // # fecha loop ?>
-
-  </TR>
-
-  <? }?>
-
-</table>
-
+<?php // # fim Guia Comercial ?>
 
 
 <? if($paginacao == "S"){?>
@@ -469,37 +411,18 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 </table>
 
-<? }?>
-
-
-
-
-
+<? } ?>
 
 
   <? } else {?>
 
-
-
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
   <tr>
-
     <td align="center">nenhum<b> Produto</b><b> </b>encontrado!</td>
-
   </tr>
-
 </table>
 
-
-
   <? }?>
-
-
-
-
-
-<?php } ?>
 
 <?php
 // FIM DA ACAO LISTAR
