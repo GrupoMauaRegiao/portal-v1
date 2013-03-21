@@ -125,7 +125,7 @@ echo "$descricao<br /><br />";
 if ($dados[preco_normal] != "0.00") {}
 
 if ($dados[preco_oferta] != "0.00") {
-  echo "<font class='titulos red'>À Vista R$ " . number_format($dados[preco_oferta], '2',',','.')."</font><br />";
+  echo "<font class='titulos red'>Ã€ Vista R$ " . number_format($dados[preco_oferta], '2',',','.')."</font><br />";
   $taxa = "2.2";
   $divisao = "6";
   $valoravista = $dados[preco_oferta];
@@ -328,43 +328,19 @@ if($tr > 0){
 
 <table border="0" cellpadding="1" cellspacing="2">
 
-  <?
-
-// Agora vamos montar o c&oacute;digo. Pegue o valor total de resultados: 
+<?php
 
 $total = mysql_num_rows($limite); 
 
-// Defina o n&uacute;mero de colunas que voc&ecirc; deseja exibir: 
-
-//$colunas = "3"; 
-
-//$colunas = "$qts_colunas"; 
-
-// Agora vamos ao "truque": 
-
-if ($total>0) { 
-
-for ($i = 0; $i < $total; $i++) { 
-
-if (($i%$colunas)==0) { 
-
-
-
-$colspan = $colunas+$colunas+$colunas;
-
+if ($total > 0) {
+  for ($i = 0; $i < $total; $i +=1) {
+    if (($i % $colunas) == 0) {
+      $colspan = $colunas+$colunas+$colunas;
 ?>
-
   <tr>
+    <?php } ?>
 
-    <? }?>
-
-    <?
-
-$dados = mysql_fetch_array($limite) ;
-
-
-
-?>
+    <?php $dados = mysql_fetch_array($limite); ?>
 
     <td align="center" valign="top" width="208"  onMouseOver="this.style.backgroundColor='#E4EAED';" onMouseOut="this.style.backgroundColor='#F7F7F7';"><table width="208" border="0" cellspacing="0" cellpadding="0" bgcolor="#F7F7F7">
 
@@ -372,11 +348,18 @@ $dados = mysql_fetch_array($limite) ;
 
     <td width="70" align="left" valign="top" >
 
-    <? $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
+    <?php 
+      $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
+      $dados22 = mysql_fetch_array(mysql_query($sql22)); 
+    ?>
 
-$dados22 = mysql_fetch_array(mysql_query($sql22)); ?>
+<?php // Guia Comercial da Home ?>
 
-    <a href='<?="/guia/$dados22[nome]/$dados[id]";?>-<?= str_replace(" ","_",$dados['nome']); ?>.html' ><img src="<?=($img_thumb=="S")?"/thumbs.php?w=$largura&h=$altura&imagem=":""; echo (!empty($dados[foto0]))?"images/guia/$dados[id]/$dados[foto0]":"images/layout/img_local_semfoto.jpg";?>" border="0" width="<?=$largura?>" height="<?=$altura?>" /></a></td>
+    <a href='<?="/guia/$dados22[nome]/$dados[id]";?>-<?= str_replace(" ","_",$dados['nome']); ?>.html' >
+      <img src="<?=($img_thumb == "S") ? "/thumbs.php?w=$largura&h=$altura&imagem=" : ""; echo (!empty($dados[foto0])) ? "images/guia/$dados[id]/$dados[foto0]" : "images/layout/img_local_semfoto.jpg"; ?>" border="0" width="<?=$largura ?>" height="<?=$altura ?>" />
+    </a>
+
+</td>
 
     <td width="4">&nbsp;</td>
 
@@ -420,7 +403,7 @@ echo "<div class='guiatitulo'>$nome</b></div>";
 
 </table></td>
 
-    <? }?>
+    <?php }  // # fecha loop ?>
 
   </TR>
 
@@ -516,251 +499,115 @@ echo "<td width='12' align='center' style='border:1px solid $coronmouse;'><a hre
 
 
 
-<?
+<?php } ?>
 
-}
-
+<?php
 // FIM DA ACAO LISTAR
-
-
 
 // FIM DA ACAO VER1
 
-if($acao == "ver2"){
+if ($acao == "ver2") {
+  $busca = "SELECT * FROM $tabela1 WHERE status='S' ORDER by RAND()";
 
-
-
-  
-
-$busca = "SELECT * FROM $tabela1 WHERE status='S' ORDER by RAND()";
-
-
-
-  if($paginacao == "S"){
-
-
-
+  if ($paginacao == "S") {
     $total_reg = $qts_ultimos;
 
-
-
-
-
-    if(!$page){
-
-
-
-    $page = "1";
-
-
-
+    if (!$page) {
+      $page = "1";
     }
 
-
-
-
-
-
-
-    $inicio = $page-1;
-
-
-
-    $inicio = $inicio*$total_reg;
-
-
-
-    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
-
-
-
+    $inicio = $page - 1;
+    $inicio = $inicio * $total_reg;
+    $limite = mysql_query("$busca LIMIT $inicio, $total_reg");
   } else {
-
-
-
     $limite = mysql_query("$busca LIMIT $limite2");
+  }
 
+  $todos = mysql_query("$busca");
+  $tr = mysql_num_rows($todos);
+  $tp = @ceil($tr / $total_reg);
 
-
-  } 
-
-
-
-
-
-
-
-$todos = mysql_query("$busca");
-
-
-
-
-
-
-
-$tr = mysql_num_rows($todos);
-
-
-
-
-
-
-
-$tp = @ceil($tr / $total_reg);
-
-
-
-
-
-
-
-
-
-
-
-if($tr > 0){
-
+  if ($tr > 0) {
 ?>
 
 <table border="0" cellpadding="1" cellspacing="0">
 
-  <?
+<?php
 
-// Agora vamos montar o c&oacute;digo. Pegue o valor total de resultados: 
+$total = mysql_num_rows($limite);
 
-$total = mysql_num_rows($limite); 
-
-// Defina o n&uacute;mero de colunas que voc&ecirc; deseja exibir: 
-
-//$colunas = "3"; 
-
-//$colunas = "$qts_colunas"; 
-
-// Agora vamos ao "truque": 
-
-if ($total>0) { 
-
-for ($i = 0; $i < $total; $i++) { 
-
-if (($i%$colunas)==0) { 
-
-
-
-$colspan = $colunas+$colunas+$colunas;
-
+if ($total > 0) {
+  for ($i = 0; $i < $total; $i += 1) {
+    if (($i % $colunas) == 0) {
+      $colspan = $colunas + $colunas + $colunas;
 ?>
 
   <tr>
 
-    <? }?>
+    <?php }?>
 
-    <?
+    <?php $dados = mysql_fetch_array($limite); ?>
 
-$dados = mysql_fetch_array($limite) ;
-
-
-
-?>
-
-    <td align="center" valign="top" width="152"><table width="154" border="0" align="center" cellpadding="0" cellspacing="0">
-
-      <tr>
-
-        <td align="center" valign="top" width="130">
-
-         <? $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
-
-$dados22 = mysql_fetch_array(mysql_query($sql22)); ?>
+    <td align="center" valign="top" width="152">
+      <table width="154" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="center" valign="top" width="130">
+            <?php $sql22 = "SELECT * FROM tb_guia_categorias WHERE id='$dados[id_categoria]'";
+            $dados22 = mysql_fetch_array(mysql_query($sql22)); ?>
 
         <a href='<?="/guia/$dados22[nome]/$dados[id]";?>-<?= str_replace(" ","_",$dados['nome']); ?>.html' class="<?=$class?>"><img src="<?=($img_thumb=="S")?"/thumbs.php?w=$largura&h=$altura&imagem=":""; echo (!empty($dados[foto0]))?"images/guia/$dados[id]/$dados[foto0]":"images/layout/img_local_semfoto.jpg";?>" border="0" width="<?=$largura?>" height="<?=$altura?>" /></a></td>
 
         <td align="center" valign="top" width="24"></td>
-
       </tr>
-
       <tr>
-
-        
-
         <td align="center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center">
+    <?php
 
+    $contatamanho0 = strlen($dados[nome]);
+    
+    if ($contatamanho0 > $qt_letras0) {
+      $nome = substr_replace($dados[nome], "...", $qt_letras0, $contatamanho0 - $qt_letras0);
+    } else {
+      $nome = $dados[nome];
+    }
+
+    echo "<font size='2' color='$cortitulo'><b>$nome</b></font><br>";
+?>
+      </td>
+        <td align="center"></td>
       </tr>
 
       <tr>
+        <td align="center">
+          <?php echo "<font color='$cortitulo'><b>($dados[ddd1]) $dados[fone1]</b></font>";?>
+        </td>
 
-        <td align="center"><?
-
-$contatamanho0 = strlen($dados[nome]);
-
-if($contatamanho0 > $qt_letras0){
-
-$nome = substr_replace($dados[nome], "...", $qt_letras0, $contatamanho0 - $qt_letras0);
-
-} else {
-
-$nome = $dados[nome];
-
-}
-
-echo "<font size='2' color='$cortitulo'><b>$nome</b></font><br>";
-
-?></td>
-
-        <td align="center">&nbsp;</td>
-
+        <td align="center"></td>
       </tr>
 
       <tr>
-
-        <td align="center"><? echo "<font color='$cortitulo'><b>($dados[ddd1]) $dados[fone1]</b></font>";?></td>
-
-        <td align="center">&nbsp;</td>
-
-      </tr>
-
-      <tr>
-
         <td height="5px"></td>
-
         <td></td>
-
       </tr>
-
-    </table></td>
-
-    <? }?>
-
-  </TR>
-
-  <? }?>
-
+    </table>
+  </td>
+  <?php } ?>
+  </tr>
+<?php }?>
 </table>
 
-
-
-<? if($paginacao == "S"){?>
-
-
-
-<table border="0" align="right" cellpadding="0" cellspacing="0">
-
+<?php if ($paginacao == "S") { ?>
+  <table border="0" align="right" cellpadding="0" cellspacing="0">
   <tr>
-
     <td align="center">
+      <table border="0" cellpadding="2" cellspacing="1">
+        <tr>
+<?php
 
-  
-
-  
-
-<table border="0" cellpadding="2" cellspacing="1">
-
-<tr>  
-
-<?
-
-
-
-// INICIO DA PAGINAÇÃO
+// INICIO DA PAGINAÃ‡ÃƒO
 
 
 
@@ -776,7 +623,7 @@ if($paginacao == "S"){
 
 
 
-// FIM DA PAGINAÇÃO
+// FIM DA PAGINAÃ‡ÃƒO
 
 
 
