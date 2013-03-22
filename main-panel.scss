@@ -10,22 +10,16 @@ form[name="FORMULARIO"]{
   font:18px 'Asap',Arial,sans-serif;
 }
 
-form[name="FORMLISTA"] {
-  font: 10px/9px 'Asap',Arial,sans-serif;
-}
+form[name="FORMLISTA"] { font: 10px/9px 'Asap',Arial,sans-serif; }
 
-legend{
-  font-weight:900;
-}
+legend{ font-weight:900; }
 
 fieldset{
   padding:30px;
   border:2px solid rgb(100,100,100) !important;
 }
 
-.urbangreymenu{
-  width:180px;
-}
+.urbangreymenu{ width:180px; }
 
 .urbangreymenu .headerbar{
   text-shadow:0 1px 0px rgb(54,136,199);
@@ -105,17 +99,11 @@ textarea{
   height:100px !important;
 }
 
-input[type="text"]:hover{
-  color:rgb(0,0,0) !important;
-}
+input[type="text"]:hover{ color:rgb(0,0,0) !important; }
 
-input[name="ddd1"]{
-  width:50px !important;
-}
+input[name="ddd1"]{ width:50px !important; }
 
-input[name="fone1"]{
-  width:360px !important;
-}
+input[name="fone1"]{ width:360px !important; }
 
 select{
   font:bold 22px 'Lato',Arial,sans-serif;
@@ -136,9 +124,7 @@ select{
   cursor:pointer;
 }
 
-select:focus{
-  background: rgb(240,250,255);
-}
+select:focus{ background: rgb(240,250,255); }
 
 input[type="button"],
 input[type="submit"]{
@@ -187,6 +173,4 @@ input[type="submit"]{
 }
 
 input[type="button"]:hover,
-input[type="submit"]:hover{
-  color:rgb(220,220,220);
-}
+input[type="submit"]:hover{ color:rgb(220,220,220); }
