@@ -10,8 +10,8 @@
  <script type="text/javascript">
   var $ = jQuery.noConflict();
   
-  jQuery(document).ready(function (){
-    jQuery("#slider").nivoSlider({
+  $(document).ready(function (){
+    $('#slider').nivoSlider({
       effect:"sliceDownLeft",
       slices:20,
       boxCols:1,
@@ -28,20 +28,23 @@
     });
 
 
-    var $slider = $('#slider');
+    var $slider
+    $slider = $('#slider');
+
     $slider.on('mouseover', function(event) {
       $('.nivo-directionNav a').fadeIn(200);
-      event.stopPropagation();
       event.preventDefault();
       event.stopImmediatePropagation();
+      event.stopPropagation();
     });
 
     $slider.on('mouseleave', function(event) {
       $('.nivo-directionNav a').fadeOut(200);
-      event.stopPropagation();
       event.preventDefault();
       event.stopImmediatePropagation();
+      event.stopPropagation();
     });
+
   });
  </script>
 
