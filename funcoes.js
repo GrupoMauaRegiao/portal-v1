@@ -1,4 +1,16 @@
 jQuery(document).ready(function() {
+
+  var linkTopo = jQuery('.menu-base ul li:last a');
+
+  linkTopo.on('click', function (evt) {
+    evt.preventDefault();
+    evt.stopImmediatePropagation();
+    evt.stopPropagation();
+    jQuery('html, body').animate({
+      scrollTop: 0
+    }, 'slow');
+  });
+
   var areaSetas, setaEsquerda, setaDireita;
   areaSetas = jQuery('.setas_area');
   setaEsquerda = jQuery('.seta_anterior');

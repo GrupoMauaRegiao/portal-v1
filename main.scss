@@ -2927,6 +2927,10 @@ a.eventos:hover {
 
         a{
           background:rgb(20,20,20);
+          -webkit-border-radius:5px;
+          -moz-border-radius:5px;
+          -o-border-radius:5px;
+          border-radius:5px;
           font:15px 'Exo',Arial,sans-serif;
           text-decoration:none;
           -webkit-text-shadow:0 1px 0 rgb(0,0,0);
@@ -2935,7 +2939,7 @@ a.eventos:hover {
           text-shadow:0 1px 0 rgb(0,0,0);
           text-transform:uppercase;
           color:rgb(64,64,64);
-          padding:8px;
+          padding:5px;
           -webkit-transition:all 0.2s linear;
           -moz-transition:all 0.2s linear;
           -o-transition:all 0.2s linear;
@@ -2950,6 +2954,20 @@ a.eventos:hover {
           text-shadow: 0 0 10px rgb(255,255,255);
           color:rgb(255,255,255);
         }
+      }
+
+      li:last-child a {
+        -webkit-text-shadow:none;
+        -moz-text-shadow:none;
+        -o-text-shadow:none;
+        text-shadow:none;
+        background:rgb(64,64,64);
+        color:rgb(20,20,20);
+        -webkit-border-radius:25px;
+        -moz-border-radius:25px;
+        -o-border-radius:25px;
+        border-radius:25px;
+        font:bold 8px 'Lato',Arial,sans-serif;
       }
     } //#ul
   } // #Menu base
