@@ -2890,6 +2890,21 @@ a.eventos:hover {
       img{
         width:100px;
         height:auto;
+        -webkit-filter:grayscale(70%);
+        -moz-filter:grayscale(70%);
+        -o-filter:grayscale(70%);
+        filter:grayscale(70%);
+        -webkit-transition:all 0.2s linear;
+        -moz-transition:all 0.2s linear;
+        -o-transition:all 0.2s linear;
+        transition:all 0.2s linear;
+      }
+
+      img:hover{
+        -webkit-filter:grayscale(0%);
+        -moz-filter:grayscale(0%);
+        -o-filter:grayscale(0%);
+        filter:grayscale(0%);
       }
     }
 
