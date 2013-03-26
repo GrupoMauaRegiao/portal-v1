@@ -194,7 +194,7 @@ jQuery(document).ready(function() {
   }
   randomizarGuiaComercial();
 
-  function validarCampos() {
+  function enviarEmail() {
     var botaoEnviar, campoNome, campoEmail;
     botaoEnviar = jQuery('#botao-enviar');
     campoNome = jQuery('#campo-nome');
@@ -205,7 +205,7 @@ jQuery(document).ready(function() {
       jQuery(campo)
         .animate({
           'margin-left': -60
-        }, {duration: speed, easing: 'swing'})
+        }, speed)
         .animate({
           'margin-left': +60
         }, speed)
@@ -235,8 +235,9 @@ jQuery(document).ready(function() {
         email = jQuery('#campo-email').val();
         mensagem = jQuery('#campo-mensagem').val();
         informacao = 'campo-nome=' + nome +
-                    '&campo-email=' + email +
-                    '&campo-mensagem=' + mensagem;
+                     '&campo-email=' + email +
+                     '&campo-mensagem=' + mensagem;
+
         jQuery.ajax({
           type: "POST",
           url: window.location.host + '/enviar-email.php',
@@ -247,14 +248,12 @@ jQuery(document).ready(function() {
           form = jQuery('.formulario-fale-conosco');
           form.children().hide('slow');
           jQuery('<p>Obrigado <span>' + nome + '</span>. <br />Sua mensagem foi enviada para nós com sucesso!</p>').appendTo(form);
-
         });
       }
-
     });
   }
 
-  validarCampos();
+  enviarEmail();
 
 });
 
