@@ -158,13 +158,13 @@ jQuery(document).ready(function() {
   function cleanField(field) {
     var defaultValue = getDefaultValue(field);
 
-    jQuery(field).focus(function() {
+    jQuery(field).on('focus', function () {
       var val = jQuery(this).val();
       jQuery(this).val(val === '' ? '' : val === defaultValue ? '' : val);
       focusFormating(this);
     });
 
-    jQuery(field).focusout(function() {
+    jQuery(field).on('focusout', function () {
       var val = jQuery(this).val();
       jQuery(this).val(val === '' ? defaultValue : val);
       defaultFormating(this);
@@ -173,6 +173,9 @@ jQuery(document).ready(function() {
 
   cleanField('#nome');
   cleanField('#email');
+  cleanField('#campo-nome');
+  cleanField('#campo-email');
+  cleanField('#campo-mensagem');
 
   function randomizarGuiaComercial(){
     function indexAleatorio(limite) {
@@ -190,6 +193,7 @@ jQuery(document).ready(function() {
   randomizarGuiaComercial();
 
 });
+
 
 // FUNCOES QUE VALIDAM CPF E CNPJ
   function gE(ID) {
