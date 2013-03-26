@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td>
-<?
+<?php
   $largura = 100;
   $limite = 10;
   $qt_letras = 60;
