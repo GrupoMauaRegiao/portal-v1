@@ -141,10 +141,7 @@ echo "</a>";
   if ($tr > 0) {
 ?>
 
-<table>
-  <tr>
-    <td></td>
-  </tr>
+<div class="item-agenda"> <?php // Agenda ?>
 
 <?php 
   while ($dados = mysql_fetch_array($limite)) {
@@ -153,96 +150,25 @@ echo "</a>";
     $data2 = explode("-", $dados[data2]);
     $data2 = "$data2[2]";
 ?>
-  <tr>
-    <td>
-      <table>
-        <tr>
-          <td>
+
 <?php
-  echo "<font class='titulos2 branco test'><b>$data1</b>";
-  echo ($dados[data2]!="0000-00-00")?"/<b>$data2</b></font><br>":"</font><br>";
-  echo "<font class='titulos branco'><b>";
-
-  if ($data[1] == "01") {
-    echo "Jan";
-  }
-
-  if ($data[1] == "02") {
-    echo "Fev";
-  }
-
-  if ($data[1] == "03") {
-    echo "Mar";
-  }
-
-  if ($data[1] == "04") {
-    echo "Abr";
-  }
-
-  if ($data[1] == "05") {
-    echo "Mai";
-  }
-
-  if ($data[1] == "06") {
-    echo "Jun";
-  }
-
-  if ($data[1] == "07") {
-    echo "Jul";
-  }
-
-  if ($data[1] == "08") {
-    echo "Ago";
-  }
-
-  if ($data[1] == "09") {
-    echo "Set";
-  }
-
-  if ($data[1] == "10") {
-    echo "Out";
-  }
-
-  if ($data[1] == "11") {
-    echo "Nov";
-  }
-
-  if ($data[1] == "12") {
-    echo "Dez";
-  }
-
-echo "</b></font>";
-
+  echo $data1;
+  echo ($dados[data2] != "0000-00-00") ? "/$data2" : "<br />";
+  echo $data[1];
 ?>
-</td>
   <?php if ($img_thumb == S) {
     if (!empty($dados[imagem])) {
+      echo "<img src=\"/timthumb.php?w=$largura&amp;src=images/agendas/$dados[imagem]\" alt=\"\" />";
   ?>
-    <td>
-      <a href="/thumbs.php?w=<?=$LarguraFoto;?>&imagem=images/<?="agendas/$dados[imagem]";?>" rel='lightbox' title="<?=$dados[nome]?>">
-        <img src="/thumbs.php?w=<?=$largura?>&imagem=images/<?="agendas/$dados[imagem]";?>" alt="" />
-      </a>
-    </td>
   <?php } ?>
 <?php } ?>
-
-  <td></td>
-  <td>
     <?php
-      echo "<font class='titulos2' color='$Cor1'>$dados[nome]</font><br>";
-      echo "$dados[descricao]";
+      echo $dados[nome];
+      echo $dados[descricao];
     ?>
-  </td>
-</tr>
-</table>
-</td>
-</tr>
 
-<tr>
-  <td></td>
-</tr>
 <?php } ?>
-</table>
+</div> <?php // #Agenda ?>
 <br />
   <?php // INICIO DA PAGINAÇÃO
     if ($paginacao == "S") {
