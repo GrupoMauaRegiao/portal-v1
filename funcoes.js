@@ -156,16 +156,19 @@ jQuery(document).ready(function() {
   }
 
   function cleanField(field) {
-    var defaultValue = getDefaultValue(field);
+    var defaultValue;
+    defaultValue = getDefaultValue(field);
 
     jQuery(field).on('focus', function () {
-      var val = jQuery(this).val();
+      var val;
+      val = jQuery(this).val();
       jQuery(this).val(val === '' ? '' : val === defaultValue ? '' : val);
       focusFormating(this);
     });
 
     jQuery(field).on('focusout', function () {
-      var val = jQuery(this).val();
+      var val;
+      val = jQuery(this).val();
       jQuery(this).val(val === '' ? defaultValue : val);
       defaultFormating(this);
     });
@@ -189,8 +192,69 @@ jQuery(document).ready(function() {
     itemGuiaComercial.removeClass('item-destacado');
     itemGuiaComercial.eq(indexAleatorio(limite)).addClass('item-destacado');
   }
-
   randomizarGuiaComercial();
+
+  function validarCampos() {
+    var botaoEnviar, campoNome, campoEmail;
+    botaoEnviar = jQuery('#botao-enviar');
+    campoNome = jQuery('#campo-nome');
+    campoEmail = jQuery('#campo-email');
+    campoMensagem = jQuery('#campo-mensagem');
+
+    function animarCampo(campo, speed) {
+      jQuery(campo)
+        .animate({
+          'margin-left': -60
+        }, {duration: speed, easing: 'swing'})
+        .animate({
+          'margin-left': +60
+        }, speed)
+        .animate({
+          'margin-left': 0
+        }, speed);
+    }
+
+    botaoEnviar.on('click', function (evt) {
+      evt.preventDefault();
+      evt.stopImmediatePropagation();
+      evt.stopPropagation();
+
+      if (jQuery.isNumeric(campoNome.val()) || campoNome.val() === 'Nome') {
+        animarCampo('#campo-nome', 200);
+        campoNome.addClass('error').focus();
+      } else if (jQuery.isNumeric(campoEmail.val()) || campoEmail.val() === 'E-mail') {
+        animarCampo('#campo-email', 200);
+        campoEmail.addClass('error').focus();
+      } else if (jQuery.isNumeric(campoMensagem.val()) || campoMensagem.val() === 'Mensagem') {
+        animarCampo('#campo-mensagem', 200);
+        campoMensagem.addClass('error').focus();
+      } else {
+        // Enviando e-mail
+        var nome, email, mensagem, informacao;
+        nome = jQuery('#campo-nome').val();
+        email = jQuery('#campo-email').val();
+        mensagem = jQuery('#campo-mensagem').val();
+        informacao = 'campo-nome=' + nome +
+                    '&campo-email=' + email +
+                    '&campo-mensagem=' + mensagem;
+        jQuery.ajax({
+          type: "POST",
+          url: window.location.host + '/enviar-email.php',
+          cache: false,
+          data: informacao
+        }).done(function () {
+          var form;
+          form = jQuery('.formulario-fale-conosco');
+          form.children().hide('slow');
+          jQuery('<p>Obrigado <span>' + nome + '</span>. <br />Sua mensagem foi enviada para nós com sucesso!</p>').appendTo(form);
+
+        });
+      }
+
+    });
+  }
+
+  validarCampos();
 
 });
 
