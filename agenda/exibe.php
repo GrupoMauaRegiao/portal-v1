@@ -141,38 +141,94 @@ echo "</a>";
   if ($tr > 0) {
 ?>
 
-<div class="item-agenda"> <?php // Agenda ?>
-
-<?php 
-  while ($dados = mysql_fetch_array($limite)) {
-    $data = explode("-", $dados[data1]);
-    $data1 = "$data[2]";
-    $data2 = explode("-", $dados[data2]);
-    $data2 = "$data2[2]";
-?>
-
-<?php
-  echo $data1;
-  echo ($dados[data2] != "0000-00-00") ? "/$data2" : "<br />";
-  echo $data[1];
-?>
-  <?php if ($img_thumb == S) {
-    if (!empty($dados[imagem])) {
-      echo "<img src=\"/timthumb.php?w=$largura&amp;src=images/agendas/$dados[imagem]\" alt=\"\" />";
+  <?php 
+    while ($dados = mysql_fetch_array($limite)) {
+      $data = explode("-", $dados[data1]);
+      $data1 = "$data[2]";
+      $data2 = explode("-", $dados[data2]);
+      $data2 = "$data2[2]";
   ?>
-  <?php } ?>
-<?php } ?>
-    <?php
-      echo $dados[nome];
-      echo $dados[descricao];
-    ?>
+<div class="item-agenda"> <?php // Agenda ?>
+  <div class="data-evento">
+    <div class="dia-evento">
+      <?php echo $data1; ?>
+    </div>
+    <div class="mes-evento">
+      <?php
+      if ($data[1] == "01") {
+        $mes = "Janeiro";
+      }
 
-<?php } ?>
+      if ($data[1] == "02") {
+        $mes = "Fevereiro";
+      }
+
+      if ($data[1] == "03") {
+        $mes = "Março";
+      }
+
+      if ($data[1] == "04") {
+        $mes = "Abril";
+      }
+
+      if ($data[1] == "05") {
+        $mes = "Maio";
+      }
+
+      if ($data[1] == "06") {
+        $mes = "Junho";
+      }
+
+      if ($data[1] == "07") {
+        $mes = "Julho";
+      }
+
+      if ($data[1] == "08") {
+        $mes = "Agosto";
+      }
+
+      if ($data[1] == "09") {
+        $mes = "Setembro";
+      }
+
+      if ($data[1] == "10") {
+        $mes = "Outubro";
+      }
+
+      if ($data[1] == "11") {
+        $mes = "Novembro";
+      }
+
+      if ($data[1] == "12") {
+        $mes = "Dezembro";
+      }
+
+      ?>
+      <?php echo $mes; echo $dados[data2] != "0000-00-00" ? "<span>, até o dia $data2</span>" : ""; ?>
+    </div>
+  </div> <!-- #Data do evento -->
+
+    <?php if ($img_thumb == S) {
+      if (!empty($dados[imagem])) { ?>
+      <div class="imagem-evento">
+        <img src="/timthumb.php?w=500&amp;h=120&amp;src=/images/agendas/<?php echo $dados[imagem]; ?>" alt="" />
+      </div>
+    <?php } ?>
+  <?php } ?>
+      <div class="informacao-evento">
+        <div class="nome-evento">
+          <?php echo $dados[nome]; ?>
+        </div>
+        <div class="descricao-evento">
+          <?php echo $dados[descricao]; ?>
+        </div>
+      </div> <!-- #Informacao do evento -->
 </div> <?php // #Agenda ?>
-<br />
+  <?php } // WHILE ?>
+
   <?php // INICIO DA PAGINAÇÃO
     if ($paginacao == "S") {
-      include "paginas/paginacao.php";
+     // include "paginas/paginacao.php";
     }
   // FIM DA PAGINAÇÃO
   ?>

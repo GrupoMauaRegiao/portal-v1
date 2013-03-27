@@ -4,6 +4,12 @@
 */
 ?>
 <div id="agenda">
+  <div class="icone">
+    <img src="/images/setona.jpg" alt="" />
+  </div>
+  <div class="header-agenda">
+    <h1>Agenda de eventos</h1>
+  </div>
 <?php
   $largura = 100;
   $limite = 10;

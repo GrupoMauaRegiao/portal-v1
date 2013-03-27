@@ -1,5 +1,128 @@
 // # /home/main.min.css
 
+// Agenda de eventos
+#agenda{
+  .icone{
+    float:left;
+    margin:15px 10px 0 0;
+
+    img{
+      width:30px;
+    }
+
+  }
+  width:640px;
+  
+  .header-agenda{
+    padding:10px 0 50px 0;
+    width:600px;
+
+    h1{
+      font:30px 'Trebuchet MS',Arial,sans-serif;
+      color:rgb(0,51,102);
+    }
+  }
+  
+
+  .item-agenda{
+    margin:0 0 15px 0;
+    float:left;
+
+    .data-evento{
+      -webkit-border-radius:150px 0 0 150px;
+      -moz-border-radius:150px 0 0 150px;
+      -o-border-radius:150px 0 0 150px;
+      border-radius:150px 0 0 150px;
+      background:rgb(54,182,219);
+      height:120px;
+      width:120px;
+      float:left;
+
+      .dia-evento{
+        text-align:center;
+        font:bold 40px 'Lato',Arial,sans-serif;
+        color:rgb(255,255,255);
+        padding:32px 0 0 0;
+        text-shadow:1px 1px 0 rgb(0,0,0);
+      }
+
+      .mes-evento{
+        width:85px;
+        letter-spacing:-1px;
+        font:bold 12px 'Asap',Arial,sans-serif;
+        text-align:center;
+        margin:-5px 0 0 15px;
+      }
+    }
+
+    .imagem-evento{
+      img{
+        -webkit-filter:grayscale(60%);
+        -moz-filter:grayscale(60%);
+        -o-filter:grayscale(60%);
+        filter:grayscale(60%);
+        -webkit-transition:all 0.5s linear;
+        -moz-transition:all 0.5s linear;
+        -o-transition:all 0.5s linear;
+        transition:all 0.5s linear;
+      }
+
+      img:hover{
+        -webkit-filter:grayscale(0%);
+        -moz-filter:grayscale(0%);
+        -o-filter:grayscale(0%);
+        filter:grayscale(0%);
+      }
+    }
+
+    .informacao-evento{
+      padding:5px 0 5px 5px;
+      position:relative;
+      width:490px;
+      height:48px;
+      margin:-93px 0 0 125px;
+      background:rgba(0,0,0,0.3);
+
+      .nome-evento{
+        color:rgb(255,255,255);
+        width:260px;
+        font:bold 20px "Asap",Arial,sans-serif;
+        -webkit-text-shadow:2px 2px 5px rgb(0,0,0);
+        -moz-text-shadow:2px 2px 5px rgb(0,0,0);
+        -o-text-shadow:2px 2px 5px rgb(0,0,0);
+        text-shadow:0px 1px 3px rgb(0,0,0);
+        text-transform:uppercase;
+        height:60px;
+        float:left;
+        overflow:hidden;
+      }
+
+      .descricao-evento{
+        p{
+          margin:0;
+          padding:5px;
+        }
+
+        -webkit-border-radius:0px 0 0 100px;
+        -moz-border-radius:0px 0 0 100px;
+        -o-border-radius:0px 0 0 100px;
+        border-radius:0px 0 0 100px;
+        border-left:5px solid rgb(54,182,199);
+        background:rgb(0,0,0);
+        width:220px;
+        color:rgb(54,182,199);
+        text-align:right;
+        font:bold 14px "Lato",Arial,sans-serif;
+        margin:-37px 0 0 0;
+        height:110px;
+        float:left;
+        overflow-y:scroll;
+        padding:5px 0 5px 5px;
+      }
+    }
+  } // #Item da agenda
+} // #Agenda
+
 
 // Fale Conosco
 #fale-conosco{
