@@ -2,6 +2,8 @@
 
 // Agenda de eventos
 #agenda{
+  width:640px;
+
   .icone{
     float:left;
     margin:15px 10px 0 0;
@@ -9,10 +11,8 @@
     img{
       width:30px;
     }
-
   }
-  width:640px;
-  
+
   .header-agenda{
     padding:10px 0 50px 0;
     width:600px;
