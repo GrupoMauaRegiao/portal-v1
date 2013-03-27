@@ -36,7 +36,7 @@ echo "<font size='6' color='#1E4B7A' face='Trebuchet MS'>$dados5[nome]</font>";
   </tr>
 
   <tr>
-    <td align="center">
+    <td>
       <div id="page">
         <div id="container">
           <div id="gallery" class="content">
@@ -68,8 +68,13 @@ for ($i = 0; $i < count($images); $i += 1) {
   if (count($thumbs) > $i) {
     if(!in_array($images[$i], $ignore) && !in_array($thumbs[$i], $ignore)) {
 ?>
-                  <li>
-                    <?php echo "<a class='thumb' href=\"/img.php?img=images/galerias/$id/{$images[$i]}&x=490&y=364&corta=0\"><img src=\"/images/galerias/$id/{$thumbs[$i]}\" alt=\"\" width='45' height='40' /></a>"; ?>
+        <li>
+        <?php 
+          echo "
+            <a class=\"thumb\" href=\"/timthumb.php?w=640&amp;h=480&amp;src=/images/galerias/$id/{$images[$i]}&x=490&y=364&corta=0\">
+              <img src=\"/timthumb.php?w=45&amp;h=40&amp;src=/images/galerias/$id/{$thumbs[$i]}\" alt=\"\" />
+            </a>"; 
+                    ?>
                   </li>
     <?php } ?>
   <?php } ?>
@@ -97,9 +102,9 @@ for ($i = 0; $i < count($images); $i += 1) {
 
     var galleryAdv = jQuery('#gallery').galleriffic('#thumbs', {
       delay: 2000,
-      numThumbs: 22,
+      numThumbs: 12,
       preloadAhead: 10,
-      enableTopPager: true,
+      enableTopPager: false,
       enableBottomPager: true,
       imageContainerSel: '#slideshow',
       controlsContainerSel: '#controls',
@@ -107,13 +112,13 @@ for ($i = 0; $i < count($images); $i += 1) {
       loadingContainerSel: '#loading',
       renderSSControls: true,
       renderNavControls: true,
-      playLinkText: 'Iniciar Slideshow',
-      pauseLinkText: 'Pausar Slideshow',
-      prevLinkText: '&lsaquo; Foto Anterior',
-      nextLinkText: 'Próxima Foto &rsaquo;',
-      nextPageLinkText: 'Próxima Página &rsaquo;',
-      prevPageLinkText: '&lsaquo; Voltar',
-      enableHistory: true,
+      playLinkText: 'Iniciar slideshow',
+      pauseLinkText: 'Pausar slideshow',
+      prevLinkText: 'Anterior',
+      nextLinkText: 'Próxima',
+      nextPageLinkText: 'Próxima Página',
+      prevPageLinkText: 'Voltar',
+      enableHistory: false,
       autoStart: false,
       onChange: function(prevIndex, nextIndex) {
         jQuery('#thumbs ul.thumbs').children()
