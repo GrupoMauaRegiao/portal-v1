@@ -3235,6 +3235,9 @@ a.eventos:hover {
 
 // Galeria (Fatos e Fotos)
 .slideshow-container{
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
   border-radius:5px;
   width:640px;
   height:480px;
@@ -3256,6 +3259,9 @@ a.eventos:hover {
   width:576px;
   margin:-65px 0 0 25px;
   padding:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
   border-radius:5px;
   height:45px;
   background:rgba(0,0,0,0.7);
