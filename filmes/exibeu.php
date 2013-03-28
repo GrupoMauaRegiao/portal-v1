@@ -222,160 +222,92 @@ if ($total>0) {
             </table>
           </td>
 <?php } ?>
+  <td align="right" valign="top">
+  <? if ($exibir_cat=="S") { ?>
+    <table width="100%" border="0" cellpadding="1" cellspacing="0">
+      <tr>
+        <td bgcolor="<?=$corcelula2?>">
+          <?php
+            $dados2 = mysql_fetch_array(mysql_query("SELECT * FROM tb_filmes_cat WHERE id='$dados[id_cat]'"));
+            echo "<font size='4' color='#004df3' face='Trebuchet MS'><b>$dados2[nome]</b></font> - ";
 
-<td align="right" valign="top">
+          ?>
+        </td>
+      </tr>
+      <tr>
+        <td height="3"></td>
+      </tr>
+    </table>
 
-<? if($exibir_cat=="S"){?>
+  <?php } ?>
 
-<table width="100%" border="0" cellpadding="1" cellspacing="0">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="titulos_filmes">
+        <?php
+          $contatamanho1 = strlen($dados[titulo]);
 
-  <tr><td bgcolor="<?=$corcelula2?>">&nbsp;&nbsp;<?
+          if ($contatamanho1 > $qt_letras1) {
+            $titulo = substr_replace($dados[titulo], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
+          } else {
+            $titulo = $dados[titulo];
+          }
+          
+          $contatamanho2 = strlen($dados[subtitulo]);
+          
+          if ($contatamanho2 > $qt_letras2) {
+            $subtitulo = substr_replace($dados[subtitulo], "...", $qt_letras2, $contatamanho2 - $qt_letras2);
+          } else {
+            $subtitulo = $dados[subtitulo];
+          }
 
-$dados2 = mysql_fetch_array(mysql_query("SELECT * FROM tb_filmes_cat WHERE id='$dados[id_cat]'"));
-
-echo "<font size='4' color='#004df3' face='Trebuchet MS'><b>$dados2[nome]</b></font> - ";	
-
-?></td>
-
-  </tr>
-
-  <tr>
-
-    <td height="3"></td>
-
-  </tr>
-
+          echo "$titulo<br>";
+          echo "<font size='2' color='#004df3'>$subtitulo</font><br>";
+          echo "</a>";
+        ?>
+      </td>
+    </tr>
+  </table>
+</td>
+</tr>
 </table>
+</td>
+</tr>
+<tr>
+  <td height="2" colspan="4"></td>
+</tr>
+    <tr>
+      <td colspan="4" height="1" bgcolor="<?=$corcelula2?>"></td>
+    </tr>
 
-<? }?>
-
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-
-  <tr>
-
-    <td>		  
-
-<a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="titulos_filmes">
-
-<?
-
-	
-
-	$contatamanho1 = strlen($dados[titulo]);
-
-	if($contatamanho1 > $qt_letras1){
-
-	$titulo = substr_replace($dados[titulo], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
-
-	} else {
-
-	$titulo = $dados[titulo];
-
-	}
-
-		$contatamanho2 = strlen($dados[subtitulo]);
-
-		if($contatamanho2 > $qt_letras2){
-
-		$subtitulo = substr_replace($dados[subtitulo], "...", $qt_letras2, $contatamanho2 - $qt_letras2);
-
-		} else {
-
-		$subtitulo = $dados[subtitulo];
-
-		}
-
-	
-
-	echo "$titulo<br>";
-
-		echo "<font size='2' color='#004df3'>$subtitulo</font><br>";	
-
-	
-
-echo "</a>";	
-
-?></td>
-
-  </tr>
-
-</table>
-
+    <tr>
+      <td height="2" colspan="4"></td>
+    </tr>
+  </table>
 </td>
 
-</tr>
-
-		
-
-</table></td>
-
-        
-
-
-
-        
-
-      </tr>
-
-      <tr><td height="2" colspan="4"></td></tr>
-
- 	  <tr><td colspan="4" height="1" bgcolor="<?=$corcelula2?>"></td></tr>
-
-      <tr><td height="2" colspan="4"></td></tr>
-
-    </table></td>
-
-    <? }?>
-
-  </TR>
-
-  <? }?>
-
+<?php } ?>
+  </tr>
+<?php } ?>
 </table>
-
-<?
-
-// INICIO DA PAGINAÇÃO
-
-if($paginacao == "S"){
-
-	include "paginas/paginacao.php";
-
-}
-
-// FIM DA PAGINAÇÃO
-
+<?php
+  if ($paginacao == "S") {
+    include "paginas/paginacao.php";
+  }
 ?>
 
+<?php } else { ?>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="center"><br />
+        Nenhum <b>registro</b><b> </b>encontrado!<br />
+        <br />
+      </td>
+    </tr>
+  </table>
 
-
-
-
-<? } else {?>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-  <tr>
-
-    <td align="center"><br />
-
-nenhum <b>registro</b><b> </b>encontrado!<br />
-
-<br />
-
-</td>
-
-  </tr>
-
-</table>
-
-<?
-
-} // FIM DO ELSE
-
+<?php
+  } // FIM DO ELSE
 } // FIM DA ACAO VER ULTIMAS
-
-?>  
-
-
-
+?>
