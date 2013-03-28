@@ -188,7 +188,7 @@ if ($paginacao == "S") {
   
   if($tr > 0) {
 ?>
-<table border="0" cellpadding="1" cellspacing="0">
+<table class="apagar" border="0" cellpadding="1" cellspacing="0">
 <?php
 $total = mysql_num_rows($limite);
 
@@ -213,7 +213,7 @@ if ($total>0) {
                   <table border="0" cellspacing="0" cellpadding="1" width="130px">
                     <tr>
                       <td>
-                        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="test img_borda"><img src="<?="/thumbs.php?w=$largura&h=$altura&imagem=images/filmes/$dados[id]/$dados[foto]";?>" width="<?=$largura?>" height="<?=$altura?>" border="0" style="FILTER: alpha(opacity=100);" onMouseOver="makevisible(this,0)" onMouseOut="makevisible(this,1)"></a>
+                        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="img_borda"><img src="<?="/thumbs.php?w=$largura&h=$altura&imagem=images/filmes/$dados[id]/$dados[foto]";?>" width="<?=$largura?>" height="<?=$altura?>" border="0" style="FILTER: alpha(opacity=100);" onMouseOver="makevisible(this,0)" onMouseOut="makevisible(this,1)"></a>
                       </td>
                     </tr>
                   </table>
