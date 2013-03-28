@@ -71,8 +71,8 @@ for ($i = 0; $i < count($images); $i += 1) {
         <li>
         <?php 
           echo "
-            <a class=\"thumb\" href=\"/timthumb.php?w=640&amp;h=480&amp;src=/images/galerias/$id/{$images[$i]}&x=490&y=364&corta=0\">
-              <img src=\"/timthumb.php?w=45&amp;h=40&amp;src=/images/galerias/$id/{$thumbs[$i]}\" alt=\"\" />
+            <a title=\"\" class=\"thumb\" href=\"/timthumb.php?w=640&amp;h=480&amp;src=/images/galerias/$id/{$images[$i]}&x=490&y=364&corta=0\">
+              <img src=\"/timthumb.php?w=45&amp;h=40&amp;src=/images/galerias/$id/{$thumbs[$i]}\" />
             </a>"; 
                     ?>
                   </li>
@@ -87,17 +87,6 @@ for ($i = 0; $i < count($images); $i += 1) {
   jQuery('div.navigation').css({'width' : '620px', 'float' : 'left', 'margin' : '0'});
   jQuery('div.content').css('display', 'block');
 
-  var onMouseOutOpacity = 0.67;
-
-  jQuery('#thumbs ul.thumbs li').css('opacity', onMouseOutOpacity)
-    .hover(function () {
-      jQuery(this).not('.selected').fadeTo('fast', 1.0);
-    }, 
-      function () {
-        jQuery(this).not('.selected').fadeTo('fast', onMouseOutOpacity);
-      }
-    );
-
   jQuery(document).ready(function() {
 
     var galleryAdv = jQuery('#gallery').galleriffic('#thumbs', {
@@ -105,15 +94,15 @@ for ($i = 0; $i < count($images); $i += 1) {
       numThumbs: 12,
       preloadAhead: 10,
       enableTopPager: false,
-      enableBottomPager: true,
+      enableBottomPager: false,
       imageContainerSel: '#slideshow',
       controlsContainerSel: '#controls',
       captionContainerSel: '#caption',
       loadingContainerSel: '#loading',
       renderSSControls: true,
       renderNavControls: true,
-      playLinkText: 'Iniciar slideshow',
-      pauseLinkText: 'Pausar slideshow',
+      playLinkText: 'Slideshow',
+      pauseLinkText: 'Slideshow',
       prevLinkText: '',
       nextLinkText: '',
       nextPageLinkText: '',
@@ -121,9 +110,7 @@ for ($i = 0; $i < count($images); $i += 1) {
       enableHistory: false,
       autoStart: false,
       onChange: function(prevIndex, nextIndex) {
-        jQuery('#thumbs ul.thumbs').children()
-         .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
-         .eq(nextIndex).fadeTo('fast', 1.0);
+
       },
       onTransitionOut: function(callback) {
         jQuery('#caption').fadeTo('fast', 0.0);
