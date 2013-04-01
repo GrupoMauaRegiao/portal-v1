@@ -13,52 +13,54 @@ $file = "video";
 $form1 = "BUSCA";
 
 if ($FormatoForm == "H") { ?>
+<div class="formulario-busca">
+  <form action="/videos" method="POST" name="BUSCA">
+    <input name="pg" type="hidden" value="ver_video" />
+    <input name="acao" type="hidden" value="ver2" />
+    <input name="page" type="hidden" value="" />
+    <input id="campo-pesquisa" name="key" type="text" />
 
-<form action="/videos" method="POST" name="BUSCA">
-  <input name="pg" type="hidden" value="ver_video" />
-  <input name="acao" type="hidden" value="ver2" />
-  <input name="page" type="hidden" value="" />
-  <input name="key" type="text" />
+    <select id="campo-categoria" name="id_categoria">
+      <option value="">Categoria</option>
+  <?php
 
-  <select name="id_categoria">
-    <option value="">Categoria</option>
-<?php
+  $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
 
-$sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
-
-while ($dados5 = mysql_fetch_array($sql5)) { ?>
-    <option value='<?=$dados5[id]?>' <?=($id_categoria == $dados5[id]) ? "selected" : "";?>>
-      <?=$dados5[nome]?>
-    </option>
-<?php }?>
-  </select>
-  <input type="submit" class="input" value="Pesquisar" />
-</form>
+  while ($dados5 = mysql_fetch_array($sql5)) { ?>
+      <option value='<?=$dados5[id]?>' <?=($id_categoria == $dados5[id]) ? "selected" : "";?>>
+        <?=$dados5[nome]?>
+      </option>
+  <?php }?>
+    </select>
+    <input id="botao-pesquisar" type="submit" value="Pesquisar" />
+  </form>
+</div>
 
 <?php }
 
 if ($FormatoForm == "V") { ?>
+<div class="formulario-busca">
+  <form action="/videos" method="POST" name="<?=$form1?>">
+    <input name="pg" type="hidden" value="ver_video" />
+    <input name="acao" type="hidden" value="ver2" />
+    <input name="page" type="hidden" value="<?=$_GET[page]?>" />
+    <input id="campo-pesquisa" name="key" type="text" />
+    <select id="campo-categoria" name="id_categoria">
+      <option value="">Categoria</option>
 
-<form action="/videos" method="POST" name="<?=$form1?>">
-  <input name="pg" type="hidden" value="ver_video" />
-  <input name="acao" type="hidden" value="ver2" />
-  <input name="page" type="hidden" value="<?=$_GET[page]?>" />
-  <input name="key" type="text" />
-  <select name="id_categoria">
-    <option value="">Categoria</option>
+  <?php
 
-<?php
+  $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
 
-$sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
+  while ($dados5 = mysql_fetch_array($sql5)) { ?>
+    <option value='<?=$dados5[id]?>' <?=($id_categoria==$dados5[id]) ? "selected" : "";?>>
+      <?=$dados5[nome]?>
+    </option>
 
-while ($dados5 = mysql_fetch_array($sql5)) { ?>
-  <option value='<?=$dados5[id]?>' <?=($id_categoria==$dados5[id]) ? "selected" : "";?>>
-    <?=$dados5[nome]?>
-  </option>
-
-<?php } ?>
-  </select>
-  <input type="submit" value="Pesquisar" />
-</form>
+  <?php } ?>
+    </select>
+    <input type="submit" id="botao-pesquisar" value="Pesquisar" />
+  </form>
+</div>
 <?php } ?>
 </div>

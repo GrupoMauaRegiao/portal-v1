@@ -1,4 +1,4 @@
-<div class="videos">
+<div id="videos">
   <div class="header-videos">
     <div class="imagem">
       <img src="/images/setona.jpg" alt="" />
@@ -75,4 +75,4 @@
   include "videos/exibe2.php";
   ?>
   </div>
-</div>
+</div> <!-- #Videos -->
