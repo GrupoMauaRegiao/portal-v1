@@ -1,3 +1,4 @@
+<div class="busca">
 <?php
 
 $variables=(strtolower($_SERVER['REQUEST_METHOD'])== 'GET') ? $_GET : $_POST;
@@ -60,3 +61,4 @@ while ($dados5 = mysql_fetch_array($sql5)) { ?>
   <input type="submit" value="Pesquisar" />
 </form>
 <?php } ?>
+</div>

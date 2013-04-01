@@ -46,7 +46,7 @@ $id = $_GET[id];
 
 
 
-if($id=='')
+if ($id=='')
 
 
 
@@ -54,7 +54,7 @@ $id = $url_parts[1];
 
 
 
-if($id_categoria=='')
+if ($id_categoria=='')
 
 
 
@@ -76,7 +76,7 @@ $id_categoria = $url_parts[2];
 
 
 
-if($acao == "listar"){
+if ($acao == "listar") {
 
 
 
@@ -100,11 +100,11 @@ $ano = $_GET[ano];
 
 
 
-	if(!empty($dia))
+  if (!empty($dia))
 
 
 
-	$wh01 = "AND data1 LIKE ('%-%-".$dia."')";
+  $wh01 = "AND data1 LIKE ('%-%-".$dia."')";
 
 
 
@@ -112,11 +112,11 @@ $ano = $_GET[ano];
 
 
 
-	if(!empty($mes))
+  if (!empty($mes))
 
 
 
-	$wh02 = "AND data1 LIKE ('%-".$mes."-%')";
+  $wh02 = "AND data1 LIKE ('%-".$mes."-%')";
 
 
 
@@ -124,11 +124,11 @@ $ano = $_GET[ano];
 
 
 
-	if(!empty($ano))
+  if (!empty($ano))
 
 
 
-	$wh03 = "AND data1 LIKE ('".$ano."-%-%')";
+  $wh03 = "AND data1 LIKE ('".$ano."-%-%')";
 
 
 
@@ -136,47 +136,47 @@ $ano = $_GET[ano];
 
 
 
-//	echo "========================================".$busca = "SELECT * FROM $tabela1 WHERE status='S' AND id_categoria='$idcat' $wh01 $wh02 $wh03 order by data1 desc";
+//  echo "========================================".$busca = "SELECT * FROM $tabela1 WHERE status='S' AND id_categoria='$idcat' $wh01 $wh02 $wh03 order by data1 desc";
 
 
 
-	
+  
 
-	$busca = "SELECT * FROM $tabela1 WHERE status='S' AND id_categoria='$idcat' $wh01 $wh02 $wh03 order by data1 desc";
+  $busca = "SELECT * FROM $tabela1 WHERE status='S' AND id_categoria='$idcat' $wh01 $wh02 $wh03 order by data1 desc";
 
-	//echo $busca;
+  //echo $busca;
 
 
 
-	
+  
 
 
 
-	if($paginacao == "S"){
+  if ($paginacao == "S") {
 
 
 
-	
+  
 
 
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
 
 
-	
+  
 
 
 
-		if(!$page){
+    if (!$page) {
 
 
 
-		$page = "1";
+    $page = "1";
 
 
 
-		}
+    }
 
 
 
@@ -184,27 +184,27 @@ $ano = $_GET[ano];
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
 
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
 
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
 
 
-	} else {
+  } else {
 
 
 
-		$limite = mysql_query("$busca");
+    $limite = mysql_query("$busca");
 
 
 
-	} 
+  } 
 
 
 
@@ -284,7 +284,7 @@ $ano = (!empty($_GET[ano]))?"$_GET[ano]":date("Y");
 
 
 
-	  <td><b>Filtrar:</b></td>
+    <td><b>Filtrar:</b></td>
 
 
 
@@ -292,7 +292,7 @@ $ano = (!empty($_GET[ano]))?"$_GET[ano]":date("Y");
 
 
 
-      	<option value="" >--</option>
+        <option value="" >--</option>
 
 
 
@@ -356,31 +356,31 @@ $ano = (!empty($_GET[ano]))?"$_GET[ano]":date("Y");
 
 
 
-	$total_anos = date("Y")-2008+2;
+  $total_anos = date("Y")-2008+2;
 
 
 
-	for($ii=0; $ii<$total_anos; $ii++){ $aa = "200".$ii+7;
+  for($ii=0; $ii<$total_anos; $ii++) { $aa = "200".$ii+7;
 
 
 
-	echo "<option value='$aa' ";
+  echo "<option value='$aa' ";
 
 
 
-	echo ($ano==$aa)?"selected":"";
+  echo ($ano==$aa)?"selected":"";
 
 
 
-	echo ">$aa</option>";
+  echo ">$aa</option>";
 
 
 
-	}
+  }
 
 
 
-	?>
+  ?>
 
 
 
@@ -436,7 +436,7 @@ $ano = (!empty($_GET[ano]))?"$_GET[ano]":date("Y");
 
 
 
-<? 	if($tr > 0){?>
+<?  if ($tr > 0) { ?>
 
 
 
@@ -504,7 +504,7 @@ $colspan = $colunas+$colunas+$colunas;
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -612,51 +612,31 @@ echo "<a href='?pg=$link_page&id=$dados[id]'>";
 
 
 
-	$contatamanho = strlen($dados[nome]);
+  $contatamanho = strlen($dados[nome]);
 
 
 
-	if($contatamanho > $qt_letras){
+  if ($contatamanho > $qt_letras) {
 
 
 
-	$nome = substr_replace($dados[nome], "...", $qt_letras, $contatamanho - $qt_letras);
+  $nome = substr_replace($dados[nome], "...", $qt_letras, $contatamanho - $qt_letras);
 
 
 
-	} else {
+  } else {
 
 
 
-	$nome = $dados[nome];
+  $nome = $dados[nome];
 
 
 
-	}		
+  }   
 
 
 
-	echo "<font class='titulos cor'>$nome</font><br>";
-
-
-
-
-
-
-
-		$sql2 = "SELECT * FROM $tabela2 WHERE id = '$dados[id_local]'";
-
-
-
-		$sql2 = mysql_query($sql2);
-
-
-
-		$dados2 = mysql_fetch_array($sql2);
-
-
-
-		echo "$dados2[nome] - ";
+  echo "<font class='titulos cor'>$nome</font><br>";
 
 
 
@@ -664,23 +644,43 @@ echo "<a href='?pg=$link_page&id=$dados[id]'>";
 
 
 
-			$sql3 = "SELECT * FROM $tabela3 WHERE id = '$dados2[id_cidade]'";
+    $sql2 = "SELECT * FROM $tabela2 WHERE id = '$dados[id_local]'";
 
 
 
-			$sql3 = mysql_query($sql3);
+    $sql2 = mysql_query($sql2);
 
 
 
-			$dados3 = mysql_fetch_array($sql3);
+    $dados2 = mysql_fetch_array($sql2);
 
 
 
-			echo "$dados3[nome]<br>";	
+    echo "$dados2[nome] - ";
 
 
 
-			
+
+
+
+
+      $sql3 = "SELECT * FROM $tabela3 WHERE id = '$dados2[id_cidade]'";
+
+
+
+      $sql3 = mysql_query($sql3);
+
+
+
+      $dados3 = mysql_fetch_array($sql3);
+
+
+
+      echo "$dados3[nome]<br>"; 
+
+
+
+      
 
 
 
@@ -696,7 +696,7 @@ echo "$data";
 
 
 
-	
+  
 
 
 
@@ -756,7 +756,7 @@ echo "</a>";
 
 
 
-        <? if($limite2 > 1){?>
+        <? if ($limite2 > 1) { ?>
 
 
 
@@ -764,7 +764,7 @@ echo "</a>";
 
 
 
-        <? }?>
+        <? } ?>
 
 
 
@@ -776,7 +776,7 @@ echo "</a>";
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -784,7 +784,7 @@ echo "</a>";
 
 
 
-  <? }?>
+  <? } ?>
 
 
 
@@ -804,11 +804,11 @@ echo "</a>";
 
 
 
-if($paginacao == "S"){
+if ($paginacao == "S") {
 
 
 
-	include "estrutura/paginacao.php";
+  include "estrutura/paginacao.php";
 
 
 
@@ -836,7 +836,7 @@ if($paginacao == "S"){
 
 
 
-	<? } else {?>
+  <? } else { ?>
 
 
 
@@ -872,7 +872,7 @@ if($paginacao == "S"){
 
 
 
-	<? }?>
+  <? } ?>
 
 
 
@@ -932,7 +932,7 @@ if($paginacao == "S"){
 
 
 
-if($acao == "ver"){
+if ($acao == "ver") {
 
 
 
@@ -1020,7 +1020,7 @@ echo "<font class='titulos2' color='$Cor1'><b>$dados[nome]</b></font>";
 
 
 
-		//echo "Data: <font color='$Cor1'>".strftime("%d de %B de %Y", strtotime($dados[data]))."</font>";?></b></td>
+    //echo "Data: <font color='$Cor1'>".strftime("%d de %B de %Y", strtotime($dados[data]))."</font>";?></b></td>
 
 
 
@@ -1028,7 +1028,7 @@ echo "<font class='titulos2' color='$Cor1'><b>$dados[nome]</b></font>";
 
 
 
-  <? if(!empty($dados[descricao])){?>
+  <? if (!empty($dados[descricao])) { ?>
 
 
 
@@ -1044,7 +1044,7 @@ echo "<font class='titulos2' color='$Cor1'><b>$dados[nome]</b></font>";
 
 
 
-  <? }?>
+  <? } ?>
 
 
 
@@ -1076,139 +1076,198 @@ echo "<font class='titulos2' color='$Cor1'><b>$dados[nome]</b></font>";
 
 
 
-<?
+<? }
 
+if ($acao == "ver2") {
+  if (!empty($key)) {
+    $wh01 = "AND nome LIKE '%$key%'";
+  }
 
+  if (!empty($id_categoria)) {
+    $wh02 = "AND id_categoria = '$id_categoria'";
+  }
 
+  $busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
+
+  if ($paginacao == "S") {
+    $total_reg = $qts_ultimos;
+
+    if (!$page) {
+      $page = "1";
+    }
+
+    $inicio = $page-1;
+    $inicio = $inicio*$total_reg;
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+  } else {
+    $limite = mysql_query("$busca LIMIT $limite2");
+  }
+
+  $todos = mysql_query("$busca");
+  $tr = mysql_num_rows($todos);
+  $tp = @ceil($tr / $total_reg);
+
+  if ($tr > 0) { ?>
+
+<div class="videos-categorias">
+
+<?php
+  $total = mysql_num_rows($limite); 
+
+  if ($total>0) { 
+    for ($i = 0; $i < $total; $i += 1) { 
+      if (($i % $colunas) == 0) {
+        $colspan = $colunas+$colunas+$colunas; ?>
+
+  <?php } ?>
+  <?php $dados = mysql_fetch_array($limite); ?>
+
+  <?php $link2= "/ver_video/$dados[id]/$dados[id_categoria]-".str_replace(" ", "_", $dados[nome]); ?>
+
+  <div class="video">
+    <a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html">
+      <? if (!empty($dados[foto0])) { ?>
+        <img src="timthumbs.php?w=120&amp;h=85&amp;src=images/videos/<? echo $dados[foto0]?>" />
+      <? } else { ?>
+        <img src="<? echo $dados[ffftube]?>" alt="" />
+      <? } ?>
+    </a>
+  </div>
+
+  <?php
+    $contatamanho1 = strlen($dados[nome]);
+
+    if ($contatamanho1 > $qt_letras1) {
+      $nome = substr_replace($dados[nome], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
+    } else {
+      $nome = $dados[nome];
+    }
+
+    echo $nome;
+    echo strftime("%d/%m/%Y", strtotime($dados[data]));
+    echo $dados[visitas];
+    ?>
+
+<? if ($limite2 > 1) { ?>
+    <?php } ?>
+  <?php } ?>
+<?php } ?>
+<?php
+if ($paginacao == "S") {
+  //include "paginas/paginacao.php";
 }
+?>
+<? } else { ?>
 
+  <?php } ?>
+</div>
+<?php } // #ver2
 
+if ($acao == "ver3") {
 
-// FIM DA ACAO COBERTURA
 
 
 
 
 
 
+  if (!empty($key)) {
 
 
 
+  $wh01 = "AND nome LIKE '%$key%'";
 
 
 
+  }
 
 
 
-// INICIO DA ACAO VER4
 
 
 
-if($acao == "ver2"){
 
+  if (!empty($id_categoria)) {
 
 
 
+  $wh02 = "AND id_categoria = '$id_categoria'";
 
 
 
-	if(!empty($key)){
+  }
 
 
 
-	$wh01 = "AND nome LIKE '%$key%'";
+  
 
 
 
-	}
+  $busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
 
 
 
+  //echo $busca;
 
 
 
 
-	if(!empty($id_categoria)){
 
 
 
-	$wh02 = "AND id_categoria = '$id_categoria'";
+  if ($paginacao == "S") {
 
 
 
-	}
+  
 
 
 
+    $total_reg = $qts_ultimos;
 
 
 
+  
 
-	$busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
 
 
+    if (!$page) {
 
-//	echo "===============================================".$busca;
 
 
+    $page = "1";
 
 
 
+    }
 
 
-	if($paginacao == "S"){
 
 
 
-	
 
 
+    $inicio = $page-1;
 
-		$total_reg = $qts_ultimos;
 
 
+    $inicio = $inicio*$total_reg;
 
-	
 
 
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
-		if(!$page){
 
 
+  } else {
 
-		$page = "1";
 
 
+    $limite = mysql_query("$busca LIMIT $limite2");
 
-		}
 
 
-
-
-
-
-
-		$inicio = $page-1;
-
-
-
-		$inicio = $inicio*$total_reg;
-
-
-
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
-
-
-
-	} else {
-
-
-
-		$limite = mysql_query("$busca LIMIT $limite2");
-
-
-
-	} 
+  } 
 
 
 
@@ -1244,470 +1303,7 @@ $tp = @ceil($tr / $total_reg);
 
 
 
-if($tr > 0){
-
-
-
-?>
-
-
-
-
-
-
-
-<table border="0" cellpadding="0" cellspacing="0">
-
-
-
-  <?
-
-
-
-// Agora vamos montar o c&oacute;digo. Pegue o valor total de resultados: 
-
-
-
-$total = mysql_num_rows($limite); 
-
-
-
-// Defina o n&uacute;mero de colunas que voc&ecirc; deseja exibir: 
-
-
-
-//$colunas = "3"; 
-
-
-
-//$colunas = "$qts_colunas"; 
-
-
-
-// Agora vamos ao "truque": 
-
-
-
-if ($total>0) { 
-
-
-
-for ($i = 0; $i < $total; $i++) { 
-
-
-
-if (($i%$colunas)==0) { 
-
-
-
-
-
-
-
-$colspan = $colunas+$colunas+$colunas;
-
-
-
-?>
-
-
-
-  <tr>
-
-
-
-    <? }?>
-
-
-
-    <?
-
-
-
-$dados = mysql_fetch_array($limite) ;
-
-
-
-
-
-
-
-?>
-
-
-
-    <td width="252" align="center" valign="top"><table border="0" cellpadding="0" cellspacing="0">
-
-
-
-	   <tr>
-
-
-
-	   <td width="245" valign="top"><table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
-
-
-
-         <tr>
-
-
-
-           <td align="center" valign="top"><table border="0" align="center" cellpadding="0" cellspacing="0" style="border:0px;">
-
-
-
-        <? $link2= "/ver_video/$dados[id]/$dados[id_categoria]-".str_replace(" ","_",$dados[nome]);?>
-
-
-
-
-
-
-
-  <tr valign="top" align="center"><td valign="top" align="center"><a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html" class="img_borda"><? if(!empty($dados[foto0])){ ?><img src="thumbs.php?w=120&h=85&imagem=images/videos/<? echo $dados[foto0]?>" width="120" height="85" border="0" style="FILTER: alpha(opacity=100);" onmouseover="makevisible(this,0)" onmouseout="makevisible(this,1)"/> <? } else { ?> <img src="<? echo $dados[ffftube]?>" width="120" height="85" border="0" style="FILTER: alpha(opacity=100);" onmouseover="makevisible(this,0)" onmouseout="makevisible(this,1)"/><? } ?></a></td></tr></table></td>
-
-
-
-         </tr>
-
-
-
-         <tr valign="top" height="50px">
-
-
-
-           <td align="center" valign="top" height="50px" class="videos2">
-
-
-
-<?
-
-
-
-$contatamanho1 = strlen($dados[nome]);
-
-
-
-if($contatamanho1 > $qt_letras1){
-
-
-
-$nome = substr_replace($dados[nome], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
-
-
-
-} else {
-
-
-
-$nome = $dados[nome];
-
-
-
-}
-
-
-
-echo $nome;
-
-
-
-?>
-<br />
-<?
-
-		//echo "Data: <font color='$Cor1'>".strftime("%d de %B de %Y", strtotime($dados[data]))."</font>";
-
-		echo "Data: <font color='$Cor1'><b>".strftime("%d/%m/%Y", strtotime($dados[data]))."</b></font><br>";
-
-		echo "Visitas: <font color='$Cor1'><b>$dados[visitas]</b></font>";
-
-		?>
-</td>
-
-
-
-         </tr>
-
-
-
-       </table>
-
-
-
-</td>
-
-
-
-</tr>
-
-
-
-</table></td>
-
-
-
-<? if($limite2 > 1){?>
-
-
-
-<td width="17" valign="top"></td>
-
-
-
-<? }?>
-
-
-
-    <? }?>
-
-
-
-  </TR>
-
-
-
-  <? }?>
-
-
-
-</table>
-
-
-
-<?
-
-
-
-// INICIO DA PAGINAÇÃO
-
-
-
-if($paginacao == "S"){
-
-
-
-	include "paginas/paginacao.php";
-
-
-
-}
-
-
-
-// FIM DA PAGINAÇÃO
-
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<? } else {?>
-
-
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-
-
-  <tr>
-
-
-
-    <td align="center">nenhum<b> registro</b><b> </b>encontrado!</td>
-
-
-
-  </tr>
-
-
-
-</table>
-
-
-
-<?
-
-
-
-} // FIM DO ELSE 
-
-
-
-} // FIM DA ACAO VER4
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// INICIO DA ACAO VER
-
-
-
-if($acao == "ver3"){
-
-
-
-
-
-
-
-	if(!empty($key)){
-
-
-
-	$wh01 = "AND nome LIKE '%$key%'";
-
-
-
-	}
-
-
-
-
-
-
-
-	if(!empty($id_categoria)){
-
-
-
-	$wh02 = "AND id_categoria = '$id_categoria'";
-
-
-
-	}
-
-
-
-	
-
-
-
-	$busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
-
-
-
-	//echo $busca;
-
-
-
-
-
-
-
-	if($paginacao == "S"){
-
-
-
-	
-
-
-
-		$total_reg = $qts_ultimos;
-
-
-
-	
-
-
-
-		if(!$page){
-
-
-
-		$page = "1";
-
-
-
-		}
-
-
-
-
-
-
-
-		$inicio = $page-1;
-
-
-
-		$inicio = $inicio*$total_reg;
-
-
-
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
-
-
-
-	} else {
-
-
-
-		$limite = mysql_query("$busca LIMIT $limite2");
-
-
-
-	} 
-
-
-
-
-
-
-
-$todos = mysql_query("$busca");
-
-
-
-
-
-
-
-$tr = mysql_num_rows($todos);
-
-
-
-
-
-
-
-$tp = @ceil($tr / $total_reg);
-
-
-
-
-
-
-
-
-
-
-
-if($tr > 0){
+if ($tr > 0) {
 
 
 
@@ -1775,7 +1371,7 @@ $colspan = $colunas+$colunas+$colunas;
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -1835,7 +1431,7 @@ $contatamanho1 = strlen($dados[nome]);
 
 
 
-if($contatamanho1 > $qt_letras1){
+if ($contatamanho1 > $qt_letras1) {
 
 
 
@@ -1879,7 +1475,7 @@ echo $nome;
 
 
 
-<? if($limite2 > 1){?>
+<? if ($limite2 > 1) { ?>
 
 
 
@@ -1887,11 +1483,11 @@ echo $nome;
 
 
 
-<? }?>
+<? } ?>
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -1899,7 +1495,7 @@ echo $nome;
 
 
 
-  <? }?>
+  <? } ?>
 
 
 
@@ -1919,11 +1515,11 @@ echo $nome;
 
 
 
-if($paginacao == "S"){
+if ($paginacao == "S") {
 
 
 
-	include "estrutura/paginacao.php";
+  include "estrutura/paginacao.php";
 
 
 
@@ -1951,7 +1547,7 @@ if($paginacao == "S"){
 
 
 
-<? } else {?>
+<? } else { ?>
 
 
 
@@ -1995,7 +1591,7 @@ if($paginacao == "S"){
 
 
 
-if($acao == "ver6"){
+if ($acao == "ver6") {
 
 
 
@@ -2003,19 +1599,19 @@ if($acao == "ver6"){
 
 
 
-	if(!empty($limite2)){
+  if (!empty($limite2)) {
 
 
 
-	$wh03 = "LIMIT $limite2";
+  $wh03 = "LIMIT $limite2";
 
 
 
-	}
+  }
 
 
 
-	
+  
 
 
 
@@ -2031,31 +1627,31 @@ $busca = "SELECT * FROM $tabela1 WHERE status='S' $ordem $wh03";
 
 
 
-	if($paginacao == "S"){
+  if ($paginacao == "S") {
 
 
 
-	
+  
 
 
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
 
 
-	
+  
 
 
 
-		if(!$page){
+    if (!$page) {
 
 
 
-		$page = "1";
+    $page = "1";
 
 
 
-		}
+    }
 
 
 
@@ -2063,27 +1659,27 @@ $busca = "SELECT * FROM $tabela1 WHERE status='S' $ordem $wh03";
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
 
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
 
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
 
 
-	} else {
+  } else {
 
 
 
-		$limite = mysql_query("$busca");
+    $limite = mysql_query("$busca");
 
 
 
-	} 
+  } 
 
 
 
@@ -2119,7 +1715,7 @@ $tp = @ceil($tr / $total_reg);
 
 
 
-if($tr > 0){
+if ($tr > 0) {
 
 
 
@@ -2191,7 +1787,7 @@ $colspan = $colunas+$colunas+$colunas;
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -2215,11 +1811,11 @@ $dados = mysql_fetch_array($limite) ;
 
 
 
-	   <tr>
+     <tr>
 
 
 
-	   <td width="<?=$largura_coluna?>" valign="middle"><table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+     <td width="<?=$largura_coluna?>" valign="middle"><table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
 
 
 
@@ -2327,15 +1923,15 @@ echo "$dados[nome]";
 
 
 
-<? if($colunas > 1){?>
+<? if ($colunas > 1) { ?>
 
 
 
-<? }?>
+<? } ?>
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -2343,7 +1939,7 @@ echo "$dados[nome]";
 
 
 
-  <? }?>
+  <? } ?>
 
 
 
@@ -2359,11 +1955,11 @@ echo "$dados[nome]";
 
 
 
-if($paginacao == "S"){
+if ($paginacao == "S") {
 
 
 
-	include "estrutura/paginacao.php";
+  include "estrutura/paginacao.php";
 
 
 
@@ -2391,7 +1987,7 @@ if($paginacao == "S"){
 
 
 
-<? } else {?>
+<? } else { ?>
 
 
 
@@ -2427,7 +2023,7 @@ if($paginacao == "S"){
 
 
 
-if($acao == "ver9"){
+if ($acao == "ver9") {
 
 
 
@@ -2435,15 +2031,15 @@ if($acao == "ver9"){
 
 
 
-	if(!empty($key)){
+  if (!empty($key)) {
 
 
 
-	$wh01 = "AND nome LIKE '%$key%'";
+  $wh01 = "AND nome LIKE '%$key%'";
 
 
 
-	}
+  }
 
 
 
@@ -2451,29 +2047,29 @@ if($acao == "ver9"){
 
 
 
-	if(!empty($id_categoria)){
+  if (!empty($id_categoria)) {
 
 
 
-	$wh02 = "AND id_categoria = '$id_categoria'";
+  $wh02 = "AND id_categoria = '$id_categoria'";
 
 
 
-	}
+  }
 
 
 
 
 
-	
+  
 
 
 
-	$busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
+  $busca = "SELECT * FROM $tabela1 WHERE status='S' $wh01 $wh02 $ordem";
 
 
 
-	//echo $busca;
+  //echo $busca;
 
 
 
@@ -2481,31 +2077,31 @@ if($acao == "ver9"){
 
 
 
-	if($paginacao == "S"){
+  if ($paginacao == "S") {
 
 
 
-	
+  
 
 
 
-		$total_reg = $qts_ultimos;
+    $total_reg = $qts_ultimos;
 
 
 
-	
+  
 
 
 
-		if(!$page){
+    if (!$page) {
 
 
 
-		$page = "1";
+    $page = "1";
 
 
 
-		}
+    }
 
 
 
@@ -2513,27 +2109,27 @@ if($acao == "ver9"){
 
 
 
-		$inicio = $page-1;
+    $inicio = $page-1;
 
 
 
-		$inicio = $inicio*$total_reg;
+    $inicio = $inicio*$total_reg;
 
 
 
-		$limite = mysql_query("$busca LIMIT $inicio,$total_reg");
+    $limite = mysql_query("$busca LIMIT $inicio,$total_reg");
 
 
 
-	} else {
+  } else {
 
 
 
-		$limite = mysql_query("$busca LIMIT $limite2");
+    $limite = mysql_query("$busca LIMIT $limite2");
 
 
 
-	} 
+  } 
 
 
 
@@ -2569,7 +2165,7 @@ $tp = @ceil($tr / $total_reg);
 
 
 
-if($tr > 0){
+if ($tr > 0) {
 
 
 
@@ -2641,7 +2237,7 @@ $colspan = $colunas+$colunas+$colunas;
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -2665,11 +2261,11 @@ $dados = mysql_fetch_array($limite) ;
 
 
 
-	   <tr>
+     <tr>
 
 
 
-	   <td width="<?=$largura_coluna?>" valign="top"><table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+     <td width="<?=$largura_coluna?>" valign="top"><table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
 
 
 
@@ -2705,7 +2301,7 @@ $contatamanho1 = strlen($dados[nome]);
 
 
 
-if($contatamanho1 > $qt_letras1){
+if ($contatamanho1 > $qt_letras1) {
 
 
 
@@ -2753,7 +2349,7 @@ echo $nome;
 
 
 
-<? if($limite2 > 1){?>
+<? if ($limite2 > 1) { ?>
 
 
 
@@ -2761,11 +2357,11 @@ echo $nome;
 
 
 
-<? }?>
+<? } ?>
 
 
 
-    <? }?>
+    <? } ?>
 
 
 
@@ -2773,7 +2369,7 @@ echo $nome;
 
 
 
-  <? }?>
+  <? } ?>
 
 
 
@@ -2793,11 +2389,11 @@ echo $nome;
 
 
 
-if($paginacao == "S"){
+if ($paginacao == "S") {
 
 
 
-	include "estrutura/paginacao.php";
+  include "estrutura/paginacao.php";
 
 
 
@@ -2825,7 +2421,7 @@ if($paginacao == "S"){
 
 
 
-<? } else {?>
+<? } else { ?>
 
 
 
@@ -2853,4 +2449,4 @@ if($paginacao == "S"){
 
 
 
-}?>
+} ?>
