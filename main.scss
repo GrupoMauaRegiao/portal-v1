@@ -1,5 +1,159 @@
 // # /home/main.min.css
 
+// Filmes
+#filmes{
+  .seta{
+    margin:0 10px 0 0;
+    width:34px;
+    float:left;
+
+    img{
+      width:35px;
+      height:35px;
+    }
+  }
+
+  .header-filmes{
+    h1{
+      margin:0;
+      font:30px 'Trebuchet MS',Arial,sans-serif;
+      color:rgb(30,75,122);
+    }
+  }
+
+  .filme{
+    float:left;
+    padding:10px;
+    width:640px;
+    height:200px;
+
+    .imagem-filme{
+      float:left;
+
+      img{
+        border:5px solid rgb(54,182,219);
+        -webkit-filter:grayscale(70%);
+        -moz-filter:grayscale(70%);
+        -o-filter:grayscale(70%);
+        filter:grayscale(70%);
+        -webkit-border-radius:100px;
+        -moz-border-radius:100px;
+        -o-border-radius:100px;
+        border-radius:100px;
+        -webkit-transition:all 0.2s linear;
+        -moz-transition:all 0.2s linear;
+        -o-transition:all 0.2s linear;
+        transition:all 0.2s linear;
+      }
+
+      img:hover{
+        -webkit-border-radius:70px;
+        -moz-border-radius:70px;
+        -o-border-radius:70px;
+        border-radius:70px;
+        -webkit-filter:grayscale(0%);
+        -moz-filter:grayscale(0%);
+        -o-filter:grayscale(0%);
+        filter:grayscale(0%);
+      }
+    }
+
+    .informacao-filme{
+      .titulo-filme{
+        -webkit-border-radius:100px 0px 0px 100px;
+        -moz-border-radius:100px 0px 0px 100px;
+        -o-border-radius:100px 0px 0px 100px;
+        border-radius:100px 0px 0px 100px;
+        padding:5px 0 0 20px;
+        margin:65px 0 0 10px;
+        float:left;
+        background:rgb(240,240,230);
+        width:380px;
+        height:75px;
+
+        a{
+          -webkit-filter:opacity(50%);
+          -moz-filter:opacity(50%);
+          -o-filter:opacity(50%);
+          filter:opacity(50%);
+          -webkit-transition:all 0.2s linear;
+          -moz-transition:all 0.2s linear;
+          -o-transition:all 0.2s linear;
+          transition:all 0.2s linear;
+          font:bold 30px 'Lato',Arial,sans-serif;
+          text-decoration:none;
+          text-transform:uppercase;
+          color:rgb(54,182,219);
+        }
+
+        a:hover{
+          -webkit-text-shadow:
+            -1px -1px 0 rgb(14, 142, 179),
+            -2px -2px 0 rgb(14, 142, 179),
+            -3px -3px 0 rgb(14, 142, 179),
+            -3px -3px 5px rgba(0, 0, 0, 0.3);
+          -moz-text-shadow:
+            -1px -1px 0 rgb(14, 142, 179),
+            -2px -2px 0 rgb(14, 142, 179),
+            -3px -3px 0 rgb(14, 142, 179),
+            -3px -3px 5px rgba(0, 0, 0, 0.3);
+          -o-text-shadow:
+            -1px -1px 0 rgb(14, 142, 179),
+            -2px -2px 0 rgb(14, 142, 179),
+            -3px -3px 0 rgb(14, 142, 179),
+            -3px -3px 5px rgba(0, 0, 0, 0.3);
+          text-shadow:
+            -1px -1px 0 rgb(14, 142, 179),
+            -2px -2px 0 rgb(14, 142, 179),
+            -3px -3px 0 rgb(14, 142, 179),
+            -3px -3px 5px rgba(0, 0, 0, 0.3);
+          -webkit-filter:opacity(100%);
+          -moz-filter:opacity(100%);
+          -o-filter:opacity(100%);
+          filter:opacity(100%);
+        }
+      }
+
+      .subtitulo-filme{
+        a{
+          margin:0 0 0 35px;
+          font:bold 12px 'Lato',Arial,sans-serif;
+          text-transform:uppercase;
+          text-decoration:none;
+          color:rgb(200,10,10);
+        }
+      }
+    }
+  } // #Filme
+
+  .exibicao-filmes{
+    float:left;
+  }
+
+  .tabela-precos{
+    margin:20px 20px 0 20px;
+    float:left;
+    font-family:'Asap',Arial,sans-serif;
+    color:rgb(100,100,100);
+    
+    .header-precos{
+      color:rgb(0,0,0);
+      text-transform:uppercase;
+    }
+
+    .informacao-filmes{
+      font-size:14px;
+      line-height:20px;
+
+      a{
+        color: rgb(34, 162, 199);
+        text-decoration: none;
+      }
+    }
+  }
+
+} // #Filmes
+
 // Agenda de eventos
 #agenda{
   width:640px;
@@ -893,6 +1047,12 @@ body {
     font-weight:900 !important;
   }
 
+#mudaFonte{
+  img{
+    padding:0 10px 10px 0;
+  }
+}
+
 .rodape {
   background-color:#181818;
   height:200px;
@@ -1455,10 +1615,10 @@ img {
 }
 
 .titulos_filmes {
-  font: bold 26px 'Lato',Arial,sans-serif;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: rgb(54, 182, 219);
+  font:bold 26px 'Lato',Arial,sans-serif;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgb(54,182,219);
 }
 
 .subtitulos_filmes {
@@ -1741,14 +1901,6 @@ a.img_borda7:hover img {
 
 
 /* MENU 2 */
-
-h1 {
-  font-family:Verdana,Arial,Helvetica,sans-serif;
-  font-size:15px;
-  font-weight:bold;
-  margin:0;
-  padding:0;
-}
 
 hr {
   border:none;
@@ -3369,10 +3521,10 @@ a.eventos:hover {
 .nav-controls{
   .prev,
   .next{
-    -webkit-filter: opacity(0%);
-    -moz-filter: opacity(0%);
-    -o-filter: opacity(0%);
-    filter: opacity(0%);
+    -webkit-filter:opacity(0%);
+    -moz-filter:opacity(0%);
+    -o-filter:opacity(0%);
+    filter:opacity(0%);
     margin:60px 0 0 10px;
     position:absolute;
     display:block;

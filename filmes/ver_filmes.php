@@ -33,7 +33,7 @@
     </div>
 
     <div class="header-precos">
-      <h2>SALAS 1, 2, 3 e 4</h2>
+      <h3>SALAS 1, 2, 3 e 4</h3>
     </div>
 
     <div class="informacao-filmes">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="header-precos">
-      <h2>SALA 5 (sess&atilde;o 3D Digital)</h2>
+      <h3>SALA 5 (sess&atilde;o 3D Digital)</h3>
     </div>
 
     <div class="informacao-filmes">
@@ -73,12 +73,17 @@
         </li>
       </ul>
 
+      <div class="header-precos">
+        <h3>Compra de ingressos antecipados</h3>
+      </div>
+
       <p>
-        Compra de ingressos antecipados:<br />
         Voc&ecirc; pode adquirir ingressos antecipados direto na bilheteria ou pelo website <a href="http://www.ingresso.com.br/">www.ingresso.com.br</a>, no momento em que finalizar a compra &eacute; emitido a mensagem que sua compra foi realizada com sucesso e a ingresso.com fornece um c&oacute;digo (com 4 letras e 2 n&uacute;meros) de busca na bilheteria, voc&ecirc; tamb&eacute;m receber&aacute; um e-mail constando esse c&oacute;digo, o qual ser&aacute; fornecido na bilheteria juntamente com RG no caixa preferencial, para retirada de ingressos adquiridos via internet.
       </p>
 
-      <h2>Endere&ccedil;o e contato</h2>
+      <div class="header-precos">
+        <h3>Endere&ccedil;o e contato</h3>
+      </div>
 
       <p>
         Cine Mau&aacute; Plaza Shopping &#8212; Av. Governador M&aacute;rio Covas Jr. - Centro - Mau&aacute; - SP.

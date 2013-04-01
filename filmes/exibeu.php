@@ -160,8 +160,9 @@ if ($paginacao == "S") {
 } // FIM DA ACAO VER ULTIMAS
 ?>
 
-<?php
-  if ($acao == "ver_todos") {
+<?php if ($acao == "ver_todos") { // Exibição de Filmes ?>
+<div class="exibicao-filmes"> 
+<?php 
     if (!empty($limite2)) {
       $limite2 = "LIMIT $limite2";
     }
@@ -188,7 +189,7 @@ if ($paginacao == "S") {
   
   if($tr > 0) {
 ?>
-<table class="apagar" border="0" cellpadding="1" cellspacing="0">
+
 <?php
 $total = mysql_num_rows($limite);
 
@@ -197,117 +198,40 @@ if ($total>0) {
     if (($i % $colunas) == 0) {
       $colspan = $colunas+$colunas+$colunas;
 ?>
-  <tr>
+
 <?php } ?>
 
 <?php $dados = mysql_fetch_array($limite); ?>
-  <td align="center" valign="top">
-    <table border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <td width="<?=$largura_coluna?>" align="right" valign="middle">
-        <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
-        <tr>
-          <?php if (!empty($dados[foto])) { ?>
-          <td width="100px" height="<?=$altura+10;?>" align="left" valign="top">
-            <table border="0" cellpadding="1" cellspacing="0" width="100px" >
-              <tr>
-                <td>
-                  <table border="0" cellspacing="0" cellpadding="1" width="130px">
-                    <tr>
-                      <td>
-                        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="img_borda"><img src="<?="/thumbs.php?w=$largura&h=$altura&imagem=images/filmes/$dados[id]/$dados[foto]";?>" width="<?=$largura?>" height="<?=$altura?>" border="0" style="FILTER: alpha(opacity=100);" onMouseOver="makevisible(this,0)" onMouseOut="makevisible(this,1)"></a>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-<?php } ?>
-  <td align="right" valign="top">
-  <? if ($exibir_cat=="S") { ?>
-    <table width="100%" border="0" cellpadding="1" cellspacing="0">
-      <tr>
-        <td bgcolor="<?=$corcelula2?>">
-          <?php
-            $dados2 = mysql_fetch_array(mysql_query("SELECT * FROM tb_filmes_cat WHERE id='$dados[id_cat]'"));
-            echo "<font size='4' color='#004df3' face='Trebuchet MS'><b>$dados2[nome]</b></font> - ";
-
-          ?>
-        </td>
-      </tr>
-      <tr>
-        <td height="3"></td>
-      </tr>
-    </table>
-
+  <?php if (!empty($dados[foto])) { ?>
+  <div class="filme">
+    <div class="imagem-filme">
+      <img src="<?="/timthumb.php?w=200&h=200&src=images/filmes/$dados[id]/$dados[foto]";?>" alt="" />
+    </div>
   <?php } ?>
+    <div class="informacao-filme">
+      <div class="titulo-filme">
+        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html'>
+          <?php echo $dados[titulo]; ?>
+        </a>
+      </div>
 
-  <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <td>
-        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="titulos_filmes">
-        <?php
-          $contatamanho1 = strlen($dados[titulo]);
-
-          if ($contatamanho1 > $qt_letras1) {
-            $titulo = substr_replace($dados[titulo], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
-          } else {
-            $titulo = $dados[titulo];
-          }
-          
-          $contatamanho2 = strlen($dados[subtitulo]);
-          
-          if ($contatamanho2 > $qt_letras2) {
-            $subtitulo = substr_replace($dados[subtitulo], "...", $qt_letras2, $contatamanho2 - $qt_letras2);
-          } else {
-            $subtitulo = $dados[subtitulo];
-          }
-
-          echo "$titulo<br>";
-          echo "<font size='2' color='#004df3'>$subtitulo</font><br>";
-          echo "</a>";
-        ?>
-      </td>
-    </tr>
-  </table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-  <td height="2" colspan="4"></td>
-</tr>
-    <tr>
-      <td colspan="4" height="1" bgcolor="<?=$corcelula2?>"></td>
-    </tr>
-
-    <tr>
-      <td height="2" colspan="4"></td>
-    </tr>
-  </table>
-</td>
-
+      <div class="subtitulo-filme">
+        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html'>
+          <?php echo $dados[subtitulo]; ?>
+        </a>
+      </div>
+    </div>
+  </div> <!-- #Filme -->
+  <?php } ?>
 <?php } ?>
-  </tr>
-<?php } ?>
-</table>
+</div> <?php // #Exibição de filmes ?>
 <?php
   if ($paginacao == "S") {
-    include "paginas/paginacao.php";
+    //include "paginas/paginacao.php";
   }
 ?>
 
 <?php } else { ?>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td align="center"><br />
-        Nenhum <b>registro</b><b> </b>encontrado!<br />
-        <br />
-      </td>
-    </tr>
-  </table>
 
 <?php
   } // FIM DO ELSE
