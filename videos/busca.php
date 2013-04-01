@@ -9,7 +9,7 @@ $palavra = "Vídeos";
 $tabela1 = "tb_videos";
 $tabela2 = $tabela1."_categorias";
 $file = "video";
-$form1 = "BUSCA"; 
+$form1 = "BUSCA";
 
 if ($FormatoForm == "H") { ?>
 
@@ -43,7 +43,7 @@ if ($FormatoForm == "V") { ?>
   <input name="acao" type="hidden" value="ver2" />
   <input name="page" type="hidden" value="<?=$_GET[page]?>" />
   <input name="key" type="text" />
-  <select name="id_categoria" style="width:220px;"  class="input" onblur="this.className='input';" onfocus="this.className='inputon';" >
+  <select name="id_categoria">
     <option value="">Categoria</option>
 
 <?php
@@ -57,8 +57,6 @@ while ($dados5 = mysql_fetch_array($sql5)) { ?>
 
 <?php } ?>
   </select>
-
   <input type="submit" value="Pesquisar" />
 </form>
-
 <?php } ?>
