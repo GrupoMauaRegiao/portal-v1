@@ -201,9 +201,11 @@ if ($total>0) {
 <?php } ?>
 
 <?php $dados = mysql_fetch_array($limite); ?>
-  <td align="center" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+  <td align="center" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0">
     <tr>
-      <td width="<?=$largura_coluna?>" align="right" valign="middle"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+      <td width="<?=$largura_coluna?>" align="right" valign="middle">
+        <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
         <tr>
           <?php if (!empty($dados[foto])) { ?>
           <td width="100px" height="<?=$altura+10;?>" align="left" valign="top">

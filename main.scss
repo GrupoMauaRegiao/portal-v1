@@ -1455,10 +1455,10 @@ img {
 }
 
 .titulos_filmes {
-  font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
-  color:#003871;
-  font-size:30px;
-  font-weight:bold;
+  font: bold 26px 'Lato',Arial,sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(54, 182, 219);
 }
 
 .subtitulos_filmes {
