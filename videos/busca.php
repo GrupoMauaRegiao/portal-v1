@@ -45,9 +45,9 @@ if ($FormatoForm == "V") { ?>
     <input name="acao" type="hidden" value="ver2" />
     <input name="page" type="hidden" value="<?=$_GET[page]?>" />
     <input id="campo-pesquisa" name="key" type="text" />
-    <input type="submit" id="botao-pesquisar" value="Pesquisar" />
+    <input type="submit" id="botao-pesquisar" value="" />
     <select id="campo-categoria" name="id_categoria">
-      <option value="">Categoria</option>
+      <option value="">Categorias</option>
       <?php
         $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
 
