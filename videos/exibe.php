@@ -419,8 +419,16 @@ if ($acao == "ver_destaque") {
   $html2 = str_replace($tira2, $inseri2, $html1);
 ?>
 
-<?php echo "<div>$dados[nome]</div>"; ?>
-  <?=$html2?>
+<div class="video-destaque">
+  <div class="video">
+    <?php echo $html2; ?>
+  </div>
+
+  <div class="titulo">
+    <p><?php echo $dados[nome]; ?></p>
+  </div>
+
+</div>
 <?php }
 
 

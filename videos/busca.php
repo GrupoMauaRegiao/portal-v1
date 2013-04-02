@@ -19,9 +19,10 @@ if ($FormatoForm == "H") { ?>
     <input name="acao" type="hidden" value="ver2" />
     <input name="page" type="hidden" value="" />
     <input id="campo-pesquisa" name="key" type="text" />
+    <input id="botao-pesquisar" type="submit" value="Pesquisar" />
 
     <select id="campo-categoria" name="id_categoria">
-      <option value="">Categoria</option>
+      <option value="">Categorias</option>
   <?php
 
   $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
@@ -32,7 +33,6 @@ if ($FormatoForm == "H") { ?>
       </option>
   <?php }?>
     </select>
-    <input id="botao-pesquisar" type="submit" value="Pesquisar" />
   </form>
 </div>
 
@@ -45,7 +45,7 @@ if ($FormatoForm == "V") { ?>
     <input name="acao" type="hidden" value="ver2" />
     <input name="page" type="hidden" value="<?=$_GET[page]?>" />
     <input id="campo-pesquisa" name="key" type="text" />
-    <input type="submit" id="botao-pesquisar" value="" />
+    <input id="botao-pesquisar"type="submit" value="" />
     <select id="campo-categoria" name="id_categoria">
       <option value="">Categorias</option>
       <?php

@@ -255,6 +255,17 @@ jQuery(document).ready(function() {
 
   enviarEmail();
 
+  function randomizarVideosDestaques() {
+    var videos;
+    videos = jQuery('.videos-categorias .video');
+    videos.removeClass('destacar');
+    videos.eq(Math.floor(Math.random() * 5)).addClass('destacar');
+  }
+
+  setInterval(function () {
+    randomizarVideosDestaques();
+  }, 1000);
+
 });
 
 

@@ -1125,28 +1125,41 @@ if ($acao == "ver2") {
   <?php $link2= "/ver_video/$dados[id]/$dados[id_categoria]-".str_replace(" ", "_", $dados[nome]); ?>
 
   <div class="video">
-    <a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html">
+    <div class="player">
       <? if (!empty($dados[foto0])) { ?>
-        <img src="timthumbs.php?w=120&amp;h=85&amp;src=images/videos/<? echo $dados[foto0]?>" />
+        <a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html">
+          <img src="timthumbs.php?w=120&amp;h=85&amp;src=images/videos/<? echo $dados[foto0]?>" />
+        </a>
       <? } else { ?>
-        <img src="<? echo $dados[ffftube]?>" alt="" />
+        <a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html">
+          <img src="<? echo $dados[ffftube]?>" alt="" />
+        </a>
       <? } ?>
-    </a>
+    </div>
+    <div class="descricao">
+      <div class="titulo">
+        <a href="/ver_video/<?=$dados[id]?>-<?= str_replace(" ","_",$dados['nome']); ?>.html">
+          <?php
+          $titulo = $dados[nome];
+          $tamanhoTitulo = strlen($titulo);
+          $qtdLetras = 35;
+
+          echo $tamanhoTitulo > $qtdLetras ? substr_replace($titulo, "...", $qtdLetras, $tamanhoTitulo - $qtdLetras) : $titulo;
+          ?>
+        </a>
+      </div>
+      <div class="data">
+        <p>
+          <?php echo strftime("%d/%m/%Y", strtotime($dados[data])); ?>
+        </p>
+      </div>
+      <div class="visitas">
+        <p>
+          Views: <?php echo $dados[visitas]; ?>
+        </p>
+      </div>
+    </div>
   </div>
-
-  <?php
-    $contatamanho1 = strlen($dados[nome]);
-
-    if ($contatamanho1 > $qt_letras1) {
-      $nome = substr_replace($dados[nome], "...", $qt_letras1, $contatamanho1 - $qt_letras1);
-    } else {
-      $nome = $dados[nome];
-    }
-
-    echo $nome;
-    echo strftime("%d/%m/%Y", strtotime($dados[data]));
-    echo $dados[visitas];
-    ?>
 
 <? if ($limite2 > 1) { ?>
     <?php } ?>
