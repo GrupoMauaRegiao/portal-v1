@@ -253,15 +253,15 @@ jQuery(document).ready(function() {
 
   enviarEmail();
 
-  function randomizarVideosDestaques() {
+  function randomizarVideosDestaquesAte(limite) {
     var videos;
     videos = jQuery('.videos-categorias .video');
     videos.removeClass('destacar');
-    videos.eq(Math.floor(Math.random() * 5)).addClass('destacar');
+    videos.eq(Math.floor(Math.random() * limite)).addClass('destacar');
   }
 
   setInterval(function () {
-    randomizarVideosDestaques();
+    randomizarVideosDestaquesAte(5);
   }, 1000);
 
 });
