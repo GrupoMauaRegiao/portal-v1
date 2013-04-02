@@ -45,21 +45,18 @@ if ($FormatoForm == "V") { ?>
     <input name="acao" type="hidden" value="ver2" />
     <input name="page" type="hidden" value="<?=$_GET[page]?>" />
     <input id="campo-pesquisa" name="key" type="text" />
+    <input type="submit" id="botao-pesquisar" value="Pesquisar" />
     <select id="campo-categoria" name="id_categoria">
       <option value="">Categoria</option>
+      <?php
+        $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
 
-  <?php
-
-  $sql5 = mysql_query("SELECT * FROM $tabela2 WHERE status='S' order by nome");
-
-  while ($dados5 = mysql_fetch_array($sql5)) { ?>
-    <option value='<?=$dados5[id]?>' <?=($id_categoria==$dados5[id]) ? "selected" : "";?>>
-      <?=$dados5[nome]?>
-    </option>
-
-  <?php } ?>
+        while ($dados5 = mysql_fetch_array($sql5)) { ?>
+          <option value='<?=$dados5[id]?>' <?=($id_categoria==$dados5[id]) ? "selected" : "";?>>
+            <?=$dados5[nome]?>
+          </option>
+      <?php } ?>
     </select>
-    <input type="submit" id="botao-pesquisar" value="Pesquisar" />
   </form>
 </div>
 <?php } ?>

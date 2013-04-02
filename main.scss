@@ -21,8 +21,32 @@
         color:rgb(30,75,122);
       }
     }
+  } // #Header vídeos
+
+  .busca{
+    background:rgb(230,230,230);
+    padding:15px;
+    width:590px;
+
+    .formulario-busca{
+      #campo-pesquisa{
+        width:320px;
+        height:20px;
+        border:1px solid rgb(200,200,200);
+        outline:0;
+        padding:5px;
+      }
+
+      #campo-pesquisa:focus{
+        border:1px solid rgb(54,136,219);
+        -webkit-box-shadow:inset 0 2px 2px rgb(200,200,200);
+        -moz-box-shadow:inset 0 2px 2px rgb(200,200,200);
+        -o-box-shadow:inset 0 2px 2px rgb(200,200,200);
+        box-shadow:inset 0 2px 2px rgb(200,200,200);
+      }
+    }
   }
-}
+} // #Vídeos
 
 // Filmes
 #filmes{
@@ -112,25 +136,25 @@
 
         a:hover{
           -webkit-text-shadow:
-            -1px -1px 0 rgb(14, 142, 179),
-            -2px -2px 0 rgb(14, 142, 179),
-            -3px -3px 0 rgb(14, 142, 179),
-            -3px -3px 5px rgba(0, 0, 0, 0.3);
+            -1px -1px 0 rgb(14,142,179),
+            -2px -2px 0 rgb(14,142,179),
+            -3px -3px 0 rgb(14,142,179),
+            -3px -3px 5px rgba(0,0,0,0.3);
           -moz-text-shadow:
-            -1px -1px 0 rgb(14, 142, 179),
-            -2px -2px 0 rgb(14, 142, 179),
-            -3px -3px 0 rgb(14, 142, 179),
-            -3px -3px 5px rgba(0, 0, 0, 0.3);
+            -1px -1px 0 rgb(14,142,179),
+            -2px -2px 0 rgb(14,142,179),
+            -3px -3px 0 rgb(14,142,179),
+            -3px -3px 5px rgba(0,0,0,0.3);
           -o-text-shadow:
-            -1px -1px 0 rgb(14, 142, 179),
-            -2px -2px 0 rgb(14, 142, 179),
-            -3px -3px 0 rgb(14, 142, 179),
-            -3px -3px 5px rgba(0, 0, 0, 0.3);
+            -1px -1px 0 rgb(14,142,179),
+            -2px -2px 0 rgb(14,142,179),
+            -3px -3px 0 rgb(14,142,179),
+            -3px -3px 5px rgba(0,0,0,0.3);
           text-shadow:
-            -1px -1px 0 rgb(14, 142, 179),
-            -2px -2px 0 rgb(14, 142, 179),
-            -3px -3px 0 rgb(14, 142, 179),
-            -3px -3px 5px rgba(0, 0, 0, 0.3);
+            -1px -1px 0 rgb(14,142,179),
+            -2px -2px 0 rgb(14,142,179),
+            -3px -3px 0 rgb(14,142,179),
+            -3px -3px 5px rgba(0,0,0,0.3);
           -webkit-filter:opacity(100%);
           -moz-filter:opacity(100%);
           -o-filter:opacity(100%);
@@ -170,7 +194,7 @@
       line-height:20px;
 
       a{
-        color: rgb(34, 162, 199);
+        color: rgb(34,162,199);
         text-decoration: none;
       }
     }
