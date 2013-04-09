@@ -1,5 +1,59 @@
 // # /home/main.min.css
 
+// Anúncio Popup
+.anuncio-popup{
+  z-index:9999;
+  left:32.05%;
+  top:125px;
+  position:absolute;
+  height:392px;
+
+  .fechar{
+    cursor:pointer;
+    text-align:center;
+    background:rgb(0,0,0);
+    color:rgb(255,255,255);
+    font:bold 12px 'Lato',Arial,sans-serif;
+    text-transform:uppercase;
+    width:100px;
+    padding:5px 0 3px 0;
+
+    img{
+      width:20px;
+      padding:0px 5px 0 0;
+      vertical-align:middle;
+      border:0;
+    }
+  }
+
+  .fechar:hover{
+    color:rgb(200,200,200);
+  }
+
+  .imagem{
+    height:360px;
+    box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+    margin:0;
+    float:left;
+    -webkit-border-radius:0 4px 4px;
+    -moz-border-radius:0 4px 4px;
+    -o-border-radius:0 4px 4px;
+    border-radius:0 4px 4px;
+    border-top:2px solid rgb(0,0,0);
+    border-right:1px solid rgb(0,0,0);
+    border-bottom:1px solid rgb(0,0,0);
+    border-left:1px solid rgb(0,0,0);
+
+    img{
+      width:640px;
+      height:360px;
+      -webkit-border-radius:0 2px 2px;
+      -moz-border-radius:0 2px 2px;
+      -o-border-radius:0 2px 2px;
+      border-radius:0 2px 2px;
+    }
+  }
+}
 
 //Destacar vídeos
 .destacar{
