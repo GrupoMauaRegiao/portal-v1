@@ -32,9 +32,12 @@
 
   .imagem{
     height:360px;
-    box-shadow:0px 0px 20px rgba(0,0,0,0.8);
-    margin:0;
     float:left;
+    background:rgb(0,0,0);
+    -webkit-box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+    -o-box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+    box-shadow:0px 0px 20px rgba(0,0,0,0.8);
     -webkit-border-radius:0 4px 4px;
     -moz-border-radius:0 4px 4px;
     -o-border-radius:0 4px 4px;
@@ -43,14 +46,37 @@
     border-right:1px solid rgb(0,0,0);
     border-bottom:1px solid rgb(0,0,0);
     border-left:1px solid rgb(0,0,0);
+    margin:0;
 
-    img{
-      width:640px;
-      height:360px;
-      -webkit-border-radius:0 2px 2px;
-      -moz-border-radius:0 2px 2px;
-      -o-border-radius:0 2px 2px;
-      border-radius:0 2px 2px;
+    a{
+      cursor:pointer;
+      outline:0;
+      border:0;
+
+      img{
+        width:640px;
+        height:360px;
+        -webkit-border-radius:0 2px 2px;
+        -moz-border-radius:0 2px 2px;
+        -o-border-radius:0 2px 2px;
+        border-radius:0 2px 2px;
+      }
+    }
+
+    .contador{
+      font:bold 14px/19px 'Lato',Arial,sans-serif;
+      -webkit-border-radius:50px;
+      -moz-border-radius:50px;
+      -o-border-radius:50px;
+      border-radius:50px;
+      text-align:center;
+      color:rgb(255,255,255);
+      position:absolute;
+      background:rgb(0,0,0);
+      margin:-30px 5px 0 0;
+      width:20px;
+      height:20px;
+      right:2px;
     }
   }
 }

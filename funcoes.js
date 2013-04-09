@@ -264,6 +264,32 @@ jQuery(document).ready(function() {
     randomizarVideosDestaquesAte(5);
   }, 1000);
 
+  function fecharAnuncioPopup() {
+    var botaoFechar, anuncio, contador, segundos, interval;
+    botaoFechar = jQuery('.fechar');
+    anuncio = jQuery('.anuncio-popup');
+    contador = jQuery('.contador');
+    segundos = 11;
+
+    interval = setInterval(function () {
+      if (segundos === 1) {
+        contador.text(segundos);
+        clearInterval(interval);
+        anuncio.fadeOut(500);
+      } else {
+        contador.text(segundos -= 1);
+      }
+    }, 1000);
+
+    botaoFechar.on('click', function () {
+      anuncio.fadeOut(500);
+      clearInterval(interval);
+      jQuery(this).off('click');
+    });
+  }
+
+  fecharAnuncioPopup();
+
 });
 
 
