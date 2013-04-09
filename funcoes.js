@@ -172,12 +172,6 @@ jQuery(document).ready(function() {
     });
   }
 
-  cleanField('#nome');
-  cleanField('#email');
-  cleanField('#campo-nome');
-  cleanField('#campo-email');
-  cleanField('#campo-mensagem');
-
   function randomizarGuiaComercial(){
     function indexAleatorio(limite) {
       return Math.floor(Math.random()*limite);
@@ -190,7 +184,6 @@ jQuery(document).ready(function() {
     itemGuiaComercial.removeClass('item-destacado');
     itemGuiaComercial.eq(indexAleatorio(limite)).addClass('item-destacado');
   }
-  randomizarGuiaComercial();
 
   function enviarEmail() {
     var botaoEnviar, campoNome, campoEmail;
@@ -251,18 +244,14 @@ jQuery(document).ready(function() {
     });
   }
 
-  enviarEmail();
-
   function randomizarVideosDestaquesAte(limite) {
     var videos;
     videos = jQuery('.videos-categorias .video');
-    videos.removeClass('destacar');
-    videos.eq(Math.floor(Math.random() * limite)).addClass('destacar');
+    setInterval(function () {
+      videos.removeClass('destacar');
+      videos.eq(Math.floor(Math.random() * limite)).addClass('destacar');
+    }, 1000);
   }
-
-  setInterval(function () {
-    randomizarVideosDestaquesAte(5);
-  }, 1000);
 
   function fecharAnuncioPopup() {
     var botaoFechar, anuncio, contador, segundos, interval;
@@ -288,6 +277,14 @@ jQuery(document).ready(function() {
     });
   }
 
+  cleanField('#nome');
+  cleanField('#email');
+  cleanField('#campo-nome');
+  cleanField('#campo-email');
+  cleanField('#campo-mensagem');
+  randomizarGuiaComercial();
+  enviarEmail();
+  randomizarVideosDestaquesAte(5);
   fecharAnuncioPopup();
 
 });
