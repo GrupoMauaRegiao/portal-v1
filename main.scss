@@ -1,5 +1,10 @@
 // # /home/main.min.css
 
+*::selection{
+  background:rgb(255,0,255);
+  color:rgb(242,248,255);
+}
+
 // Anúncio Popup
 .anuncio-popup{
   z-index:9999;
