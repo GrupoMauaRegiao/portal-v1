@@ -16,7 +16,7 @@
     );
 
     function associaPartesDatasComNomes($parteData, $arrayComNomes) {
-      for ($i = 1, $len = count($parteData); $i <= $len; $i += 1) {
+      for ($i = 1, $len = count($arrayComNomes); $i <= $len; $i += 1) {
         if ($parteData == $i) {
           $parteData = $arrayComNomes[$i - 1];
         }
@@ -24,6 +24,6 @@
       return $parteData;
     }
 
-    echo associaPartesDatasComNomes(date(w), $diasDaSemana) . ", <br />
-         $dia de " . associaPartesDatasComNomes(date(m), $meses) . " de $ano";
+    echo associaPartesDatasComNomes(date('w'), $diasDaSemana) . ", <br />
+         $dia de " . associaPartesDatasComNomes(date('m'), $meses) . " de $ano";
 ?>
