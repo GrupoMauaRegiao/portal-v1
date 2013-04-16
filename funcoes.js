@@ -1,6 +1,12 @@
-jQuery(document).ready(function() {
+"use strict";
+jQuery(document).ready(function () {
 
-  var linkTopo = jQuery('.menu-base ul li:last a');
+  var linkTopo, areaSetas, setaEsquerda, setaDireita;
+
+  linkTopo = jQuery('.menu-base ul li:last a');
+  areaSetas = jQuery('.setas_area');
+  setaEsquerda = jQuery('.seta_anterior');
+  setaDireita = jQuery('.seta_proxima');
 
   linkTopo.on('click', function (evt) {
     evt.preventDefault();
@@ -10,11 +16,6 @@ jQuery(document).ready(function() {
       scrollTop: 0
     }, 'slow');
   });
-
-  var areaSetas, setaEsquerda, setaDireita;
-  areaSetas = jQuery('.setas_area');
-  setaEsquerda = jQuery('.seta_anterior');
-  setaDireita = jQuery('.seta_proxima');
 
   jQuery.each(areaSetas, function (i) {
     jQuery(areaSetas).eq(i).css({
@@ -41,18 +42,18 @@ jQuery(document).ready(function() {
   });
 
   jQuery('table[width="120"]').css({
-    margin:'0 16px 0 0'
+    margin: '0 16px 0 0'
   });
 
   jQuery('td[width="133"]').css({
     height: '145px'
-  })
+  });
 
   jQuery('table[width="98%"]').css({
     height: '50px'
   });
 
-  jQuery('table[width="120"]').slice(4,8).css({
+  jQuery('table[width="120"]').slice(4, 8).css({
     margin: '0 21px 0 0'
   });
 
@@ -75,7 +76,7 @@ jQuery(document).ready(function() {
   });
 
   jQuery('.emprego1').parent().css({
-  'height': '35px'
+    'height': '35px'
   });
 
   jQuery('#palavra_chave').on('focus', function () {
@@ -117,7 +118,7 @@ jQuery(document).ready(function() {
     jQuery('.botao-busca-rodape').css({
       'margin': '6px 0 0 -25px'
     });
-  } else if(jQuery.browser.opera) {
+  } else if (jQuery.browser.opera) {
     jQuery('.campo-busca-topo').css({
       'margin': '0 0 0 0'
     });
@@ -139,7 +140,7 @@ jQuery(document).ready(function() {
     });
   }
 
-  jQuery('#mudaFonte p span').last().attr('style','font-weight:900 !important;font-size:12px !important;');
+  jQuery('#mudaFonte p span').last().attr('style', 'font-weight:900 !important;font-size:12px !important;');
 
   function getDefaultValue(field) {
     return jQuery(field).val();
@@ -172,9 +173,9 @@ jQuery(document).ready(function() {
     });
   }
 
-  function randomizarGuiaComercial(){
+  function randomizarGuiaComercial() {
     function indexAleatorio(limite) {
-      return Math.floor(Math.random()*limite);
+      return Math.floor(Math.random() * limite);
     }
 
     var itemGuiaComercial, limite;
@@ -186,7 +187,7 @@ jQuery(document).ready(function() {
   }
 
   function enviarEmail() {
-    var botaoEnviar, campoNome, campoEmail;
+    var botaoEnviar, campoNome, campoEmail, campoMensagem;
     botaoEnviar = jQuery('#botao-enviar');
     campoNome = jQuery('#campo-nome');
     campoEmail = jQuery('#campo-email');
@@ -238,7 +239,7 @@ jQuery(document).ready(function() {
           var form;
           form = jQuery('.formulario-fale-conosco');
           form.children().hide('slow');
-          jQuery('<p>Obrigado <span>' + nome + '</span>. <br />Sua mensagem foi enviada para nós com sucesso!</p>').appendTo(form);
+          jQuery('<p>Obrigado <span>' + nome + '</span>. <br />Sua mensagem foi enviada para n&oacute;s com sucesso!</p>').appendTo(form);
         });
       }
     });
@@ -289,443 +290,328 @@ jQuery(document).ready(function() {
 
 });
 
+var pj, pf;
+pj = 'Digite o CNPJ:';
+pf = 'Digite o CPF:';
 
 // FUNCOES QUE VALIDAM CPF E CNPJ
-  function gE(ID) {
-    return document.getElementById(ID);
+function gE(ID) {
+  return document.getElementById(ID);
+}
+
+function checa() {
+  var msg, status;
+  msg = "";
+
+  if (gE('cnpj').value === "") {
+    msg = msg + "O preenchimento do campo [" + gE('cnpj').value + "] &eacute; obrigat&oacute;rio.\n";
   }
 
-  function checa() {
-    msg = "";
+  if (msg !== "") {
+    window.alert(msg);
+    status = false;
+  } else {
+    status = true;
+  }
+  return status;
+}
 
-    if (gE('cnpj').value === "") {
-      msg = msg+"O preenchimento do campo ["+gE('cnpj').value+"] é obrigatório.\n";
-    }
+function clearStr(str, char) {
+  var cx;
 
-    if (msg !== "") {
-      alert(msg);
-      return false;
+  while ((cx = str.indexOf(char)) !== -1) {
+    str = str.substring(0, cx) + str.substring(cx + 1);
+  }
+  return str;
+}
+
+function parseNumb(c) {
+  var status;
+  c = clearStr(c, '-');
+  c = clearStr(c, '/');
+  c = clearStr(c, ',');
+  c = clearStr(c, '.');
+  c = clearStr(c, '(');
+  c = clearStr(c, ')');
+  c = clearStr(c, ' ');
+
+  if ((parseFloat(c) / c !== 1)) {
+    if (parseFloat(c) * c === 0) {
+      status = c;
     } else {
-        return true;
+      status = 0;
     }
+  } else {
+    status = c;
   }
+  return status;
+}
 
-  function TESTA(CNUMB, CTYPE) {
-    if (CNUMB === "") {
-      return true;
-    }
+function testDigit(CNUMB, CTYPE, g) {
+  var dig, ind, a, t, f, status;
+  dig = 0;
+  ind = 2;
 
-    bok = false;
-    bok = isCpfCnpj(ParseNumb(CNUMB));
-    
-    if (!bok) {
-      alert(CTYPE+" inválido!");
-      gE('cnpj').value = "";
-    }
+  if (CTYPE !== 'CNPJ') {
+    a = true;
 
-    return bok;
-  }
-
-  function ClearStr(str, char) {
-    while((cx = str.indexOf(char)) !== -1) {
-      str = str.substring(0, cx) + str.substring(cx + 1);
-    }
-    return str;
-  }
-
-  function ParseNumb(c) {
-    c = ClearStr(c, '-');
-    c = ClearStr(c, '/');
-    c = ClearStr(c, ',');
-    c = ClearStr(c, '.');
-    c = ClearStr(c, '(');
-    c = ClearStr(c, ')');
-    c = ClearStr(c, ' ');
-
-    if ((parseFloat(c) / c !== 1)) {
-      if (parseFloat(c) * c === 0) {
-        return(c);
-      } else {
-        return(0);
+    for (t = 0; t < CNUMB.length - 1; t += 1) {
+      if (CNUMB.substring(t, t + 1) !== CNUMB.substring(t + 1, t + 2)) {
+        a = false;
       }
-    } else {
-      return(c);
-    }
-  }
 
-  function Verify(CNUMB, CTYPE) {
-    CNUMB = ParseNumb(CNUMB);
-    
-    if (CNUMB === 0) {
-      return false;
-    } else {
-      g = CNUMB.length - 2;
-
-      if (TestDigit(CNUMB, CTYPE, g)) {
-        g = CNUMB.length - 1;
-
-        if (TestDigit(CNUMB, CTYPE, g)) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
+      if (a) {
         return false;
       }
     }
   }
 
-  function TestDigit(CNUMB, CTYPE, g) {
-    var dig = 0;
-    var ind = 2;
+  for (f = g; f > 0; f -= 1) {
+    dig += parseInt(CNUMB.charAt(f - 1), 10) * ind;
 
-    if (CTYPE !== 'CNPJ') {
-      var a = true;
-
-      for (t = 0; t < CNUMB.length - 1; t += 1) {
-        if (CNUMB.substring(t, t + 1) !== CNUMB.substring( t + 1, t + 2)) {
-          a = false;
-        }
-
-        if (a) {
-          return false;
-        }
-      }
-    }
-
-    for (f = g; f > 0; f -= 1) {
-      dig += parseInt(CNUMB.charAt(f - 1)) * ind;
-
-      if (CTYPE === 'CNPJ') {
-        if (ind > 8) {
-          ind = 2;
-        } else {
-          ind += 1;
-        }
+    if (CTYPE === 'CNPJ') {
+      if (ind > 8) {
+        ind = 2;
       } else {
         ind += 1;
       }
-    }
-
-    dig %= 11;
-
-    if (dig < 2) {
-      dig = 0;
     } else {
-      dig = 11 - dig;
-    }
-
-    if (dig !== parseInt(CNUMB.charAt(g))) {
-      return false;
-    } else {
-      return true;
+      ind += 1;
     }
   }
 
-  pj = 'Digite o CNPJ:';
-  pf = 'Digite o CPF:';
+  dig %= 11;
 
-  function escreveLayer(tipo) {
-    vbrowser = (document.getElementById) ? 0 : ((document.all) ? 0 : 1);
-    
-    if (vbrowser === 0){
-      MM_findObj('fgpto').innerHTML = tipo;
-    } else {
-      MM_findObj('fgpto').document.open();
-      MM_findObj('fgpto').document.write(tipo);
-      MM_findObj('fgpto').document.close();
-    }
+  if (dig < 2) {
+    dig = 0;
+  } else {
+    dig = 11 - dig;
   }
 
-  function formataCNPJ(cp, tipo) {
-    if ((event.keyCode < 48) || (event.keyCode > 57)){
-      return false;
-    } else {
-      var v = cp.value;
-      
-      if (tipo === 'CNPJ') {
-        var maxlen = 18;
-        
-        if (v.length >= maxlen) {
-          return false;
-        }
-      }
-
-      if (v.length === 2 || v.length === 6) {
-        cp.value = v + '.';
-      } else if (v.length === 10) {
-        cp.value = v + '/';
-      } else if (v.length == 15) {
-        cp.value = v + '-';
-      } else {
-        var maxlen = 14;
-
-        if (v.length >= maxlen) {
-          return false;
-        }
-      }
-
-      if (v.length === 3 || v.length === 7) {
-        cp.value = v + '.';
-      } else if (v.length === 11) {
-        cp.value = v + '-';
-      }
-
-    }
+  if (dig !== parseInt(CNUMB.charAt(g), 10)) {
+    status = false;
+  } else {
+    status = true;
   }
-
-
-  function MM_findObj(n, d) {
-
-
-
-    var p,i,x;
-
-
-
-    if(!d) d=document;
-
-
-
-      if((p=n.indexOf("?"))>0&&parent.frames.length){
-
-
-
-      d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);
-
-
-
-      }
-
-
-
-        if(!(x=d[n])&&d.all) x=d.all[n];
-
-
-
-          for (i=0;!x&&i<d.forms.length;i++)
-
-
-
-          x=d.forms[i][n];
-
-
-
-            for(i=0;!x&&d.layers&&i<d.layers.length;i++)
-
-
-
-            x=MM_findObj(n,d.layers[i].document);
-
-
-
-              if(!x && d.getElementById)
-
-
-
-              x=d.getElementById(n);
-
-
-
-              return x;
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-//Chama flash no site (correção do IE)
-
-
-
-function exibeFash(swf, width, height, wmode, cache){
-
-
-
-noCache = ""; //cache || cache == undefined ? "" : "?" + new Date();
-
-
-
-wmode = wmode || wmode == undefined ? "opaque" : "transparent";
-
-
-
-
-
-
-
-monta_swf = "";
-
-
-
-monta_swf += "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\" width=\""+ width +"\" height=\""+ height +"\" title=\"\">";
-
-
-
-monta_swf += "<param name=\"movie\" value=\""+ swf + noCache +"\" />";
-
-
-
-monta_swf += "<param name=\"quality\" value=\"high\" />";
-
-
-
-monta_swf += "<param name=\"menu\" value=\"0\" />";
-
-
-
-monta_swf += "<param name=\"wmode\" value=\""+ wmode +"\" />";
-
-
-
-monta_swf += "<embed src=\""+ swf + noCache +"\" quality=\"high\" wmode=\""+ wmode +"\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\" width=\""+ width +"\" height=\""+ height +"\"></embed>";
-
-
-
-monta_swf += "</object>";
-
-
-
-
-
-
-
-document.write(monta_swf);
-
-
-
+  return status;
 }
 
+function verify(CNUMB, CTYPE) {
+  var g, status;
+  CNUMB = parseNumb(CNUMB);
 
+  if (CNUMB === 0) {
+    status = false;
+  } else {
+    g = CNUMB.length - 2;
 
+    if (testDigit(CNUMB, CTYPE, g)) {
+      g = CNUMB.length - 1;
 
+      if (testDigit(CNUMB, CTYPE, g)) {
+        status = true;
+      } else {
+        status = false;
+      }
+    } else {
+      status = false;
+    }
+  }
+  return status;
+}
 
+function mmFindObj(n, d) {
+  var p, i, x;
 
+  if (!d) {
+    d = document;
+  }
 
+  if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+    d = parent.frames[n.substring(p + 1)].document;
+    n = n.substring(0, p);
+  }
 
+  x = d[n];
 
+  if ((x === false) && (d.all)) {
+    x = d.all[n];
+  }
 
+  for (i = 0; !x && i < d.forms.length; i += 1) {
+    x = d.forms[i][n];
+  }
+
+  for (i = 0; !x && d.layers && i < d.layers.length; i += 1) {
+    x = mmFindObj(n, d.layers[i].document);
+  }
+
+  if (!x && d.getElementById) {
+    x = d.getElementById(n);
+  }
+  return x;
+}
+
+function escreveLayer(tipo) {
+  var vbrowser;
+  vbrowser = (document.getElementById) ? 0 : ((document.all) ? 0 : 1);
+
+  if (vbrowser === 0) {
+    mmFindObj('fgpto').innerHTML = tipo;
+  } else {
+    mmFindObj('fgpto').document.open();
+    mmFindObj('fgpto').document.write(tipo);
+    mmFindObj('fgpto').document.close();
+  }
+}
+
+function formataCNPJ(cp, tipo) {
+  var status, v, maxlen;
+  if ((event.keyCode < 48) || (event.keyCode > 57)) {
+    status = false;
+  } else {
+    v = cp.value;
+
+    if (tipo === 'CNPJ') {
+      maxlen = 18;
+
+      if (v.length >= maxlen) {
+        status = false;
+      }
+    }
+
+    if (v.length === 2 || v.length === 6) {
+      cp.value = v + '.';
+    } else if (v.length === 10) {
+      cp.value = v + '/';
+    } else if (v.length === 15) {
+      cp.value = v + '-';
+    } else {
+      maxlen = 14;
+
+      if (v.length >= maxlen) {
+        status = false;
+      }
+    }
+
+    if (v.length === 3 || v.length === 7) {
+      cp.value = v + '.';
+    } else if (v.length === 11) {
+      cp.value = v + '-';
+    }
+  }
+  return status;
+}
+
+// IE
+function exibeFash(swf, width, height, wmode, cache) {
+  var noCache, monta_swf;
+  noCache = "";
+  wmode = wmode || wmode === undefined ? "opaque" : "transparent";
+  monta_swf = "";
+  monta_swf += "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\" width=\"" + width + "\" height=\"" + height + "\" title=\"\">";
+  monta_swf += "<param name=\"movie\" value=\"" + swf + noCache + "\" />";
+  monta_swf += "<param name=\"quality\" value=\"high\" />";
+  monta_swf += "<param name=\"menu\" value=\"0\" />";
+  monta_swf += "<param name=\"wmode\" value=\"" + wmode + "\" />";
+  monta_swf += "<embed src=\"" + swf + noCache + "\" quality=\"high\" wmode=\"" + wmode + "\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\" width=\"" + width + "\" height=\"" + height + "\"></embed>";
+  monta_swf += "</object>";
+  document.write(monta_swf);
+}
 
 function MSN(URL) {
+  var width, height, left, top;
+  width = 406;
+  height = 286;
+  left = 50;
+  top = 10;
 
-
-
-  var width = 406;
-
-
-
-  var height = 286;
-
-
-
-  var left = 50;
-
-
-
-  var top = 10
-
-
-
-  window.open(URL, 'MSN', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
-
-
-
+  window.open(URL,
+    'MSN', 'width=' + width + ', ' +
+    'height=' + height + ', ' +
+    'top=' + top + ', ' +
+    'left=' + left + ', ' +
+    'scrollbars=no, ' +
+    'status=no, ' +
+    'toolbar=no, ' +
+    'location=no, ' +
+    'directories=no, ' +
+    'menubar=no, ' +
+    'resizable=no, ' +
+    'fullscreen=no');
 }
-
-
-
-
-
-
 
 function Enviar(URL) {
+  var width, height, left, top;
+  width = 490;
+  height = 360;
+  left = 50;
+  top = 10;
 
-
-
-  var width = 490;
-
-
-
-  var height = 360;
-
-
-
-  var left = 50;
-
-
-
-  var top = 10
-
-
-
-  window.open(URL, 'Enviar', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
-
-
-
+  window.open(URL,
+    'Enviar', 'width=' + width + ', ' +
+    'height=' + height + ', ' +
+    'top=' + top + ', ' +
+    'left=' + left + ', ' +
+    'scrollbars=no, ' +
+    'status=no, ' +
+    'toolbar=no, ' +
+    'location=no, ' +
+    'directories=no, ' +
+    'menubar=no, ' +
+    'resizable=no, ' +
+    'fullscreen=no');
 }
-
-
-
-
-
-
 
 function Comprar(url) {
-
-
-
-  window.open(url,'comprar','width=535, height=230, top=12, left=15, scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
-
-
-
+  window.open(url,
+    'comprar', 'width=535, ' +
+    'height=230, ' +
+    'top=12, ' +
+    'left=15, ' +
+    'scrollbars=no, ' +
+    'status=no, ' +
+    'toolbar=no, ' +
+    'location=no, ' +
+    'directories=no, ' +
+    'menubar=no, ' +
+    'resizable=no, ' +
+    'fullscreen=no');
 }
-
-
-
-
-
-
 
 function cores(url) {
-
-
-
-  window.open(url,'cores','width=225, height=169, top=10, left=10, scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
-
-
-
+  window.open(url,
+    'cores', 'width=225, ' +
+    'height=169, ' +
+    'top=10, ' +
+    'left=10, ' +
+    'scrollbars=no, ' +
+    'status=no, ' +
+    'toolbar=no, ' +
+    'location=no, ' +
+    'directories=no, ' +
+    'menubar=no, ' +
+    'resizable=no, ' +
+    'fullscreen=no');
 }
-
-
-
-
-
-
 
 function AbreFotoAgenda(url) {
-
-
-
-  window.open(url,'fotoagenda','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150');
-
-
-
+  window.open(url,
+    'fotoagenda', 'toolbar=no, ' +
+    'location=no, ' +
+    'directories=no, ' +
+    'status=no, ' +
+    'menubar=no, ' +
+    'scrollbars=no, ' +
+    'resizable=yes, ' +
+    'copyhistory=no, ' +
+    'width=100, ' +
+    'height=100, ' +
+    'screenX=150, ' +
+    'screenY=150, ' +
+    'top=150, ' +
+    'left=150');
 }
-
-
-
-
-
-
 
 function AbreAudio(URL) {
 
@@ -1647,7 +1533,7 @@ gE(campo3).innerHTML = texto;
 
 
 
-//alert('Valor: '+Valor+' Valor Desc: '+Desconto+' = '+ValorT);
+//window.alert('Valor: '+Valor+' Valor Desc: '+Desconto+' = '+ValorT);
 
 
 
@@ -1791,7 +1677,7 @@ function BuscaCidade(url, valor){
 
 
 
-  alert('preencha o campo nome');
+  window.alert('preencha o campo nome');
 
 
 
