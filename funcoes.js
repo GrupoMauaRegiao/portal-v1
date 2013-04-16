@@ -426,9 +426,9 @@ function Imprimir(URL) {
 
 function makevisible(cur, which) {
   if (which === 0) {
-    cur.filters.alpha.opacity = 85;
+    cur.style.backgroundColor = 'rgba(255,255,255,0.25)';
   } else {
-    cur.filters.alpha.opacity = 100;
+    cur.style.backgroundColor = 'rgba(255,255,255,0)';
   }
 }
 
