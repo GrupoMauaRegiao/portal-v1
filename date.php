@@ -1,8 +1,6 @@
 <?php
     $dia = date('d');
-    $mes = date('m');
     $ano = date('Y');
-    $diaDaSemana = date('w');
 
     $diasDaSemana = Array(
       'Segunda-feira', 'Terça-feira', 'Quarta-feira',
@@ -17,18 +15,15 @@
       'Outubro', 'Novembro', 'Dezembro'
     );
 
-    for ($i = 1, $len = count($diasDaSemana); $i <= $len; $i += 1) {
-      if ($diaDaSemana == $i) {
-        $diaDaSemana = $diasDaSemana[$i - 1];
+    function associaPartesDatasComNomes($parteData, $arrayComNomes) {
+      for ($i = 1, $len = count($parteData); $i <= $len; $i += 1) {
+        if ($parteData == $i) {
+          $parteData = $arrayComNomes[$i - 1];
+        }
       }
+      return $parteData;
     }
 
-    for ($i = 1, $len = count($meses); $i <= $len; $i += 1) {
-      if ($mes == $i) {
-        $mes = $meses[$i - 1];
-      }
-    }
-
-    echo "$diaDaSemana, <br />
-          $dia de $mes de $ano";
+    echo associaPartesDatasComNomes(date(w), $diasDaSemana) . ", <br />
+         $dia de " . associaPartesDatasComNomes(date(m), $meses) . " de $ano";
 ?>
