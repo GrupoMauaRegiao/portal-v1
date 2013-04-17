@@ -163,9 +163,7 @@
     border-bottom:1px solid rgb(220,220,220);
     float:left;
 
-    .video{
-      iframe{ width:590px; }
-    }
+    .video{ iframe{ width:590px; } }
 
     .descricao{
       p{
@@ -909,9 +907,7 @@
 
 .revista h3,
 .jornal h3,
-.h3-newsletter{
-  width:185px;
-}
+.h3-newsletter{ width:185px; }
 
 .box-revista{
   width:180px;
@@ -1449,9 +1445,7 @@ img{ border:0; }
   padding-top:10px;
 }
 
-.menu{
-  font:16px "Trebuchet MS";
-}
+.menu{ font:16px "Trebuchet MS"; }
 
 .menuOn{
   text-transform:uppercase;
@@ -1801,7 +1795,7 @@ ul{
   color:rgb(0,0,0);
 }
 
-a.emprego1:link{
+a.emprego1{
   font:bold 13px "Trebuchet MS",Arial,Helvetica,sans-serif;
   color:rgb(0,51,102);
   text-decoration:none;
@@ -1818,7 +1812,7 @@ a.emprego1:hover{
   color:rgb(0,0,0);
 }
 
-a.titulodestaque:link{
+a.titulodestaque{
   font:bold 18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1837,7 +1831,7 @@ a.titulodestaque:hover{
   color:rgb(153,153,153);
 }
 
-a.noticiadestaque:link{
+a.noticiadestaque{
   font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1850,11 +1844,13 @@ a.noticiadestaque:hover{
 }
 
 .categoriadestaque{
-  font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
-  color:rgb(0,51,102);
+  font:bold 12px 'Lato',Arial,Helvetica,sans-serif;
+  margin:-3px 0 0 0;
+  text-transform:uppercase;
+  color:rgb(14,96,159);
 }
 
-a.noticiadestaque2:link{
+a.noticiadestaque2{
   font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1877,7 +1873,7 @@ a.noticiadestaque2:hover{
 .fundo_titulo_div{ color:rgb(30,75,122); }
 .fundo_titulo_home{ color:rgb(0,0,0); }
 
-a.noticiadestaque3:link{
+a.noticiadestaque3{
   font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1889,7 +1885,7 @@ a.noticiadestaque3:hover{
   font-family:"trebuchet MS",Verdana,Arial;
 }
 
-a.noticiasemfoto:link{
+a.noticiasemfoto{
   font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(51,51,51);
@@ -1901,7 +1897,7 @@ a.noticiasemfoto:hover{
   font-family:"trebuchet MS",Verdana,Arial;
 }
 
-a.noticiaentretenimento:link{
+a.noticiaentretenimento{
   font:bold 13px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(201,22,142);
@@ -1913,7 +1909,7 @@ a.noticiaentretenimento:hover{
   font-family:"trebuchet MS",Verdana,Arial;
 }
 
-a.noticiadiversos:link{
+a.noticiadiversos{
   font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(30,75,122);
@@ -1935,7 +1931,7 @@ a.noticiadiversos:hover{
   color:rgb(0,0,0);
 }
 
-a.eventostitulo2:link{
+a.eventostitulo2{
   font:bold 13px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(30,75,122);
@@ -1947,7 +1943,7 @@ a.eventostitulo2:hover{
   font-family:"trebuchet MS",Verdana,Arial;
 }
 
-a.classe:link{
+a.classe{
   font:bold 11px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1957,7 +1953,7 @@ a.classe:hover{
   font-weight:bold;
 }
 
-a.classe01:link{
+a.classe01{
   font:bold 11px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(107,107,107);
@@ -1969,7 +1965,7 @@ a.classe01:hover{
   font-weight:bold;
 }
 
-a.classe02:link{
+a.classe02{
   font:bold 11px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(201,22,142);
@@ -1981,7 +1977,7 @@ a.classe02:hover{
   font-weight:bold;
 }
 
-a.classe1:link{
+a.classe1{
   font:bold 13px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -1993,7 +1989,7 @@ a.classe1:hover{
   font-weight:bold;
 }
 
-a.classe2:link{
+a.classe2{
   font:bold 15px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(30,75,122);
@@ -2004,7 +2000,7 @@ a.classe2:hover{
   font-weight:bold;
 }
 
-a.classe3:link{
+a.classe3{
   font:bold 15px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,51,102);
@@ -2015,7 +2011,7 @@ a.classe3:hover{
   font-weight:bold;
 }
 
-a.classe4:link{
+a.classe4{
   font:bold 15x "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -2025,7 +2021,7 @@ a.classe4:hover{
   text-decoration:underline;
 }
 
-a.canaisfoter:link{
+a.canaisfoter{
   font:bold 15px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(0,0,0);
@@ -2035,7 +2031,7 @@ a.canaisfoter:hover{
   text-decoration:underline;
 }
 
-a.bs:link{
+a.bs{
   font:bold 18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(255,255,255);
@@ -2046,7 +2042,7 @@ a.bs:hover{
   color:rgb(255,255,255);
 }
 
-a.f3:link{
+a.f3{
   font:bold 18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(20,131,194);
@@ -2056,7 +2052,7 @@ a.f3:hover{
   text-decoration:underline;
 }
 
-a.f5:link{
+a.f5{
   font:bold 18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(204,255,51);
@@ -2482,7 +2478,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
   z-index:2;
 }
 
-#preFeature2 div a:link{
+#preFeature2 div a{
   position:absolute;
   top:0px;
   left:0px;
@@ -2507,7 +2503,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
   z-index:2;
 }
 
-#preFeature2 div p a:link{
+#preFeature2 div p a{
   position:static;
   text-indent:0px;
   display:inline;
@@ -2518,7 +2514,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
 
 #siteFeature2{ @include widthHeight(380px,260px); }
 
-#siteFeature2 #SFcontentContainer div div a:link{
+#siteFeature2 #SFcontentContainer div div a{
   color:rgb(255,255,255);
   text-decoration:none;
 }
@@ -2533,7 +2529,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
   opacity:0.6;
 }
 
-#siteFeature2 #SFbtnContainer a:link{
+#siteFeature2 #SFbtnContainer a{
   background:rgb(255,255,255);
   color:rgb(0,0,0);
   filter:alpha(opacity=80);
@@ -2625,7 +2621,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
 #siteFeature2 #SFcontentContainer.nomenu div div p{ width:100%; }
 #siteFeature2 #SFcontentContainer.left div div p{ left:5%; }
 
-#siteFeature2 #SFcontentContainer div div a:link{
+#siteFeature2 #SFcontentContainer div div a{
   color:rgb(255,255,255);
   text-decoration:none;
 }
@@ -2643,7 +2639,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
 #siteFeature2 #SFbtnContainer.left{ left:7px; }
 #siteFeature2 #SFbtnContainer div{ overflow:hidden; }
 
-#siteFeature2 #SFbtnContainer a:link{
+#siteFeature2 #SFbtnContainer a{
   text-decoration:none;
   font-weight:bold;
   display:block;
@@ -2719,7 +2715,7 @@ ul{ list-style:none; }
   color:rgb(0,0,0);
 }
 
-a.eventos:link{
+a.eventos{
   font:bold 12px "Trebuchet MS",Verdana;
   color:rgb(0,0,0);
   text-decoration:none;
