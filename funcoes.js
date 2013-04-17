@@ -36,43 +36,24 @@ jQuery(document).ready(function () {
     });
   });
 
-  jQuery('table[width="120"]').css({
-    margin: '0 16px 0 0'
-  });
-
-  jQuery('td[width="133"]').css({
-    height: '145px'
-  });
-
-  jQuery('table[width="98%"]').css({
-    height: '50px'
-  });
-
-  jQuery('table[width="120"]').slice(4, 8).css({
-    margin: '0 21px 0 0'
-  });
-
-  jQuery('table[width="130"]').css({
-    margin: '0 0 0 21px'
-  });
-
+  jQuery('table[width="120"]').css('margin', '0 16px 0 0');
+  jQuery('td[width="133"]').css('height', '145px');
+  jQuery('table[width="98%"]').css('height', '50px');
+  jQuery('table[width="120"]').slice(4, 8).css('margin', '0 21px 0 0');
+  jQuery('table[width="130"]').css('margin', '0 0 0 21px');
+  
   jQuery('td[bgcolor="#F7F7F7"]').parent().parent().parent().css({
     'width': '310px',
     'margin': '0 0 5px 0'
   });
-
+  
   jQuery('td[bgcolor="#F7F7F7"][valign="top"]').parent().parent().parent().css({
     'width': '665px',
     'margin': '0 0 5px 0'
   });
 
-  jQuery('td[width="310"][valign="top"] img').css({
-    'width': '310px'
-  });
-
-  jQuery('.emprego1').parent().css({
-    'height': '35px'
-  });
+  jQuery('td[width="310"][valign="top"] img').css('width', '310px');
+  jQuery('.emprego1').parent().css('height', '35px');
 
   jQuery('#palavra_chave').on('focus', function () {
     jQuery('.botao-busca-topo').css({
@@ -104,33 +85,14 @@ jQuery(document).ready(function () {
   jQuery.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
 
   if (jQuery.browser.mozilla) {
-    jQuery('.campo-busca').css({
-      'margin': '4px 0 0 -115px'
-    });
-
-    jQuery('.botao-busca-rodape').css({
-      'margin': '6px 0 0 -25px'
-    });
+    jQuery('.campo-busca').css('margin', '4px 0 0 -115px');
+    jQuery('.botao-busca-rodape').css('margin', '6px 0 0 -25px');
   } else if (jQuery.browser.opera) {
-    jQuery('.campo-busca-topo').css({
-      'margin': '0 0 0 0'
-    });
-
-    jQuery('.label-busca-topo').css({
-      'margin': '0 0 0 210px !important'
-    });
-
-    jQuery('.botao-busca-topo').css({
-      'margin': '-23px 0 0 234px'
-    });
-
-    jQuery('.campo-busca').css({
-      'margin': '0 0 0 -95px'
-    });
-
-    jQuery('.botao-busca-rodape').css({
-      'margin': '-23px 0 0 159px'
-    });
+    jQuery('.campo-busca-topo').css('margin', '0 0 0 0');
+    jQuery('.label-busca-topo').css('margin', '0 0 0 210px !important');
+    jQuery('.botao-busca-topo').css('margin', '-23px 0 0 234px');
+    jQuery('.campo-busca').css('margin', '0 0 0 -95px');
+    jQuery('.botao-busca-rodape').css('margin', '-23px 0 0 159px');
   }
 
   jQuery('#mudaFonte p span').last().attr('style', 'font-weight:900 !important;font-size:12px !important;');
