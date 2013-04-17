@@ -222,9 +222,6 @@
         padding:5px 0 20px 0;
         font:bold 22px 'Lato',Arial,sans-serif;
         color:rgb(54,136,199);
-        -webkit-text-shadow:1px 1px 0 rgb(14,96,159);
-        -moz-text-shadow:1px 1px 0 rgb(14,96,159);
-        -o-text-shadow:1px 1px 0 rgb(14,96,159);
         text-shadow:1px 1px 0 rgb(14,96,159);
       }
     }
@@ -333,8 +330,6 @@
       img{
         border:5px solid rgb(54,182,219);
         -webkit-filter:grayscale(70%);
-        -moz-filter:grayscale(70%);
-        -o-filter:grayscale(70%);
         filter:grayscale(70%);
         -webkit-border-radius:100px;
         -moz-border-radius:100px;
@@ -352,8 +347,6 @@
         -o-border-radius:70px;
         border-radius:70px;
         -webkit-filter:grayscale(0%);
-        -moz-filter:grayscale(0%);
-        -o-filter:grayscale(0%);
         filter:grayscale(0%);
       }
     }
@@ -373,8 +366,6 @@
 
         a{
           -webkit-filter:opacity(50%);
-          -moz-filter:opacity(50%);
-          -o-filter:opacity(50%);
           filter:opacity(50%);
           -webkit-transition:all 0.2s linear;
           -moz-transition:all 0.2s linear;
@@ -387,29 +378,12 @@
         }
 
         a:hover{
-          -webkit-text-shadow:
-            -1px -1px 0 rgb(14,142,179),
-            -2px -2px 0 rgb(14,142,179),
-            -3px -3px 0 rgb(14,142,179),
-            -3px -3px 5px rgba(0,0,0,0.3);
-          -moz-text-shadow:
-            -1px -1px 0 rgb(14,142,179),
-            -2px -2px 0 rgb(14,142,179),
-            -3px -3px 0 rgb(14,142,179),
-            -3px -3px 5px rgba(0,0,0,0.3);
-          -o-text-shadow:
-            -1px -1px 0 rgb(14,142,179),
-            -2px -2px 0 rgb(14,142,179),
-            -3px -3px 0 rgb(14,142,179),
-            -3px -3px 5px rgba(0,0,0,0.3);
           text-shadow:
             -1px -1px 0 rgb(14,142,179),
             -2px -2px 0 rgb(14,142,179),
             -3px -3px 0 rgb(14,142,179),
             -3px -3px 5px rgba(0,0,0,0.3);
           -webkit-filter:opacity(100%);
-          -moz-filter:opacity(100%);
-          -o-filter:opacity(100%);
           filter:opacity(100%);
         }
       }
@@ -511,8 +485,6 @@
     .imagem-evento{
       img{
         -webkit-filter:grayscale(60%);
-        -moz-filter:grayscale(60%);
-        -o-filter:grayscale(60%);
         filter:grayscale(60%);
         -webkit-transition:all 0.5s linear;
         -moz-transition:all 0.5s linear;
@@ -522,8 +494,6 @@
 
       img:hover{
         -webkit-filter:grayscale(0%);
-        -moz-filter:grayscale(0%);
-        -o-filter:grayscale(0%);
         filter:grayscale(0%);
       }
     }
@@ -540,9 +510,6 @@
         color:rgb(255,255,255);
         width:260px;
         font:bold 20px "Asap",Arial,sans-serif;
-        -webkit-text-shadow:2px 2px 5px rgb(0,0,0);
-        -moz-text-shadow:2px 2px 5px rgb(0,0,0);
-        -o-text-shadow:2px 2px 5px rgb(0,0,0);
         text-shadow:0px 1px 3px rgb(0,0,0);
         text-transform:uppercase;
         height:60px;
@@ -755,9 +722,6 @@
         a{
           padding:2px;
           font:bold 11px 'Lato',Arial,sans-serif;
-          -webkit-text-shadow:0px 1px 0 rgb(255,255,255);
-          -moz-text-shadow:0px 1px 0 rgb(255,255,255);
-          -o-text-shadow:0px 1px 0 rgb(255,255,255);
           text-shadow:0px 1px 0 rgb(255,255,255);
           text-decoration:none;
           text-transform:uppercase;
@@ -959,9 +923,6 @@
     .percentual{
       text-align:right;
       font:bold 18px 'Asap',Arial,sans-serif;
-      -webkit-text-shadow:0 1px 0 rgb(255,255,255);
-      -moz-text-shadow:0 1px 0 rgb(255,255,255);
-      -o-text-shadow:0 1px 0 rgb(255,255,255);
       text-shadow:0 1px 0 rgb(255,255,255);
       color:rgb(40,125,175);
     }
@@ -977,9 +938,6 @@
 
   .titulo-videos{
     text-shadow:0px 1px 3px rgb(0,0,0);
-    -webkit-text-shadow:0px 1px 3px rgb(0,0,0);
-    -moz-text-shadow:0px 1px 3px rgb(0,0,0);
-    -o-text-shadow:0px 1px 3px rgb(0,0,0);
     font:bold 10px "Asap",Arial,sans-serif;
     text-transform:uppercase;
     color:rgb(255,255,255);
@@ -1026,9 +984,6 @@
         text-decoration:none;
         color:rgb(255,255,255);
         font-size:12px;
-        -webkit-text-shadow:1px 1px 2px rgb(0,0,0);
-        -moz-text-shadow:1px 1px 2px rgb(0,0,0);
-        -o-text-shadow:1px 1px 2px rgb(0,0,0);
         text-shadow:1px 1px 2px rgb(0,0,0);
       }
 
@@ -1202,9 +1157,6 @@
 
 .mensagem-newsletter,
 .mensagem-newsletter-erro{
-  -webkit-text-shadow:1px 1px -2px rgb(255,255,255);
-  -moz-text-shadow:1px 1px -2px rgb(255,255,255);
-  -o-text-shadow:1px 1px -2px rgb(255,255,255);
   text-shadow:1px 1px -2px rgb(255,255,255);
   -webkit-border-radius:5px;
   -moz-border-radius:5px;
@@ -3588,8 +3540,6 @@ a.eventos:hover {
         width:100px;
         height:auto;
         -webkit-filter:grayscale(70%);
-        -moz-filter:grayscale(70%);
-        -o-filter:grayscale(70%);
         filter:grayscale(70%);
         -webkit-transition:all 0.2s linear;
         -moz-transition:all 0.2s linear;
@@ -3599,8 +3549,6 @@ a.eventos:hover {
 
       img:hover{
         -webkit-filter:grayscale(0%);
-        -moz-filter:grayscale(0%);
-        -o-filter:grayscale(0%);
         filter:grayscale(0%);
       }
     }
@@ -3630,13 +3578,10 @@ a.eventos:hover {
           border-radius:5px;
           font:15px 'Exo',Arial,sans-serif;
           text-decoration:none;
-          -webkit-text-shadow:0 1px 0 rgb(0,0,0);
-          -moz-text-shadow:0 1px 0 rgb(0,0,0);
-          -o-text-shadow:0 1px 0 rgb(0,0,0);
           text-shadow:0 1px 0 rgb(0,0,0);
           text-transform:uppercase;
           color:rgb(64,64,64);
-          padding:5px;
+          padding:3px;
           -webkit-transition:all 0.2s linear;
           -moz-transition:all 0.2s linear;
           -o-transition:all 0.2s linear;
@@ -3645,18 +3590,12 @@ a.eventos:hover {
 
         a:hover{
           background:rgb(24,24,24);
-          -webkit-text-shadow:0 0 10px rgb(255,255,255);
-          -moz-text-shadow:0 0 10px rgb(255,255,255);
-          -o-text-shadow:0 0 10px rgb(255,255,255);
           text-shadow:0 0 10px rgb(255,255,255);
           color:rgb(255,255,255);
         }
       }
 
       li:last-child a {
-        -webkit-text-shadow:none;
-        -moz-text-shadow:none;
-        -o-text-shadow:none;
         text-shadow:none;
         background:rgb(64,64,64);
         color:rgb(20,20,20);
@@ -3677,9 +3616,6 @@ a.eventos:hover {
     font:12px 'Asap',Arial,sans-serif;
     text-align:center;
     color:rgb(60,60,60);
-    -webkit-text-shadow:0 1px 0 rgb(0,0,0);
-    -moz-text-shadow:0 1px 0 rgb(0,0,0);
-    -o-text-shadow:0 1px 0 rgb(0,0,0);
     text-shadow:0 1px 0 rgb(0,0,0);
   }
 
@@ -3734,8 +3670,6 @@ a.eventos:hover {
         -o-border-radius:5px;
         border-radius:5px;
         -webkit-filter:grayscale(70%);
-        -moz-filter:grayscale(70%);
-        -o-filter:grayscale(70%);
         filter:grayscale(70%);
         -webkit-transition:all 0.5s linear;
         -moz-transition:all 0.5s linear;
@@ -3745,16 +3679,12 @@ a.eventos:hover {
 
       img:hover{
         -webkit-filter:grayscale(0%);
-        -moz-filter:grayscale(0%);
-        -o-filter:grayscale(0%);
         filter:grayscale(0%);
       }
   }
 
   .selected a img {
     -webkit-filter:grayscale(0%);
-    -moz-filter:grayscale(0%);
-    -o-filter:grayscale(0%);
     filter:grayscale(0%);
     box-shadow:
       1px 1px 0px rgb(54,182,219),
@@ -3795,9 +3725,6 @@ a.eventos:hover {
     color:rgb(255,255,255);
     text-decoration:none;
     text-transform:uppercase;
-    -webkit-text-shadow:0 0 10px rgb(0,0,0);
-    -moz-text-shadow:0 0 10px rgb(0,0,0);
-    -o-text-shadow:0 0 10px rgb(0,0,0);
     text-shadow:0 0 10px rgb(0,0,0);
     font:bold 12px 'Lato',Arial,sans-serif;
     background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAYAAADUFP50AAAAg0lEQVR42mNgoAT8/ft31/fv3+VJ1vgfCICav/z58ye3vr6eiSSNMPDv378jP3/+1CBZI1TzD6ALqvbv389CkkYYAGo+/+vXL0OSNUJt/wM0oO3+/fscJGlEsn0DOTa2k2QjUMMFoB+NSA3VapJCFajhKEnxCE05eSSlHGhaVWCgBwAAVWow0+x+22cAAAAASUVORK5CYII=") no-repeat;
@@ -3822,8 +3749,6 @@ a.eventos:hover {
   .prev,
   .next{
     -webkit-filter:opacity(0%);
-    -moz-filter:opacity(0%);
-    -o-filter:opacity(0%);
     filter:opacity(0%);
     margin:60px 0 0 10px;
     position:absolute;
@@ -3846,8 +3771,6 @@ a.eventos:hover {
   .prev:hover,
   .next:hover{
     -webkit-filter:opacity(100%);
-    -moz-filter:opacity(100%);
-    -o-filter:opacity(100%);
     filter:opacity(100%);
     -webkit-transition:all 0.5s linear;
     -moz-transition:all 0.5s linear;
