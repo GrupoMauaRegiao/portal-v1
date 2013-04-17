@@ -18,12 +18,7 @@ jQuery(document).ready(function () {
   });
 
   jQuery.each(areaSetas, function (i) {
-    jQuery(areaSetas).eq(i).css({
-      'transition': 'box-shadow 0.3s linear',
-      '-webkit-transition': 'box-shadow 0.3s linear',
-      '-moz-transition': 'box-shadow 0.3s linear',
-      '-o-transition': 'box-shadow 0.3s linear'
-    });
+    jQuery(areaSetas).eq(i).css('transition', 'box-shadow 0.3s linear');
   });
 
   jQuery.each(areaSetas, function (i) {
