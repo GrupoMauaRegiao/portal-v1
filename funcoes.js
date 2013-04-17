@@ -41,12 +41,12 @@ jQuery(document).ready(function () {
   jQuery('table[width="98%"]').css('height', '50px');
   jQuery('table[width="120"]').slice(4, 8).css('margin', '0 21px 0 0');
   jQuery('table[width="130"]').css('margin', '0 0 0 21px');
-  
+
   jQuery('td[bgcolor="#F7F7F7"]').parent().parent().parent().css({
     'width': '310px',
     'margin': '0 0 5px 0'
   });
-  
+
   jQuery('td[bgcolor="#F7F7F7"][valign="top"]').parent().parent().parent().css({
     'width': '665px',
     'margin': '0 0 5px 0'
@@ -461,17 +461,4 @@ function PopUp(arquivo, nome, largura, altura, rolagem) {
     'menubar=no, ' +
     'resizable=no, ' +
     'fullscreen=no');
-}
-
-function ResolucaoTela(strCookie, strValor, strDias) {
-  var dtmData, strExpires;
-  dtmData = new Date();
-
-  if (strDias) {
-    dtmData.setTime(dtmData.getTime() + (strDias * 24 * 60 * 60 * 1000));
-    strExpires = "; expires=" + dtmData.toGMTString();
-  } else {
-    strExpires = "";
-  }
-  document.cookie = strCookie + "=" + strValor + strExpires + "; path=/";
 }
