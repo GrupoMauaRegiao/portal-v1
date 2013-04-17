@@ -426,18 +426,18 @@ function Imprimir(URL) {
 
 function makevisible(cur, which) {
   if (which === 0) {
-    cur.style.backgroundColor = 'rgba(255,255,255,0.25)';
+    cur.setAttribute('style',
+      '-webkit-filter: opacity(85%);' +
+      'filter: opacity(85%)');
   } else {
-    cur.style.backgroundColor = 'rgba(255,255,255,0)';
+    cur.setAttribute('style',
+      '-webkit-filter: opacity(100%);' +
+      'filter: opacity(100%)');
   }
 }
 
 function gE(ID) {
   return document.getElementById(ID);
-}
-
-function gEs(tag) {
-  return document.getElementsByTagName(tag);
 }
 
 function MostraID(id, campo, campo1, campo2) {
