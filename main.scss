@@ -82,8 +82,7 @@
   -webkit-transition:0.5s;
   transition:0.5s;
   -webkit-transform:scale(1.1);
-  -moz-transform:scale(1.1);
-  -o-transform:scale(1.1);
+  -ms-transform:scale(1.1);
   transform:scale(1.1);
 }
 
@@ -652,8 +651,7 @@
 
       img:hover{
         -webkit-transform:scale(1.2);
-        -moz-transform:scale(1.2);
-        -o-transform:scale(1.2);
+        -ms-transform:scale(1.2);
         transform:scale(1.2);
         -webkit-transition:0.2s;
         transition:0.2s;
@@ -707,8 +705,7 @@
 
     img:hover{
       -webkit-transform:scale(1) !important;
-      -moz-transform:scale(1) !important;
-      -o-transform:scale(1) !important;
+      -ms-transform:scale(1) !important;
       transform:scale(1) !important;
     }
   }
