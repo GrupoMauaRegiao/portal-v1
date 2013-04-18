@@ -1234,7 +1234,7 @@ img{ border:0; }
   font:bold 13px 'Lato',Arial,sans-serif;
   text-transform:uppercase;
   color:lighten(rgb(160,160,160),20%);
-  @include widthHeight(170px,20px);
+  @include widthHeight(205px,20px);
 }
 
 .urbangreymenu,
@@ -1649,7 +1649,8 @@ ul{
 
 .videos_titulo,
 .eventosdata{
-  font:bold 14px "Trebuchet MS",Arial,Helvetica,sans-serif;
+  font:bold 12px "Lato",Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
   color:rgb(0,0,0);
 }
 
