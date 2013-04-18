@@ -5,6 +5,11 @@
   height:$h;
 }
 
+@mixin tipography($fxSizeTypo,$color){
+  font:$fxSizeTypo;
+  color:$color;
+}
+
 *::selection{
   background:rgb(255,0,255);
   color:rgb(242,248,255);
@@ -19,11 +24,10 @@
   height:392px;
 
   .fechar{
+    @include tipography(#{bold 12px 'Lato',Arial,sans-serif},rgb(255,255,255));
     cursor:pointer;
     text-align:center;
     background:rgb(0,0,0);
-    color:rgb(255,255,255);
-    font:bold 12px 'Lato',Arial,sans-serif;
     text-transform:uppercase;
     width:100px;
     padding:5px 0 3px 0;
@@ -62,10 +66,9 @@
     }
 
     .contador{
-      font:bold 14px/19px 'Lato',Arial,sans-serif;
+      @include tipography(#{bold 14px/19px 'Lato',Arial,sans-serif},rgb(255,255,255));
       border-radius:50px;
       text-align:center;
-      color:rgb(255,255,255);
       position:absolute;
       background:rgb(0,0,0);
       margin:-30px 5px 0 0;
@@ -97,9 +100,8 @@
 
     .titulo{
       h1{
+        @include tipography(#{30px 'Trebuchet MS',Arial,sans-serif},rgb(30,75,122));
         margin:0;
-        font:30px 'Trebuchet MS',Arial,sans-serif;
-        color:rgb(30,75,122);
       }
     }
   } // #Header vídeos
@@ -139,8 +141,7 @@
       }
 
       #campo-categoria{
-        color:rgb(200,200,200);
-        font:14px 'Asap',Arial,sans-serif;
+        @include tipography(#{14px 'Asap',Arial,sans-serif},rgb(200,200,200));
         margin:0 0 0 10px;
         background:rgb(255,255,255);
         border:1px solid rgb(200,200,200);
@@ -164,21 +165,14 @@
     float:left;
 
     .video{ iframe{ width:590px; } }
-
-    .descricao{
-      p{
-        font:bold 14px 'Asap',Arial,sans-serif;
-        color:rgb(54,136,219);
-      }
-    }
+    .descricao{ p{ @include tipography(#{bold 14px 'Asap',Arial,sans-serif},rgb(54,136,219)); } }
 
     .categoria,
     .data,
     .views{
       p{
-        font:12px 'Lato',Arial,sans-serif;
+        @include tipography(#{12px 'Lato',Arial,sans-serif},rgb(14,96,159));
         margin:5px 0 -5px 0;
-        color:rgb(14,96,159);
       }
     }
 
@@ -186,10 +180,9 @@
 
     .titulo{
       p{
+        @include tipography(#{bold 22px 'Lato',Arial,sans-serif},rgb(14,96,159));
         margin:0;
         padding:5px 0 20px 0;
-        font:bold 22px 'Lato',Arial,sans-serif;
-        color:rgb(54,136,199);
         text-shadow:1px 1px 0 rgb(14,96,159);
       }
     }
@@ -206,9 +199,8 @@
       margin:0 0 20px 0;
 
       h2{
-        font:bold 25px 'Asap',Arial,sans-serif;
+        @include tipography(#{bold 25px 'Asap',Arial,sans-serif},rgb(204,24,30));
         text-transform:uppercase;
-        color:rgb(204,24,30);
         margin:0;
       }
     }
@@ -234,15 +226,13 @@
 
         .descricao{
           p{
-            font:bold 12px 'Lato',Arial,sans-serif;
+            @include tipography(#{bold 12px 'Lato',Arial,sans-serif},rgb(14,96,159));
             margin:5px 0 -5px 0;
-            color:rgb(14,96,159);
           }
 
           .titulo{
             a{
-              font:bold 14px 'Asap',Arial,sans-serif;
-              color:rgb(54,136,219);
+              @include tipography(#{bold 14px 'Asap',Arial,sans-serif},rgb(54,136,219));
               text-decoration:none;
             }
 
@@ -270,9 +260,8 @@
 
   .header-filmes{
     h1{
+      @include tipography(#{30px 'Trebuchet MS',Arial,sans-serif},rgb(30,75,122));
       margin:0;
-      font:30px 'Trebuchet MS',Arial,sans-serif;
-      color:rgb(30,75,122);
     }
   }
 
@@ -310,14 +299,13 @@
         @include widthHeight(380px,75px);
 
         a{
+          @include tipography(#{bold 30px 'Lato',Arial,sans-serif},rgb(54,182,219));
           -webkit-filter:opacity(50%);
           filter:opacity(50%);
           -webkit-transition:all 0.2s linear;
           transition:all 0.2s linear;
-          font:bold 30px 'Lato',Arial,sans-serif;
           text-decoration:none;
           text-transform:uppercase;
-          color:rgb(54,182,219);
         }
 
         a:hover{
@@ -333,11 +321,10 @@
 
       .subtitulo-filme{
         a{
+          @include tipography(#{bold 12px 'Lato',Arial,sans-serif},rgb(200,10,10));
           margin:0 0 0 35px;
-          font:bold 12px 'Lato',Arial,sans-serif;
           text-transform:uppercase;
           text-decoration:none;
-          color:rgb(200,10,10);
         }
       }
     }
@@ -384,10 +371,7 @@
     padding:10px 0 50px 0;
     width:600px;
 
-    h1{
-      font:30px 'Trebuchet MS',Arial,sans-serif;
-      color:rgb(0,51,102);
-    }
+    h1{ @include tipography(#{30px 'Trebuchet MS',Arial,sans-serif},rgb(0,51,102)); }
   }
 
   .item-agenda{
@@ -401,9 +385,8 @@
       @include widthHeight(120px,120px);
 
       .dia-evento{
+        @include tipography(#{bold 40px 'Lato',Arial,sans-serif},rgb(255,255,255));
         text-align:center;
-        font:bold 40px 'Lato',Arial,sans-serif;
-        color:rgb(255,255,255);
         padding:32px 0 0 0;
         text-shadow:1px 1px 0 rgb(0,0,0);
       }
@@ -439,8 +422,7 @@
       @include widthHeight(490px,48px);
 
       .nome-evento{
-        color:rgb(255,255,255);
-        font:bold 20px "Asap",Arial,sans-serif;
+        @include tipography(#{bold 20px "Asap",Arial,sans-serif},rgb(255,255,255));
         text-shadow:0px 1px 3px rgb(0,0,0);
         text-transform:uppercase;
         float:left;
@@ -449,22 +431,21 @@
       }
 
       .descricao-evento{
-        p{
-          margin:0;
-          padding:5px;
-        }
-
+        @include tipography(#{bold 14px "Lato",Arial,sans-serif},rgb(54,182,199));
         border-radius:0px 0 0 100px;
         border-left:5px solid rgb(54,182,199);
         background:rgb(0,0,0);
-        color:rgb(54,182,199);
         text-align:right;
-        font:bold 14px "Lato",Arial,sans-serif;
         margin:-37px 0 0 0;
         float:left;
         overflow-y:scroll;
         padding:5px 0 5px 5px;
         @include widthHeight(220px,110px);
+
+        p{
+          margin:0;
+          padding:5px;
+        }
       }
     }
   } // #Item da agenda
@@ -475,16 +456,12 @@
   .header-fale-conosco{
     width:630px;
 
-    h1{
-      font:20px 'Trebuchet MS',Arial,sans-serif;
-      color:rgb(0,51,102);
-    }
+    h1{ @include tipography(#{20px 'Trebuchet MS',Arial,sans-serif},rgb(0,51,102)); }
   }
 
   .informacao-fale-conosco{
     p{
-      font:16px 'Asap',Arial,sans-serif;
-      color:rgb(150,150,150);
+      @include tipography(#{16px 'Asap',Arial,sans-serif},rgb(150,150,150));
 
       span{
         font-weight:900;
@@ -517,12 +494,11 @@
 
       input[type="text"],
       textarea{
+        @include tipography(#{bold 15px "Asap",Arial,sans-serif},rgb(220,220,220));
         outline:none;
         padding:4px 0 4px 4px;
         border:1px solid rgb(200,200,200);
-        font:bold 15px "Asap",Arial,sans-serif;
         text-transform:uppercase;
-        color:rgb(220,220,220);
         margin:0 0 10px 0;
         border-radius:5px;
         box-shadow:inset 0 0 5px rgb(200,200,200);
@@ -548,11 +524,10 @@
         text-align:right;
 
         input[type="submit"]{
+          @include tipography(#{15px "Asap",Arial,sans-serif},rgb(255,255,255));
           padding:10px;
           background:rgb(54,136,199);
           border:0;
-          color:white;
-          font:15px "Asap",Arial,sans-serif;
           text-transform:uppercase;
           border-radius:4px;
           cursor:pointer;
@@ -576,10 +551,9 @@
   width:637px;
 
   h3{
-    font:18px 'Exo',Arial,sans-serif;
+    @include tipography(#{18px 'Exo',Arial,sans-serif},rgb(217,130,0));
     text-transform:uppercase;
     border-bottom:5px solid rgb(217,130,0);
-    color:rgb(217,130,0);
   }
 }
 
@@ -617,12 +591,11 @@
         text-align:center;
 
         a{
+          @include tipography(#{bold 11px 'Lato',Arial,sans-serif},rgb(100,100,100));
           padding:2px;
-          font:bold 11px 'Lato',Arial,sans-serif;
           text-shadow:0px 1px 0 rgb(255,255,255);
           text-decoration:none;
           text-transform:uppercase;
-          color:rgb(100,100,100);
           -webkit-transition:all 0.5s linear;
           transition:all 0.5s linear;
         }
@@ -674,14 +647,13 @@
   @include widthHeight(113px,59px);
 
   a{
+    @include tipography(#{bold 12px 'Lato',Arial,sans-serif},rgb(255,255,255));
     text-shadow:1px 1px 0px rgb(0,0,0);
     display:block;
     overflow:hidden;
     width:110px;
     text-transform:uppercase;
-    font:bold 12px 'Lato',Arial,sans-serif;
     text-decoration:none;
-    color:rgb(255,255,255);
     -webkit-transition:all 0.5s linear;
     transition:all 0.5s linear;
   }
@@ -747,8 +719,7 @@
 
 .enquete{
   p{
-    font:bold 14px 'Asap',Arial,sans-serif;
-    color:rgb(121,121,121);
+    @include tipography(#{bold 14px 'Asap',Arial,sans-serif},rgb(121,121,121));
     margin:0;
   }
 
@@ -787,10 +758,9 @@
     }
 
     .percentual{
+      @include tipography(#{bold 18px 'Asap',Arial,sans-serif},rgb(40,125,175));
       text-align:right;
-      font:bold 18px 'Asap',Arial,sans-serif;
       text-shadow:0 1px 0 rgb(255,255,255);
-      color:rgb(40,125,175);
     }
   }
 } // # Enquete
@@ -801,10 +771,9 @@
   h3{ width:180px; }
 
   .titulo-videos{
+    @include tipography(#{bold 10px "Asap",Arial,sans-serif},rgb(255,255,255));
     text-shadow:0px 1px 3px rgb(0,0,0);
-    font:bold 10px "Asap",Arial,sans-serif;
     text-transform:uppercase;
-    color:rgb(255,255,255);
     cursor:pointer;
   }
 
@@ -858,10 +827,7 @@
     margin:-6px 0 0 0;
     text-align:right;
 
-    span{
-      font:12px 'Asap',Arial,sans-serif;
-      color:rgb(255,255,255);
-    }
+    span{ @include tipography(#{12px 'Asap',Arial,sans-serif},rgb(255,255,255)); }
   }
 }
 
@@ -869,10 +835,7 @@
   margin:-26px 0 0 0;
   text-align:right;
 
-  span{
-    font:12px 'Asap',Arial,sans-serif;
-    color:rgb(255,255,255);
-  }
+  span{ @include tipography(#{12px 'Asap',Arial,sans-serif},rgb(255,255,255)); }
 }
 
 .video-2,
@@ -937,12 +900,11 @@
 
 #nome,
 #email{
+  @include tipography(#{bold 15px 'Asap',Arial,sans-serif},rgb(220,220,220));
   outline:none;
   padding:4px 0 4px 4px;
   border:1px solid rgb(200,200,200);
-  font:bold 15px 'Asap',Arial,sans-serif;
   text-transform:uppercase;
-  color:rgb(220,220,220);
   margin:0 0 10px 0;
   border-radius:5px;
   box-shadow:inset 0 0 5px rgb(200,200,200);
@@ -963,11 +925,10 @@
 }
 
 #botao-cadastrar{
+  @include tipography(#{15px 'Asap',Arial,sans-serif},rgb(255,255,255));
   padding:10px;
   background:rgb(54,136,199);
   border:0;
-  color:rgb(255,255,255);
-  font:15px 'Asap',Arial,sans-serif;
   text-transform:uppercase;
   border-radius:4px;
   cursor:pointer;
@@ -977,14 +938,13 @@
 
 .mensagem-newsletter,
 .mensagem-newsletter-erro{
+  @include tipography(#{bold 16px 'Asap',Arial,sans-serif},rgb(190,0,0));
   text-shadow:1px 1px -2px rgb(255,255,255);
   border-radius:5px;
   width:161px;
   background:rgb(255,200,200);
   padding:10px;
   text-align:center;
-  font:bold 16px 'Asap',Arial,sans-serif;
-  color:rgb(190,0,0);
 }
 
 .mensagem-newsletter{
@@ -992,15 +952,11 @@
   color:rgb(54,136,0) !important;
 }
 
-.txtcopy{
-  font:bold 12px "Trebuchet MS",Verdana;
-  color:rgb(0,51,102);
-}
+.txtcopy{ @include tipography(#{bold 12px "Trebuchet MS",Verdana},rgb(0,51,102)); }
 
 .formguiavirtual{
-  font:bold 12pt Arial;
+  @include tipography(#{bold 12pt Arial},rgb(51,51,51));
   text-decoration:none;
-  color:rgb(51,51,51);
   letter-spacing:-0.5;
   background-color:rgb(229,229,229);
   border:none;
@@ -1028,7 +984,7 @@ body{
   .cabecalho{ width:1040px; }
     .cabecalho object,
     .cabecalho embed{ width:765px; }
-.destaque-topo{ margin:-8px 0 0 -4px; }
+.destaque-topo{ margin:-8px 0 0 17px; }
 .lateral-direita{ margin:-8px 0 0 0; }
 .menu-navegacao{ background:rgb(230,230,230); }
 
@@ -1860,7 +1816,7 @@ a.f5{
 }
 
 #demo-container{
-  margin:0 -28px !important;
+  margin:0 -50px !important;
   padding:0;
 }
 
