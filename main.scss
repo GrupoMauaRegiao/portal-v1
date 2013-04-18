@@ -1,16 +1,9 @@
 // # /home/main.min.css
 
-@mixin widthHeight($w,$h){
-  width:$w;
-  height:$h;
-}
+@mixin widthHeight($w,$h){ width:$w; height:$h; }
+@mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
-@mixin tipography($fxSizeTypo,$color){
-  font:$fxSizeTypo;
-  color:$color;
-}
-
-*::selection{
+div::selection{
   background:rgb(255,0,255);
   color:rgb(242,248,255);
 }
@@ -2422,7 +2415,7 @@ ul{ list-style:none; }
 
 a.eventos{
   text-shadow:1px 1px 0 rgb(255,255,255);
-  font:bold 14px "Lato",Arial,sans-serif;
+  font:bold 12px "Lato",Arial,sans-serif;
   color:rgb(0,0,0);
   text-decoration:none;
 }
