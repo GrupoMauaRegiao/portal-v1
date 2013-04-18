@@ -182,7 +182,7 @@
       }
     }
 
-    .views{ margin: 0  0 20px 0; }
+    .views{ margin:0  0 20px 0; }
 
     .titulo{
       p{
@@ -361,8 +361,8 @@
       line-height:20px;
 
       a{
-        color: rgb(34,162,199);
-        text-decoration: none;
+        color:rgb(34,162,199);
+        text-decoration:none;
       }
     }
   }
@@ -1953,14 +1953,14 @@ ul#simple-menu li a.right{ padding-right:19px; }
 .meiosite3{ margin:-15px 0 40px 0; }
 
 .meiosite4{
-  margin: 5px 0 2px 0;
-  padding: 5px 0 2px 0;
+  margin:5px 0 2px 0;
+  padding:5px 0 2px 0;
   @include widthHeight(640px,250px);
 }
 
 .meiosite5{
-  margin: 2px 0 1px 0;
-  padding: 2px 0 1px 0;
+  margin:2px 0 1px 0;
+  padding:2px 0 1px 0;
   @include widthHeight(620px,185px);
 }
 
