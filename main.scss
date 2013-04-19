@@ -1024,12 +1024,17 @@ body{
 .posicaorodape .f2:hover,
 .posicaorodape .f4:hover{ text-decoration:underline; }
 .topobg{ height:10px; }
+
 .imagem-coluna,
-.imagem-noticia{ padding:0 15px 15px 0; }
+.imagem-noticia{
+  box-shadow:2px 2px 5px rgb(180,180,180);
+  border-radius:0 10px;
+  margin:0 15px 15px 0;
+}
+
 .barra-lateral-esquerda{ margin:-5px 0 0 0; }
 #mudaFonte span{ font:14px/20px 'Asap',Arial,sans-serif !important; }
-  #mudaFonte b span{ font-weight:900 !important; }
-#mudaFonte{ img{ padding:0 10px 10px 0; } }
+#mudaFonte b span{ font-weight:900 !important; }
 
 .rodape{
   background-color:rgb(24,24,24);
