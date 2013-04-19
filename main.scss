@@ -3,10 +3,14 @@
 @mixin widthHeight($w,$h){ width:$w; height:$h; }
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
-div::selection{
+*::selection{
   background:rgb(255,0,255);
   color:rgb(242,248,255);
 }
+
+.ultimas-noticias{ margin:0 -9px -20px -5px; }
+.titulos-noticias{ width:150px; }
+.box-noticia-destaque { margin:0 0 0 -5px; }
 
 // Anúncio Popup
 .anuncio-popup{
@@ -1656,7 +1660,8 @@ a.noticiadestaque:hover{
   font:bold 12px 'Lato',Arial,Helvetica,sans-serif;
   margin:-3px 0 0 0;
   text-transform:uppercase;
-  color:rgb(14,96,159);
+  color:rgb(217,130,0);
+  text-shadow:0px 1px 0px rgb(255,255,255);
 }
 
 a.noticiadestaque2{ font:bold 13px "Lato",Arial,Helvetica,sans-serif; }
@@ -1676,7 +1681,8 @@ a.noticiadestaque2:hover{ border-bottom:1px solid rgb(0,0,0); }
 a.noticiadestaque3{ font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif; }
 
 a.noticiasemfoto{
-  font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif;
+  margin:0 0 0 -18px;
+  font:bold 16px "Lato",Arial,Helvetica,sans-serif;
   text-decoration:none;
   color:rgb(51,51,51);
 }

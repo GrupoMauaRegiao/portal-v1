@@ -79,6 +79,9 @@ jQuery(document).ready(function () {
     });
   });
 
+  jQuery('.titulos-noticias').last().css('margin', '0 0 0 -40px');
+  jQuery('.fundo_titulo_home').first().css('margin', '0 0 0 -10px');
+
   // Browser
   jQuery.browser = {};
   jQuery.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase());
