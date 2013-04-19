@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato" />
 <link rel="stylesheet" href="http://portalmauaeregiao.com.br/paginas/css/tdefaut.css" type="text/css" media="all" />
 <!--[if IE]><link rel="stylesheet" href="http://portalmauaeregiao.com.br/paginas/css/tdefaut-ie.css" type="text/css" media="all" /><![endif]-->
 
