@@ -3,6 +3,42 @@
 @mixin widthHeight($w,$h){ width:$w; height:$h; }
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
+.box-colunistas{
+  width:185px;
+
+  .o-colunista{
+      width:150px;
+      float:left;
+      margin:0 0 5px 0;
+
+      .imagem{
+        float:left;
+
+        img{
+          -webkit-transition:border 0.3s linear;
+          margin:0 5px 0 0;
+          border:2px solid rgb(255,255,255);
+        }
+
+        img:hover{ border:2px solid rgb(0,0,0); }
+      }
+
+      .nome{
+        .colunista{
+          a {
+            @include tipography(#{bold 10px 'Lato',Arial,sans-serif},rgb(217,130,0));
+            text-decoration:none;
+            text-transform:uppercase;
+          }
+
+          a:hover{ border-bottom:2px solid rgb(217,130,0); }
+        }
+      }
+
+      .categoria{ @include tipography(#{bold 10px 'Lato',Arial,sans-serif},rgb(14,96,159)); }
+  }
+}
+
 *::selection{
   background:rgb(255,0,255);
   color:rgb(242,248,255);
