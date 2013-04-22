@@ -9,7 +9,6 @@
   .o-colunista{
       width:150px;
       float:left;
-      margin:0 0 5px 0;
 
       .imagem{
         float:left;
@@ -35,7 +34,7 @@
         }
       }
 
-      .categoria{ @include tipography(#{bold 10px 'Lato',Arial,sans-serif},rgb(14,96,159)); }
+      .categoria{ @include tipography(#{bold 9px 'Lato',Arial,sans-serif},rgb(14,96,159)); }
   }
 }
 
@@ -1705,7 +1704,12 @@ a.noticiadestaque:hover{
   text-shadow:0px 1px 0px rgb(255,255,255);
 }
 
-a.noticiadestaque2{ font:bold 13px "Lato",Arial,Helvetica,sans-serif; }
+a.noticiadestaque2{
+  text-decoration:none;
+  color:rgb(63,63,63);
+  font:11px "Lato",Arial,Helvetica,sans-serif;
+}
+
 a.noticiadestaque2:hover{ border-bottom:1px solid rgb(0,0,0); }
 
 .fundo_titulo_ent,
@@ -1823,7 +1827,6 @@ a.f3{
 }
 
 a.noticiadestaque,
-a.noticiadestaque2,
 a.noticiadestaque3,
 a.classe,
 a.classe1,
