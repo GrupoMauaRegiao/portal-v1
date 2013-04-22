@@ -9,7 +9,7 @@
  <script src="http://portalmauaeregiao.com.br/paginas/js/nivo-configs.js"></script>
  <script>
   var $ = jQuery.noConflict();
-  $(document).ready(function (){
+  $(document).ready(function () {
     $('#slider').nivoSlider({
       effect: "sliceDownLeft",
       slices: 20,
@@ -30,17 +30,17 @@
     $slider = $('#slider');
 
     $slider.on('mouseover', function(evt) {
-      $('.nivo-directionNav a').fadeIn(200);
       evt.preventDefault();
       evt.stopImmediatePropagation();
       evt.stopPropagation();
+      $('.nivo-directionNav a').fadeIn(200);
     });
 
     $slider.on('mouseleave', function(evt) {
-      $('.nivo-directionNav a').fadeOut(200);
       evt.preventDefault();
       evt.stopImmediatePropagation();
       evt.stopPropagation();
+      $('.nivo-directionNav a').fadeOut(200);
     });
   });
  </script>
