@@ -3,6 +3,65 @@
 @mixin widthHeight($w,$h){ width:$w; height:$h; }
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
+// Colunistas (lista de artigos)
+.artigos{
+  text-decoration:none;
+}
+
+.artigo{
+  width:605px;
+  cursor:pointer;
+  border-radius:5px;
+  border:0;
+  box-shadow:0px 5px 0 rgb(230,230,230);
+  background:rgb(240,240,240);
+  padding:10px;
+  margin:0 40px 10px 15px;
+  -webkit-transition:all 0.2s linear;
+  transition:all 0.2s linear;
+
+  .data{
+    .a-data{
+      font:12px 'Lato',Arial,sans-serif;
+      color:rgb(150,150,150);
+      text-transform:uppercase;
+      padding:0 0 10px 20px;
+    }
+  }
+
+  .titulo{
+    .icone{
+      margin:0 5px 0 0;
+      float:left;
+
+      img{
+        margin:3px 0 0 0;
+        width:15px;
+        height:15px;
+      }
+    }
+
+    .o-titulo{
+      p{
+        margin:0;
+        color:rgb(14,96,159);
+        text-shadow:1px 1px 1px rgb(255,255,255);
+        font:bold 14px 'Lato',Arial,sans-serif;
+        text-transform:uppercase;
+      }
+
+      p:hover{
+        color:rgb(0,66,129);
+      }
+    }
+  } // #Título
+} // #Artigo
+
+.artigo:hover{
+  background:rgb(243,255,226);
+  box-shadow:none;
+}
+
 .noticia-economia{
   text-align:left;
   margin:10px 0 0 -12px;
@@ -1072,7 +1131,6 @@ body{
 
 .imagem-coluna,
 .imagem-noticia{
-  box-shadow:2px 2px 5px rgb(180,180,180);
   border-radius:0 10px;
   margin:0 15px 15px 0;
 }
@@ -1084,7 +1142,6 @@ body{
 #mudaFonte a img{
   margin:0 10px 10px 0;
   border-radius:0 5px;
-  box-shadow:2px 2px 10px rgb(200,200,200);
 }
 
 .rodape{
