@@ -3,6 +3,16 @@
 @mixin widthHeight($w,$h){ width:$w; height:$h; }
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
+.noticia-economia{
+  text-align:left;
+  margin:10px 0 0 -12px;
+
+  .noticiasemfoto{
+    @include tipography(#{bold 16px "Lato",Arial,Helvetica,sans-serif},rgb(150,150,150));
+    text-decoration:none;
+  }
+}
+
 .box-colunistas{
   width:185px;
 
@@ -1071,6 +1081,12 @@ body{
 #mudaFonte span{ font:14px/20px 'Asap',Arial,sans-serif !important; }
 #mudaFonte b span{ font-weight:900 !important; }
 
+#mudaFonte a img{
+  margin:0 10px 10px 0;
+  border-radius:0 5px;
+  box-shadow:2px 2px 10px rgb(200,200,200);
+}
+
 .rodape{
   background-color:rgb(24,24,24);
   height:200px;
@@ -1724,13 +1740,6 @@ a.noticiadestaque2:hover{ border-bottom:1px solid rgb(0,0,0); }
 .fundo_titulo_home{ color:rgb(0,0,0); }
 
 a.noticiadestaque3{ font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif; }
-
-a.noticiasemfoto{
-  margin:0 0 0 -18px;
-  font:bold 16px "Lato",Arial,Helvetica,sans-serif;
-  text-decoration:none;
-  color:rgb(51,51,51);
-}
 
 a.noticiaentretenimento{
   font:bold 13px "Trebuchet MS",Arial,Helvetica,sans-serif;
