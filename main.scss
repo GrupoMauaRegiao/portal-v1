@@ -22,8 +22,7 @@
 
   .data{
     .a-data{
-      font:12px 'Lato',Arial,sans-serif;
-      color:rgb(150,150,150);
+      @include tipography(#{12px 'Lato',Arial,sans-serif},rgb(150,150,150));
       text-transform:uppercase;
       padding:0 0 10px 20px;
     }
@@ -43,16 +42,13 @@
 
     .o-titulo{
       p{
+        @include tipography(#{bold 14px 'Lato',Arial,sans-serif},rgb(14,96,159));
         margin:0;
-        color:rgb(14,96,159);
         text-shadow:1px 1px 1px rgb(255,255,255);
-        font:bold 14px 'Lato',Arial,sans-serif;
         text-transform:uppercase;
       }
 
-      p:hover{
-        color:rgb(0,66,129);
-      }
+      p:hover{ color:rgb(0,66,129); }
     }
   } // #Título
 } // #Artigo
