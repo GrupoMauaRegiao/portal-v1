@@ -236,6 +236,17 @@ jQuery(document).ready(function () {
     });
   }
 
+  function abrePopupRedesSociais() {
+    var links;
+    links = jQuery('.link-rede-social');
+    links.on('click', function (evt) {
+      evt.preventDefault();
+      evt.stopImmediatePropagation();
+      evt.stopPropagation();
+      window.open(jQuery(this).attr('href'), "Compartilhar", "height=500, width=600, modal=yes, alwaysRaised=yes");
+    });
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -245,6 +256,7 @@ jQuery(document).ready(function () {
   enviarEmail();
   randomizarVideosDestaquesAte(5);
   fecharAnuncioPopup();
+  abrePopupRedesSociais();
 
 });
 

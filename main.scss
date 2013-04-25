@@ -3,8 +3,85 @@
 @mixin widthHeight($w,$h){ width:$w; height:$h; }
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
+*::selection{
+  background:rgb(255,0,255);
+  color:rgb(242,248,255);
+}
+
+//Botoẽs Imprimir e Indicar
+.imprimir-indicar{
+  margin:0 auto;
+  margin-top:-5px;
+  width:330px;
+  text-align:center;
+
+  .imprimir{ a{ img{ @include widthHeight(130px,34px); } } }
+
+  .imprimir,
+  .indicar{
+    float:left;
+    padding:5px;
+    @include widthHeight(130px,34px);
+  }
+}
+
+// Link espalhar
+.espalhar{
+  text-align:center;
+  width:620px;
+  float:left;
+
+  .link{
+    p {
+      font: 16px 'Asap',Arial,sans-serif;
+      color: rgb(80,80,80);
+
+      input{
+        color:rgb(14,96,159);
+        font:bold 12px 'Lato',Arial,sans-serif;
+        outline:none;
+        border:1px solid rgb(200,200,200);
+        padding:5px 0 5px 5px;
+        border-radius:5px;
+        box-shadow:inset 0px 1px 5px rgb(180,180,180);
+        -webkit-transition:all 0.3s linear;
+        transition:all 0.3s linear;
+        @include widthHeight(300px,25px);
+      }
+
+      input:focus{ box-shadow:none; }
+    }
+  } // #Link
+
+  .social{
+    .icons{
+      margin:0 0 30px 0;
+
+      p{
+        @include tipography(#{16px 'Asap',Arial,sans-serif},rgb(80,80,80));
+        margin:35px 0 0 -80px;
+
+        a{
+          float:left;
+          position:absolute;
+          margin:-8px 0 0 7px;
+          background:url("../images/sprite-redes-sociais.jpg") no-repeat -55px;
+          @include widthHeight(36px, 36px);
+        }
+
+        a:first-child{
+          background-position:0;
+          margin-left:55px;
+        }
+      }
+
+    } // #Icons
+  } // #Social
+} // #Espalhar
+
 // Lista de notícias relacionadas
 .mais-noticias{
+  float:left;
   width:640px;
   text-align:center;
 
@@ -46,8 +123,7 @@
 
         img{
           margin:3px 0 0 0;
-          width:15px;
-          height:15px;
+          @include widthHeight(15px,15px);
         }
       }
 
@@ -104,8 +180,7 @@
 
       img{
         margin:3px 0 0 0;
-        width:15px;
-        height:15px;
+        @include widthHeight(15px,15px);
       }
     }
 
@@ -171,11 +246,6 @@
       .categoria{ @include tipography(#{bold 9px 'Lato',Arial,sans-serif},rgb(14,96,159)); }
   } // #O colunista
 } // #Box colunistas
-
-*::selection{
-  background:rgb(255,0,255);
-  color:rgb(242,248,255);
-}
 
 .ultimas-noticias{ margin:0 -9px -20px -5px; }
 .titulos-noticias{ width:150px; }
