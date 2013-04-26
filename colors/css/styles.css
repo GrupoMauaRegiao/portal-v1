@@ -9,7 +9,7 @@
     cursor:pointer;
   }
 
-    h1{ font:40px 'Lato',Arial,sans-serif; }
+    h1{ font:40px 'Inconsolata',Arial,sans-serif; }
 
     h1:hover{
       -webkit-transform:rotate(360deg);
