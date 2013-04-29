@@ -70,7 +70,7 @@
 
         .aumentar-fonte,
         .diminuir-fonte{
-          @include tipography(#{bold 17px 'Graduate',Georgia,serif},rgb(255,255,255));
+          @include tipography(#{bold 17px 'Lato',Arial,sans-serif},rgb(255,255,255));
           cursor:pointer;
           text-shadow:1px 1px 1px rgb(50,50,50);
           border-radius:3px;
