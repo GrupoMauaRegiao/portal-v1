@@ -247,6 +247,40 @@ jQuery(document).ready(function () {
     });
   }
 
+  function alterarTamanhoFonte() {
+    var botAumentar, botDiminuir, txt, sizePadrao, sizeAtual, sizeMax, fatorMudanca, i, len, expr;
+    botAumentar = jQuery('.aumentar-fonte');
+    botDiminuir = jQuery('.diminuir-fonte');
+    txt = jQuery('.o-texto span span');
+    sizePadrao = 14;
+    sizeAtual = sizePadrao;
+    sizeMax = 26;
+    fatorMudanca = 4;
+
+    // Default size --> sizePadrao
+    for (i = 0, len = txt.length; i < len; i += 1) {
+      txt.eq(i).attr('style', "font:" + sizePadrao + "px 'Asap',Arial,sans-serif !important;");
+    }
+
+    botAumentar.on('click', function () {
+      expr = sizeAtual < sizeMax
+        ? sizeAtual += fatorMudanca
+        : sizeAtual;
+      for (i = 0, len = txt.length; i < len; i += 1) {
+        txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
+      }
+    });
+
+    botDiminuir.on('click', function () {
+      expr = sizeAtual > sizePadrao
+        ? sizeAtual -= fatorMudanca
+        : sizeAtual;
+      for (i = 0, len = txt.length; i < len; i += 1) {
+        txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
+      }
+    });
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -257,6 +291,7 @@ jQuery(document).ready(function () {
   randomizarVideosDestaquesAte(5);
   fecharAnuncioPopup();
   abrePopupRedesSociais();
+  alterarTamanhoFonte();
 
 });
 

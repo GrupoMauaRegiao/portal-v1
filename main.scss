@@ -72,15 +72,12 @@
         .diminuir-fonte{
           @include tipography(#{bold 17px 'Lato',Arial,sans-serif},rgb(255,255,255));
           cursor:pointer;
-          text-shadow:1px 1px 1px rgb(50,50,50);
           border-radius:3px;
           text-align:center;
           padding:2px;
           background:rgb(183,216,134);
           float:left;
           margin:3px 5px 0 0;
-          border:1px solid rgb(153,186,104);
-          box-shadow:inset 0 -1px 1px rgb(255,255,255);
           -webkit-transition:all 0.3s linear;
           transition:all 0.3s linear;
           width:30px;
@@ -88,6 +85,13 @@
 
         .aumentar-fonte:hover,
         .diminuir-fonte:hover{ background:rgb(148,200,97); }
+
+        .aumentar-fonte:active,
+        .diminuir-fonte:active{
+          -webkit-transition:0.1s;
+          transition:0.1s;
+          background:rgb(105,122,80);
+        }
 
       } // #Acessibilidade
     } // Data e acessibilidade
@@ -109,11 +113,13 @@
 
       h3{
         @include tipography(#{16px 'Asap',Arial,sans-serif},rgb(100,100,100));
-        margin:0 0 20px 0;
+        margin:20px 0 20px 0;
       }
     }
 
     .corpo{
+      margin:0 0 30px 0;
+
       .imagem{
         a{
           img{
@@ -136,6 +142,8 @@
             }
           }
         }
+
+        img{ margin:10px 10px 10px 0; }
 
       } // #O texto
     } // #Corpo
@@ -339,7 +347,7 @@
   margin:10px 0 0 -12px;
 
   .noticiasemfoto{
-    @include tipography(#{bold 16px "Lato",Arial,Helvetica,sans-serif},rgb(150,150,150));
+    @include tipography(#{bold 16px 'Lato',Arial,Helvetica,sans-serif},rgb(150,150,150));
     text-decoration:none;
   }
 }
@@ -790,7 +798,7 @@
       @include widthHeight(490px,48px);
 
       .nome-evento{
-        @include tipography(#{bold 20px "Asap",Arial,sans-serif},rgb(255,255,255));
+        @include tipography(#{bold 20px 'Asap',Arial,sans-serif},rgb(255,255,255));
         text-shadow:0px 1px 3px rgb(0,0,0);
         text-transform:uppercase;
         float:left;
@@ -799,7 +807,7 @@
       }
 
       .descricao-evento{
-        @include tipography(#{bold 14px "Lato",Arial,sans-serif},rgb(54,182,199));
+        @include tipography(#{bold 14px 'Lato',Arial,sans-serif},rgb(54,182,199));
         border-radius:0px 0 0 100px;
         border-left:5px solid rgb(54,182,199);
         background:rgb(0,0,0);
@@ -1984,7 +1992,7 @@ ul{
 
 .videos_titulo,
 .eventosdata{
-  font:bold 12px "Lato",Arial,Helvetica,sans-serif;
+  font:bold 12px 'Lato',Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   color:rgb(0,0,0);
 }
@@ -2053,7 +2061,7 @@ a.noticiadestaque:hover{
 a.noticiadestaque2{
   text-decoration:none;
   color:rgb(63,63,63);
-  font:11px "Lato",Arial,Helvetica,sans-serif;
+  font:11px 'Lato',Arial,Helvetica,sans-serif;
 }
 
 a.noticiadestaque2:hover{ border-bottom:1px solid rgb(0,0,0); }
@@ -2804,7 +2812,7 @@ ul{ list-style:none; }
 
 a.eventos{
   text-shadow:1px 1px 0 rgb(255,255,255);
-  font:bold 12px "Lato",Arial,sans-serif;
+  font:bold 12px 'Lato',Arial,sans-serif;
   color:rgb(0,0,0);
   text-decoration:none;
 }
