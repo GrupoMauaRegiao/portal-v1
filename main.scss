@@ -8,6 +8,140 @@
   color:rgb(242,248,255);
 }
 
+// Matéria (página individual)
+.materia{
+  width:655px;
+
+  .header{
+    margin:10px 0 0 0;
+    float:left;
+
+    .imagem{
+      margin:0 10px 0 0;
+      float:left;
+
+      img{ @include widthHeight(30px,30px); }
+    }
+
+    .categoria-materia{
+      float:left;
+      margin:-4px 0 20px 0;
+      width:615px;
+
+      h1{
+        @include tipography(#{30px 'Trebuchet MS',Arial,sans-serif},rgb(30,75,122));
+        margin:0;
+      }
+    }
+
+    .data-acessibilidade{
+      float:left;
+      background:rgb(240,240,240);
+      border-radius:5px;
+      border-bottom:3px solid rgb(230,230,230);
+      width:655px;
+
+      .data{
+        float:left;
+        width:345px;
+
+        .data-hora{
+          p{
+            @include tipography(#{12px 'Asap',Arial,sans-serif},rgb(100,100,100));
+            padding:10px 5px 5px 10px;
+            margin:0;
+
+            i{
+              @include tipography(#{bold 14px 'Asap',Arial,sans-serif},rgb(0,0,0));
+              box-shadow:0px 4px 0px rgb(230,230,230);
+              vertical-align:middle;
+              padding:8px;
+              border-radius:5px;
+              background:rgb(240,240,240);
+              text-shadow:1px 1px 0 rgb(255,255,255);
+            }
+          }
+        } // Data e hora
+      } // #Data
+
+      .acessibilidade{
+        margin:0 0 0 565px;
+        height:28px;
+
+        .aumentar-fonte,
+        .diminuir-fonte{
+          @include tipography(#{bold 17px 'Graduate',Georgia,serif},rgb(255,255,255));
+          cursor:pointer;
+          text-shadow:1px 1px 1px rgb(50,50,50);
+          border-radius:3px;
+          text-align:center;
+          padding:2px;
+          background:rgb(183,216,134);
+          float:left;
+          margin:3px 5px 0 0;
+          border:1px solid rgb(153,186,104);
+          box-shadow:inset 0 -1px 1px rgb(255,255,255);
+          -webkit-transition:all 0.3s linear;
+          transition:all 0.3s linear;
+          width:30px;
+        }
+
+        .aumentar-fonte:hover,
+        .diminuir-fonte:hover{ background:rgb(148,200,97); }
+
+      } // #Acessibilidade
+    } // Data e acessibilidade
+  } // #Header
+
+  .a-materia{
+    float:left;
+
+    .titulo{
+      h2{
+        @include tipography(#{bold 30px 'Asap',Arial,sans-serif},rgb(40,125,175));
+        margin:20px 0 5px 0;
+      }
+    }
+
+    .subtitulo{
+      border-left:5px solid rgb(200,200,200);
+      padding:0 0 0 10px;
+
+      h3{
+        @include tipography(#{16px 'Asap',Arial,sans-serif},rgb(100,100,100));
+        margin:0 0 20px 0;
+      }
+    }
+
+    .corpo{
+      .imagem{
+        a{
+          img{
+            margin:0 10px 10px 0;
+            border-radius:2px;
+          }
+        }
+      }
+
+      .o-texto{
+        span{ @include tipography(#{14px 'Asap',Arial,sans-serif !important},rgb(128,128,128)); }
+
+        p{
+          b{
+            span{
+              text-transform:uppercase;
+              border-radius:27px;
+              padding:5px;
+              background:rgb(240,240,230);
+            }
+          }
+        }
+
+      } // #O texto
+    } // #Corpo
+  } // #A matéria
+} // #Matéria
+
 //Botoẽs Imprimir e Indicar
 .imprimir-indicar{
   margin:0 auto;
@@ -33,8 +167,8 @@
 
   .link{
     p {
-      font: 16px 'Asap',Arial,sans-serif;
-      color: rgb(80,80,80);
+      font:16px 'Asap',Arial,sans-serif;
+      color:rgb(80,80,80);
 
       input{
         color:rgb(14,96,159);
@@ -66,7 +200,7 @@
           position:absolute;
           margin:-8px 0 0 7px;
           background:url("../images/sprite-redes-sociais.jpg") no-repeat -55px;
-          @include widthHeight(36px, 36px);
+          @include widthHeight(36px,36px);
         }
 
         a:first-child{
