@@ -143,7 +143,7 @@ for ($i = 0; $i < count($images); $i += 1) {
 <tr>
   <td>
     <div class="mais-noticias">
-      <h2>Outras <span>eventos</span></h2>
+      <h2>Outros <span>eventos</span></h2>
     </div>
   </td>
 </tr>
