@@ -135,13 +135,17 @@ for ($i = 0; $i < count($images); $i += 1) {
 </tr>
 
 <tr>
-  <td valign="top">
+  <td>
     <?php include "paginas/imprimir_eventos.php"; ?>
   </td>
 </tr>
 
 <tr>
-  <td height="32" valign="top" bgcolor="#F3F3F3" class="titulos_noticias" colspan="5">&nbsp; Outros Eventos</td>
+  <td>
+    <div class="mais-noticias">
+      <h2>Outras <span>eventos</span></h2>
+    </div>
+  </td>
 </tr>
 
 <tr>
@@ -149,7 +153,7 @@ for ($i = 0; $i < count($images); $i += 1) {
     <?php
       $largura = 68;
       $altura = 58; 
-      $limite2 = 6;
+      $limite2 = 12;
       $colunas = 2;
       $largura_coluna = 305; 
       $qt_letras = 40;

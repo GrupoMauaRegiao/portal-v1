@@ -280,6 +280,33 @@ jQuery(document).ready(function () {
     });
   }
 
+  function efeitoFatosEFotos() {
+    var link, miniatura, mostrarImagem, ocultarImagem, i, len;
+    link = jQuery('.outras-noticias a');
+    miniatura = jQuery('.miniatura');
+
+    mostrarImagem = function (evt) {
+      var index = jQuery(this).attr('data-index');
+      evt.stopPropagation();
+      evt.stopImmediatePropagation();
+      evt.preventDefault();
+      miniatura.eq(index).slideDown(300);
+    };
+
+    ocultarImagem = function (evt) {
+      var index = jQuery(this).attr('data-index');
+      evt.stopPropagation();
+      evt.stopImmediatePropagation();
+      evt.preventDefault();
+      miniatura.eq(index).stop().slideUp(300);
+    };
+
+    for (i = 0, len = miniatura.length; i < len; i += 1) {
+      link.eq(i).on('mouseover', mostrarImagem);
+      link.eq(i).on('mouseleave', ocultarImagem);
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -291,6 +318,7 @@ jQuery(document).ready(function () {
   fecharAnuncioPopup();
   abrePopupRedesSociais();
   alterarTamanhoFonte();
+  efeitoFatosEFotos();
 
 });
 

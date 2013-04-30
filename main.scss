@@ -8,6 +8,26 @@
   color:rgb(242,248,255);
 }
 
+// Fatos e fotos
+#container{ margin:0 0 20px 0; }
+
+.miniatura{
+  display:none;
+
+  img{
+    border:1px solid rgb(183,216,134);
+    box-shadow:2px 2px 0 rgb(183,216,134);
+    margin:10px 0 0 0;
+  }
+}
+
+.titulo{
+  .icone{
+    -webkit-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+  }
+}
+
 // Matéria (página individual)
 .materia{
   width:655px;
