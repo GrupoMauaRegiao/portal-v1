@@ -248,23 +248,22 @@ jQuery(document).ready(function () {
   }
 
   function alterarTamanhoFonte() {
-    var botAumentar, botDiminuir, txt, sizePadrao, sizeAtual, sizeMax, fatorMudanca, i, len, expr;
+    var botAumentar, botDiminuir, txt, SIZEPADRAO, sizeAtual, SIZEMAX, FATOR, i, len, expr;
     botAumentar = jQuery('.aumentar-fonte');
     botDiminuir = jQuery('.diminuir-fonte');
     txt = jQuery('.o-texto span span');
-    sizePadrao = 14;
-    sizeAtual = sizePadrao;
-    sizeMax = 26;
-    fatorMudanca = 4;
+    SIZEPADRAO = 14;
+    sizeAtual = SIZEPADRAO;
+    SIZEMAX = 26;
+    FATOR = 4;
 
-    // Default size --> sizePadrao
     for (i = 0, len = txt.length; i < len; i += 1) {
-      txt.eq(i).attr('style', "font:" + sizePadrao + "px 'Asap',Arial,sans-serif !important;");
+      txt.eq(i).attr('style', "font:" + SIZEPADRAO + "px 'Asap',Arial,sans-serif !important;");
     }
 
     botAumentar.on('click', function () {
-      expr = sizeAtual < sizeMax
-        ? sizeAtual += fatorMudanca
+      expr = sizeAtual < SIZEMAX
+        ? sizeAtual += FATOR
         : sizeAtual;
       for (i = 0, len = txt.length; i < len; i += 1) {
         txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
@@ -272,8 +271,8 @@ jQuery(document).ready(function () {
     });
 
     botDiminuir.on('click', function () {
-      expr = sizeAtual > sizePadrao
-        ? sizeAtual -= fatorMudanca
+      expr = sizeAtual > SIZEPADRAO
+        ? sizeAtual -= FATOR
         : sizeAtual;
       for (i = 0, len = txt.length; i < len; i += 1) {
         txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
