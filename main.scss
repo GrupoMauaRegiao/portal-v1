@@ -8,6 +8,43 @@
   color:rgb(242,248,255);
 }
 
+//Paginador
+.paginador{
+  margin:0 auto;
+  margin-top:30px;
+  width:310px;
+  height:20px;
+
+  .pagina-atual,
+  a .paginas{
+    padding:2px;
+    margin:0 3px 3px 0;
+    border-radius:14px;
+    font:bold 15px 'Lato',Arial,sans-serif;
+    width:21px;
+    float:left;
+    text-align:center;
+    height:20px;
+    -webkit-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+  }
+
+  .pagina-atual{
+    padding:1px;
+    border:1px solid rgb(148,200,97);
+    color:rgb(148,200,97);
+  }
+
+  a{
+    .paginas{
+      color:rgb(255,255,255);
+      background:rgb(148,200,97);
+    }
+
+    .paginas:hover{ background:rgb(54,136,0); }
+  }
+} // #Paginador
+
 // Fatos e fotos
 #container{ margin:0 0 20px 0; }
 

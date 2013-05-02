@@ -1,9 +1,9 @@
 "use strict";
-var Colors;
-Colors = Colors || {};
-Colors.app = (function () {
+var App;
+App = App || {};
+App.colorgbIO = (function () {
   return {
-    criarLista: function () {
+    criar: function () {
       var lista, item, input, i, len, selecionarInput;
       lista = document.querySelector('ul');
       item = '';
@@ -28,4 +28,4 @@ Colors.app = (function () {
   };
 }());
 
-Colors.app.criarLista();
+App.colorgbIO.criar();
