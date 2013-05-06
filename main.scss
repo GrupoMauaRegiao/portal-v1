@@ -8,6 +8,94 @@
   color:rgb(242,248,255);
 }
 
+// Lista de notícias
+.lista-noticias{
+  float:left;
+  width:650px;
+  margin:25px 25px 0 0;
+
+  .noticia{
+    margin:0 0 10px 0;
+    float:left;
+
+    .imagem{
+      margin:0 10px 0 0;
+      float:left;
+      @include widthHeight(160px,100px);
+
+      img{
+        border:4px solid rgb(255,255,255);
+        @include widthHeight(160px,100px);
+      }
+
+      img:hover{ border:4px solid rgb(14,96,159); }
+
+      .data{
+        @include tipography(#{bold 12px 'Asap',Arial,sans-serif},rgb(255,255,255));
+        text-shadow:1px 1px 2px rgb(0,0,0);
+        text-transform:uppercase;
+        text-align:right;
+        left:4px;
+        bottom:33px;
+        position:relative;
+        padding:5px;
+        background:rgba(0,0,0,0.5);
+      }
+    } // #Imagem
+
+    .informacao{
+      @include widthHeight(640px,100px);
+
+      .titulo{
+        margin:2px 0 10px 0;
+
+        a{
+          @include tipography(#{bold 18px 'Asap',Arial,sans-serif},rgb(14,96,159));
+          text-decoration:none;
+        }
+
+        a:hover{ border-bottom:2px solid rgb(14,96,159); }
+      }
+
+      .categoria{ @include tipography(#{bold 13px 'Lato',Arial,sans-serif},rgb(54,136,0)); }
+
+    } // #Informação
+  } // #Notícia
+
+  .destaque{
+    margin:0 0 20px 0;
+
+    .imagem{
+      margin:0 20px 0 0;
+      @include widthHeight(200px,140px);
+
+      img{ @include widthHeight(200px,140px); }
+      img:hover{ border:4px solid rgb(51,51,51); }
+
+    } // #Imagem
+
+    .informacao{
+      @include widthHeight(640px,100px);
+
+      .data{
+        @include tipography(#{bold 16px 'Asap',Arial,sans-serif},rgb(0,0,0));
+        margin:0 0 5px 0;
+        text-transform:uppercase;
+      }
+
+      .titulo{
+        margin:0 0 10px 0;
+
+        a{ @include tipography(#{bold 24px 'Lato',Arial,sans-serif},rgb(51,51,51)); }
+        a:hover{ border-bottom:2px solid rgb(51,51,51); }
+      }
+
+      .categoria{ @include tipography(#{bold 18px 'Lato',Arial,sans-serif},rgb(148,200,97)); }
+
+    } // #Informação
+  } // #Destaque
+} // #Lista de notícias
+
 //Paginador
 .paginador{
   margin:0 auto;
