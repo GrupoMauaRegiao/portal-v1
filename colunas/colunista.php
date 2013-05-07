@@ -64,7 +64,7 @@
           title="<?php echo $dados5[nome]; ?>" />
       </div>
     <?php } else { ?>
-      <div class="image">
+      <div class="imagem">
         <img
           src="<?php echo "/timthumb.php?w=200&h=150&src=images/layout/sem_foto.jpg"; ?>"
           alt="Sem foto" 
@@ -76,10 +76,11 @@
       <?php
         $sql6 = mysql_query("SELECT * FROM tb_colunas_cat WHERE id='$dados[id_cat]'");
         $dados6 = mysql_fetch_array($sql6);
+
+        $frasePerfil = "<strong>" . $dados5[nome] . "</strong> é " . $dados5[ocupacao] . ".<br /> No Portal Mauá e Região, contribui com publicações na categoria <i>" . $dados6[nome] . "</i>.";
+
       ?>
-      <p><span>Nome:</span> <?php echo $dados5[nome]; ?></p>
-      <p><span>Categoria:</span> <?php echo $dados6[nome]; ?></p>
-      <p><span>Ocupação:</span> <?php echo $dados5[ocupacao]; ?></p>
+      <p><?php echo str_replace("..", ".", $frasePerfil); ?></p>
       <p><span>E-mail:</span> <a href="mailto:<?php echo $dados5[email]; ?>"><?php echo $dados5[email]; ?></a></p>
     </div>
 </div>
