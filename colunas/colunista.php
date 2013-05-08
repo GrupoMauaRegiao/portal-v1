@@ -78,10 +78,12 @@
         $dados6 = mysql_fetch_array($sql6);
 
         $frasePerfil = "<strong>" . $dados5[nome] . "</strong> é " . $dados5[ocupacao] . ".<br /> No Portal Mauá e Região, contribui com publicações na categoria <i>" . $dados6[nome] . "</i>.";
-
       ?>
+      <img src="http://portalmauaeregiao.com.br/images/file.png" alt="" />
       <p><?php echo str_replace("..", ".", $frasePerfil); ?></p>
-      <p><span>E-mail:</span> <a href="mailto:<?php echo $dados5[email]; ?>"><?php echo $dados5[email]; ?></a></p>
+      
+      <img src="http://portalmauaeregiao.com.br/images/mail.png" alt="" />
+      <p><a target="_blank" href="mailto:<?php echo $dados5[email]; ?>"><?php echo $dados5[email]; ?></a></p>
     </div>
 </div>
 
