@@ -2,7 +2,7 @@
   <tr>
     <td>
       <img src="/images/setona.jpg" alt="" />
-      <?php echo "<font>Colunistas</font>"; ?>
+      <font size="6" face="Trebuchet MS">Colunistas</font>
     </td>
   </tr>
   <tr>
