@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td>
-      <img src="/images/setona.jpg" />
+      <img src="/images/setona.jpg" alt="" />
       <?php
         $id = $_GET[id];
         $id = $url_parts[1];
