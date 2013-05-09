@@ -30,9 +30,9 @@
         include "paginas/colunas/exibe.php";
       ?>
 
-      <font>
-        <img src="/images/setona.jpg" alt="" /> Últimas Postagens
-      </font>
+      <div class="ultimas-materias">
+        <h3>Últimas publicações</h3>
+      </div>
 
       <?php
         $largura = 80;
