@@ -6,7 +6,8 @@
     </td>
   </tr>
   <tr>
-    <td>
+</table>
+
       <?php
         $largura = 80;
         $altura = 65;
@@ -28,17 +29,11 @@
         $acao = "ver_colunistas2";
         include "paginas/colunas/exibe.php";
       ?>
-    </td>
-  </tr>
-  <tr>
-    <td>
+
       <font>
         <img src="/images/setona.jpg" alt="" /> Últimas Postagens
       </font>
-    </td>
-  </tr>
-  <tr>
-    <td>
+
       <?php
         $largura = 80;
         $altura = 65;
@@ -60,6 +55,3 @@
         $acao = "ultimas";
         include "paginas/colunas/exibe2.php";
       ?>
-    </td>
-  </tr>
-</table>

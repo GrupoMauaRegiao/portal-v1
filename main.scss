@@ -8,6 +8,63 @@
   color:rgb(242,248,255);
 }
 
+//Lista de colunistas
+.lista-colunistas{
+  float:left;
+  width:665px;
+  margin:25px 0 0 0;
+
+  .colunista{
+    -webkit-transition:all 0.3s linear;
+    transition:all 0.2s linear;
+    background:rgb(240,240,240);
+    box-shadow:0 5px 0 rgb(230,230,230);
+    border-radius:10px 10px 2px 10px;
+    padding:5px;
+    margin:0 10px 10px 0;
+    float:left;
+    @include widthHeight(300px,100px);
+
+    a{
+      @include tipography(#{13px 'Asap',Arial,sans-serif},rgb(28,83,137));
+      text-shadow:0px 1px 0 rgb(255,255,255);
+
+      .imagem{
+        float:left;
+        @include widthHeight(150px,100px);
+
+        img{
+          border-radius:5px;
+          @include widthHeight(150px,100px);
+        }
+      }
+
+      .informacoes{
+        padding:0 0 5px 5px;
+        float:left;
+        @include widthHeight(140px,67px);
+
+        p{ margin:0; }
+      }
+
+      .icone{
+        position:relative;
+        left:285px;
+        bottom:15px;
+        @include widthHeight(32px,32px);
+      }
+    } // #Link
+
+    a:hover{ color:rgb(0,66,129); }
+
+  } // #Colunista
+
+  .colunista:hover{
+    background:rgb(243,255,226);
+    box-shadow:none;
+  }
+} // #Lista de colunistas
+
 //Perfil do colunista
 .perfil-colunista{
   float:left;
