@@ -1,7 +1,7 @@
-# Lista de alterações no arquivo `exibe_categorias.php`
+# Lista de implementações ou alterações no arquivo `exibe_categorias.php`
 
 ### Modelo
-O seguinte modelo será aplicado para demonstrar as linhas de código implementadas:
+O seguinte modelo será aplicado para demonstrar as linhas de código implementadas ou alteradas:
 
 * [`linha`]: `Código da linha`;
 * [`linha`]: `Outro código`;
