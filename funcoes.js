@@ -307,6 +307,25 @@ jQuery(document).ready(function () {
     }
   }
 
+  function removeNegrito1stPalavra() {
+    var palavra, arrPalavras;
+    palavra = jQuery('.dialogo h1');
+    arrPalavras = palavra.text().split(' ');
+
+    palavra.html(palavra.text().replace(arrPalavras[0], '<span>' + arrPalavras[0] + '</span>'));
+  }
+
+  function insereCategoriaDaNoticia() {
+    var paginaAtual, categoria, palavra;
+    paginaAtual = window.location.pathname;
+
+    if (paginaAtual.match("/noticia/")) {
+      categoria = jQuery('.mais-noticias h2 span');
+      palavra = jQuery('.dialogo h1');
+      palavra.text(categoria.text());
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -319,6 +338,8 @@ jQuery(document).ready(function () {
   abrePopupRedesSociais();
   alterarTamanhoFonte();
   efeitoFatosEFotos();
+  insereCategoriaDaNoticia();
+  removeNegrito1stPalavra();
 
 });
 

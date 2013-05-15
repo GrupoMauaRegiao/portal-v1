@@ -1,16 +1,4 @@
 <div id="videos">
-  <div class="header-videos">
-    <div class="imagem">
-      <img src="/images/setona.jpg" alt="" />
-    </div>
-    
-    <div class="titulo">
-      <h1>
-        V&iacute;deos
-      </h1>
-    </div>
-  </div>
-
 <?php
   $FormatoForm = "V";
   include "videos/busca.php";

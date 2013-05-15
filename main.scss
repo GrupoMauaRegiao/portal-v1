@@ -8,10 +8,82 @@
   color:rgb(242,248,255);
 }
 
-//Lista de colunistas
+// Container conteúdo
+.container{
+  padding:0 0 0 25px;
+}
+
+// Header do conteúdo
+.bg-rosa{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-rosa.jpg');
+}
+
+.bg-verde{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-verde.jpg');
+}
+
+.bg-azul{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-azul.jpg');
+}
+
+.bg-cinza{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-cinza.jpg');
+}
+
+.bg-amarelo{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-amarelo.jpg');
+}
+
+.bg-laranja{
+  background-image:
+                   url('../images/headers/dialogo-ponta.png'),
+                   url('../images/headers/bg-laranja.jpg');
+}
+
+.header-conteudo{
+  margin:0 auto;
+  background-position:
+                      90px 25px,
+                      0 0;
+  background-repeat:
+                    no-repeat,
+                    no-repeat;
+  @include widthHeight(1050px,115px);
+
+  .dialogo{
+    float:left;
+    margin:0 0 0 126px;
+    padding:0 41px 0 0;
+    background:url('../images/headers/dialogo-final.png') no-repeat 100% 25px;
+    
+    h1{
+      @include tipography(#{900 25px 'Lato',Arial,sans-serif},rgb(54,136,199));
+      margin:25px 0 0 0;
+      text-transform:uppercase;
+      background:url('../images/headers/dialogo-bg.png') repeat-x;
+      padding:20px 0 15px 0;
+
+      span{
+        font-weight:300;
+      }
+    }
+  }
+}
+
+// Lista de colunistas
 .lista-colunistas{
   float:left;
-  margin:25px 0 40px 10px;
+  margin:0 0 40px 10px;
   width:665px;
 
   .colunista{
@@ -99,10 +171,10 @@ a:hover{
   }
 }
 
-//Perfil do colunista
+// Perfil do colunista
 .perfil-colunista{
   float:left;
-  margin:20px 0 20px 0;
+  margin:0 0 20px 0;
   width:640px;
 
   .imagem{
@@ -159,7 +231,7 @@ a:hover{
 .lista-noticias{
   float:left;
   width:650px;
-  margin:25px 25px 25px 0;
+  margin:-4px 25px 25px 0;
 
   .noticia{
     margin:0 0 10px 0;
@@ -305,7 +377,7 @@ a:hover{
   width:655px;
 
   .header{
-    margin:10px 0 0 0;
+    margin:4px 0 0 0;
     float:left;
 
     .imagem{
@@ -335,7 +407,7 @@ a:hover{
 
       .data{
         float:left;
-        width:345px;
+        width:550px;
 
         .data-hora{
           p{
@@ -423,6 +495,8 @@ a:hover{
       }
 
       .o-texto{
+        width:650px;
+
         span{ @include tipography(#{14px 'Asap',Arial,sans-serif !important},rgb(128,128,128)); }
 
         p{
@@ -443,7 +517,7 @@ a:hover{
   } // #A matéria
 } // #Matéria
 
-//Botoẽs Imprimir e Indicar
+// Botoẽs Imprimir e Indicar
 .imprimir-indicar{
   margin:0 auto;
   margin-top:-5px;
@@ -780,7 +854,7 @@ a:hover{
     border-bottom:1px solid rgb(220,220,220);
     padding:15px;
     width:590px;
-    margin:20px 0 0 0;
+    margin:0;
 
     .formulario-busca{
       #campo-pesquisa{
@@ -1653,8 +1727,8 @@ body{
   .cabecalho{ width:1040px; }
     .cabecalho object,
     .cabecalho embed{ width:765px; }
-.destaque-topo{ margin:-8px 0 0 -5px; }
-.lateral-direita{ margin:-8px 0 0 0; }
+.destaque-topo{ margin:16px 0 0 -5px; }
+.lateral-direita{ margin:4px 0 0 0; }
 .menu-navegacao{ background:rgb(230,230,230); }
 
   #simple-menu li a{
@@ -1678,9 +1752,9 @@ body{
 .fb-like{
   overflow:hidden;
   text-align:center;
-  padding:9px 5px 11px 5px;
+  padding:9px 0 11px 0;
   background:rgb(136,182,219);
-  @include widthHeight(247px,22px);
+  @include widthHeight(285px,22px);
 }
 
 .posicaorodape a{
@@ -1703,7 +1777,7 @@ body{
   margin:0 15px 15px 0;
 }
 
-.barra-lateral-esquerda{ margin:-5px 0 0 0; }
+.barra-lateral-esquerda{ margin:10px 0 0 0; }
 
 #mudaFonte{
   width:645px;
@@ -1828,7 +1902,7 @@ img{ border:0; }
 }
 
 .campo-busca{ margin:0 0 0 -110px; }
-.menu-navegacao-superior{ width:1024px; }
+.menu-navegacao-superior{ width:1050px; }
 
 #menu{
   float:none;
@@ -2492,7 +2566,7 @@ a.f5{
 }
 
 #demo-container{
-  margin:0 -50px !important;
+  margin:0 -25px !important;
   padding:0;
 }
 
@@ -2556,7 +2630,7 @@ ul#simple-menu li a.right{ padding-right:19px; }
   @include widthHeight(60px,27px);
 }
 
-#topo{ margin:0 -10px 0 -11px; }
+#topo{ margin:11px -10px 0 -11px; }
 #topo iframe{ height:248px; }
 .meiosite{ width:620px; }
 .meiosite2{ width:640px; }
