@@ -64,8 +64,8 @@ if ($acao == "ultimo_filme") {
                       <table border="0" cellspacing="0" cellpadding="1" width="130px">
                         <tr>
                           <td>
-                            <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html' class="test img_borda">
-                              <img src="<?="/thumbs.php?w=$largura&h=$altura&imagem=images/filmes/$dados[id]/$dados[foto]";?>" width="<?=$largura?>" height="<?=$altura?>" border="0" style="FILTER: alpha(opacity=100);" onMouseOver="makevisible(this,0)" onMouseOut="makevisible(this,1)">
+                            <a href="/filme/<?php echo $dados[id]; ?>-<?php echo str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html" class="test img_borda">
+                              <img src="<?="/timthumb.php?w=$largura&h=$altura&src=images/filmes/$dados[id]/$dados[foto]";?>" width="<?=$largura?>" height="<?=$altura?>" border="0" style="FILTER: alpha(opacity=100);" onMouseOver="makevisible(this,0)" onMouseOut="makevisible(this,1)">
                             </a>
                           </td>
                         </tr>
@@ -210,7 +210,7 @@ if ($total>0) {
   <?php } ?>
     <div class="informacao-filme">
       <div class="titulo-filme">
-        <a href="/filme/<?php echo $dados[id]; ?>-<?php str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html">
+        <a href="/filme/<?php echo $dados[id]; ?>-<?php echo str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html">
           <?php echo $dados[titulo]; ?>
         </a>
       </div>
