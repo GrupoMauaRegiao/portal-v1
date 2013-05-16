@@ -1,11 +1,4 @@
 <div id="filmes">
-  <div class="seta">
-    <img src="http://portalmauaeregiao.com.br/images/setona.jpg" alt="" />
-  </div>
-  <div class="header-filmes">
-    <h1>Filmes</h1>
-  </div>
-
     <?php
       $largura = 120;
       $altura = 178;
@@ -29,7 +22,7 @@
 
   <div class="tabela-precos">
     <div class="header-precos">
-      <h2>Tabela de Pre&ccedil;os</h2>
+      <h2>Salas e Pre&ccedil;os</h2>
     </div>
 
     <div class="header-precos">

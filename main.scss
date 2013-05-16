@@ -859,6 +859,8 @@ a:hover{
 
 // Vídeos
 #videos{
+  margin:0 45px 0 13px;
+
   .header-videos{
     .imagem{
       margin:0 10px 0 0;
@@ -1100,7 +1102,10 @@ a:hover{
     }
   } // #Filme
 
-  .exibicao-filmes{ float:left; }
+  .exibicao-filmes{
+    float:left;
+    margin:0 16px 0 0;
+  }
 
   .tabela-precos{
     margin:20px 20px 0 20px;
@@ -1128,6 +1133,7 @@ a:hover{
 
 // Agenda de eventos
 #agenda{
+  margin:0 25px 0 10px;
   width:640px;
 
   .icone{
@@ -1223,6 +1229,8 @@ a:hover{
 
 // Fale Conosco
 #fale-conosco{
+  margin:0 0 0 -5px;
+
   .header-fale-conosco{
     width:630px;
 
