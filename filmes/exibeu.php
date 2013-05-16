@@ -94,7 +94,7 @@ if ($acao == "ultimo_filme") {
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td>
-                      <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html'>
+                      <a href="/filme/<?php echo $dados[id]; ?>-<?php echo str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html">
                       <?php
                         $contatamanho1 = strlen($dados[titulo]);
 
@@ -210,13 +210,13 @@ if ($total>0) {
   <?php } ?>
     <div class="informacao-filme">
       <div class="titulo-filme">
-        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html'>
+        <a href="/filme/<?php echo $dados[id]; ?>-<?php str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html">
           <?php echo $dados[titulo]; ?>
         </a>
       </div>
 
       <div class="subtitulo-filme">
-        <a href='<?="/filme/$dados[id]";?>-<?= str_replace(" ","_",$dados['titulo']); ?>.html'>
+        <a href="/filme/<?php echo $dados[id]; ?>-<?php echo str_replace("\"", "", str_replace(" ", "_", $dados[titulo])); ?>.html">
           <?php echo $dados[subtitulo]; ?>
         </a>
       </div>
