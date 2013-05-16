@@ -1,42 +1,27 @@
-<table>
-  <tr>
-    <td>
-      <img src="/images/setona.jpg" width="30" height="30" />
+<div class="fatos-e-fotos">
+<?php
+  $id = $_GET[id];
 
-<?php 
-$id = $_GET[id];
+  if ($id == '') {
+    $id = $url_parts[1];
+  }
 
-if ($id == '') {
-  $id = $url_parts[1];
-}
-
-$sql5 = mysql_query("SELECT * FROM tb_galerias WHERE id='$id'");
-$dados5 = mysql_fetch_array($sql5);
-$dt = explode("-", $dados5[data1]);
-$data = "$dt[2]/$dt[1]/$dt[0]";
-
-echo "<font size='6' color='#1E4B7A' face='Trebuchet MS'>$dados5[nome]</font>";
-
+  $sql5 = mysql_query("SELECT * FROM tb_galerias WHERE id='$id'");
+  $dados5 = mysql_fetch_array($sql5);
+  $dt = explode("-", $dados5[data1]);
+  $data = "$dt[2]/$dt[1]/$dt[0]";
 ?>
-    </td>
-  </tr>
+  <div class="titulo">
+    <h1><?php echo $dados5[nome]; ?></h1>
+  </div>
 
-  <tr>
-    <td>
-      <?php echo "<font size='2' face='Trebuchet MS'>Local: $dados5[local]</font>"; ?>
-      <br/>
-      <?php echo "<font size='2' face='Trebuchet MS'>Data: $data</font>"; ?><br/>
-      <br/>
-      <?php echo "<font size='2' face='Trebuchet MS'>$dados5[descricao]</font>"; ?>
-    </td>
-  </tr>
+  <div class="texto">
+    <p><span>Local/assunto:</span> <?php echo $dados5[local]; ?></p>
+    <p><span>Data:</span> <?php echo $data; ?></p>
+    <p><?php echo $dados5[descricao]; ?></p>
+  </div>
+</div>
 
-  <tr>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td>
       <div id="page">
         <div id="container">
           <div id="gallery" class="content">
@@ -131,45 +116,31 @@ for ($i = 0; $i < count($images); $i += 1) {
 });
 </script>
 
-  </td>
-</tr>
-
-<tr>
-  <td>
+  <div class="imprimir">
     <?php include "paginas/imprimir_eventos.php"; ?>
-  </td>
-</tr>
+  </div>
 
-<tr>
-  <td>
-    <div class="mais-noticias">
-      <h2>Mais eventos de <span>Fatos e fotos</span></h2>
-    </div>
-  </td>
-</tr>
+  <div class="mais-noticias">
+    <h2>Mais eventos de <span>Fatos e fotos</span></h2>
+  </div>
 
-<tr>
-  <td align="left">
-    <?php
-      $largura = 68;
-      $altura = 58; 
-      $limite2 = 12;
-      $colunas = 2;
-      $largura_coluna = 305; 
-      $qt_letras = 40;
-      $qt_letras1 = 50;
-      $palavra = "Eventos";
-      $link_page = "evento";
-      $link_page2 = "?pg=fotos"; 
-      $img_thumb = "S";
-      $paginacao = "N";
-      $Cor1 = "#009749";
-      $Cor2 = "#000000"; 
-      $ordem = "order by data1 desc";
-      $acao = "outras";
+  <?php
+    $largura = 68;
+    $altura = 58; 
+    $limite2 = 12;
+    $colunas = 2;
+    $largura_coluna = 305; 
+    $qt_letras = 40;
+    $qt_letras1 = 50;
+    $palavra = "Eventos";
+    $link_page = "evento";
+    $link_page2 = "?pg=fotos"; 
+    $img_thumb = "S";
+    $paginacao = "N";
+    $Cor1 = "#009749";
+    $Cor2 = "#000000"; 
+    $ordem = "order by data1 desc";
+    $acao = "outras";
 
-      include "paginas/galerias/exibe2.php";
-    ?>
-  </td>
-</tr>
-</table>
+    include "paginas/galerias/exibe2.php";
+  ?>
