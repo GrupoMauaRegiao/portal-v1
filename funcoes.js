@@ -327,7 +327,7 @@ jQuery(document).ready(function () {
   }
 
   function obtemPostsColunistas() {
-    var colunistas, loading, ultimasColunas, mostrarConteudo, i, len, link;
+    var colunistas, loading, ultimasColunas, prefixo, mostrarConteudo, i, len, link;
     colunistas = jQuery('.o-colunista .imagem');
     loading = jQuery('.loading');
     ultimasColunas = jQuery('.ultimas-colunas .colunas');
@@ -337,6 +337,12 @@ jQuery(document).ready(function () {
       $this = jQuery(this);
       seletorArtigo = '.ultimas-colunas .colunas .artigos';
       link = $this.find('a').attr('href');
+
+      if (document.location.host.match('www')) {
+        prefixo = link.split('//');
+        prefixo[1] = '//www.' + prefixo[1];
+        link = prefixo[0] + prefixo[1];
+      }
 
       loading.show();
       ultimasColunas.html('');
@@ -359,13 +365,13 @@ jQuery(document).ready(function () {
         if (jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p').eq(0).text().length > 49) {
           jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p')
             .eq(0)
-            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(0).text().slice(0, 50) + '...');
+            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(0).text().slice(0, 50) + '\u2026');
         }
 
         if (jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p').eq(1).text().length > 49) {
           jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p')
             .eq(1)
-            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(1).text().slice(0, 50) + '...');
+            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(1).text().slice(0, 50) + '\u2026');
         }
       });
 
@@ -379,11 +385,23 @@ jQuery(document).ready(function () {
     }
   }
 
+  function controlarCaracteresFilmes() {
+    var titulos, i, len;
+    titulos = jQuery('.titulo-filme a');
+
+    for (i = 0, len = titulos.length; i < len; i += 1) {
+      if (titulos.eq(i).text().length > 51) {
+        titulos.eq(i).text(titulos.eq(i).text().slice(0, 52) + '\u2026');
+      }
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
   cleanField('#campo-email');
   cleanField('#campo-mensagem');
+  controlarCaracteresFilmes();
   randomizarGuiaComercial();
   enviarEmail();
   randomizarVideosDestaquesAte(5);
