@@ -326,6 +326,59 @@ jQuery(document).ready(function () {
     }
   }
 
+  function obtemPostsColunistas() {
+    var colunistas, loading, ultimasColunas, mostrarConteudo, i, len, link;
+    colunistas = jQuery('.o-colunista .imagem');
+    loading = jQuery('.loading');
+    ultimasColunas = jQuery('.ultimas-colunas .colunas');
+
+    mostrarConteudo = function (evt) {
+      var $this, seletorArtigo;
+      $this = jQuery(this);
+      seletorArtigo = '.ultimas-colunas .colunas .artigos';
+      link = $this.find('a').attr('href');
+
+      loading.show();
+      ultimasColunas.html('');
+      ultimasColunas.load(link + " .artigos:lt(2)", function () {
+        loading.hide();
+        jQuery('.ultimas-colunas').css({
+          'opacity': 1,
+          'z-index': 9999,
+          '-webkit-transform': 'translateX(' + ($this.position().left - 95) + 'px)' +
+                               ' translateY(' + ($this.position().top - 230) + 'px)',
+          'transform': 'translateX(' + ($this.position().left - 95) + 'px)' +
+                       ' translateY(' + ($this.position().top - 150) + 'px)'
+        });
+        jQuery(seletorArtigo + ' .artigo')
+          .removeClass('artigo')
+          .addClass('ultimo-artigo');
+        jQuery(seletorArtigo + ' .ultimo-artigo .data').remove();
+        jQuery(seletorArtigo + ' .ultimo-artigo .titulo .icone').remove();
+
+        if (jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p').eq(0).text().length > 49) {
+          jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p')
+            .eq(0)
+            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(0).text().slice(0, 50) + '...');
+        }
+
+        if (jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p').eq(1).text().length > 49) {
+          jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo p')
+            .eq(1)
+            .text(jQuery(seletorArtigo + ' .ultimo-artigo .titulo .o-titulo').eq(1).text().slice(0, 50) + '...');
+        }
+      });
+
+      evt.stopPropagation();
+      evt.stopImmediatePropagation();
+      evt.preventDefault();
+    };
+
+    for (i = 0, len = colunistas.length; i < len; i += 1) {
+      colunistas.eq(i).on('mouseover', mostrarConteudo);
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -340,6 +393,7 @@ jQuery(document).ready(function () {
   efeitoFatosEFotos();
   insereCategoriaDaNoticia();
   removeNegrito1stPalavra();
+  obtemPostsColunistas();
 
 });
 
