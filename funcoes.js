@@ -351,10 +351,10 @@ jQuery(document).ready(function () {
         jQuery('.ultimas-colunas').css({
           'opacity': 1,
           'z-index': 9999,
-          '-webkit-transform': 'translateX(' + ($this.position().left - 95) + 'px)' +
-                               ' translateY(' + ($this.position().top - 230) + 'px)',
+          '-webkit-transform': 'translateX(' + ($this.position().left - 95) + 'px) ' +
+                               'translateY(' + ($this.position().top - 230) + 'px) ',
           'transform': 'translateX(' + ($this.position().left - 95) + 'px)' +
-                       ' translateY(' + ($this.position().top - 150) + 'px)'
+                       'translateY(' + ($this.position().top - 150) + 'px)'
         });
         jQuery(seletorArtigo + ' .artigo')
           .removeClass('artigo')
