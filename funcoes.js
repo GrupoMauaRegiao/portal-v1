@@ -396,6 +396,41 @@ jQuery(document).ready(function () {
     }
   }
 
+  function abrirModalGuiaComercial() {
+    var imagens, i, modalNum, len, abreModal;
+    imagens = jQuery('.multimidia .imagens .imagem');
+    modalNum = 0;
+
+    abreModal = function (evt) {
+      var novaURL, novaTag;
+      novaURL = jQuery(this).html().replace('200', '400').replace('100', '300');
+      novaTag = jQuery(this).append('<div class="modal-' + (modalNum += 1) + '">' + novaURL + '</div>');
+
+      jQuery('.modal-' + modalNum).dialog({
+        title: 'Guia Comercial',
+        modal: true,
+        width: 400,
+        height: 364,
+        draggable: false,
+        resizable: false,
+        show: function () {
+          jQuery(this).effect('fadeIn', 5000);
+        },
+        hide: function () {
+          jQuery(this).effect('fadeOut', 1000);
+        }
+      });
+
+      evt.stopPropagation();
+      evt.stopImmediatePropagation();
+      evt.preventDefault();
+    };
+
+    for (i = 0, len = imagens.length; i < len; i += 1) {
+      imagens.eq(i).on('click', abreModal);
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -412,22 +447,17 @@ jQuery(document).ready(function () {
   insereCategoriaDaNoticia();
   removeNegrito1stPalavra();
   obtemPostsColunistas();
-
+  abrirModalGuiaComercial();
 });
 
 // IE
 function exibeFash(swf, width, height, wmode, cache) {
-  var noCache, monta_swf;
-  noCache = "";
-  wmode = wmode || wmode === undefined ? "opaque" : "transparent";
-  monta_swf = "";
-  monta_swf += "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\" width=\"" + width + "\" height=\"" + height + "\" title=\"\">";
-  monta_swf += "<param name=\"movie\" value=\"" + swf + noCache + "\" />";
-  monta_swf += "<param name=\"quality\" value=\"high\" />";
-  monta_swf += "<param name=\"menu\" value=\"0\" />";
-  monta_swf += "<param name=\"wmode\" value=\"" + wmode + "\" />";
-  monta_swf += "<embed src=\"" + swf + noCache + "\" quality=\"high\" wmode=\"" + wmode + "\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" type=\"application/x-shockwave-flash\" width=\"" + width + "\" height=\"" + height + "\"></embed>";
-  monta_swf += "</object>";
+  var monta_swf;
+  monta_swf = '';
+  monta_swf += '<object type="application/x-shockwave-flash" data="' + swf + '" width="' + width + '" height="' + height + '">';
+  monta_swf += '<param name="movie" value="' + swf + '" />';
+  monta_swf += '<param name="quality" value="high" />';
+  monta_swf += '</object>';
   document.write(monta_swf);
 }
 

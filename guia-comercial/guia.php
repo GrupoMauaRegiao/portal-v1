@@ -34,18 +34,20 @@
 ?>
 
 <div class="empresa">
-  <div class="nome-empresa">
-    <h2><?php echo $dados5[nome]; ?></h2>
-  </div>
 
-  <div class="informacoes-empresa">
+  <div class="header-sobre">
+    <div class="nome-empresa">
+      <h2><?php echo $dados5[nome]; ?></h2>
+    </div>
     <?php # Descrição ?>
     <?php if (!empty($dados5[empresa_texto1])) { ?>
       <div class="descricao">
         <p><?php echo $dados5[empresa_texto1]; ?></p>
       </div>
     <?php } ?>
+  </div>
 
+  <div class="informacoes-empresa">
     <?php # Endereço ?>
     <?php if (!empty($dados5[endereco]) ) { ?>
       <div class="endereco">

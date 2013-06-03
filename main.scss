@@ -13,6 +13,15 @@
   margin:0 30px 0 0;
   width:650px;
 
+  .header-sobre{
+    padding:10px 50px 10px 20px;
+    background:rgb(240,240,240);
+    border-radius:0 0 100px 0;
+    box-shadow:0px 5px 0 rgb(230,230,230);
+
+    .descricao{ p{ @include tipography(#{bold 16px 'Asap',Arial,sans-serif},rgb(151,151,151)); } }
+  }
+
   .nome-empresa{
     h2{
       @include tipography(#{bold 30px 'Asap',Arial,sans-serif},rgb(54,136,199));
@@ -22,8 +31,6 @@
   }
 
   .informacoes-empresa{
-    .descricao{ p{ @include tipography(#{bold 16px 'Asap',Arial,sans-serif},rgb(151,151,151)); } }
-
     h3{
       @include tipography(#{bold 18px 'Asap',Arial,sans-serif},rgb(28,83,137));
       border-bottom:1px dotted rgb(230,230,230);
@@ -105,16 +112,23 @@
           @include widthHeight(200px,100px);
         }
 
-        img:hover{
-          box-shadow:0px 5px 0px rgb(245,131,61);
-        }
-      }
-    }
-
-  }
+        img:hover{ box-shadow:0px 5px 0px rgb(245,131,61); }
+      } // #Imagem
+    } // #Imagens
+  } // #Multimídia
 } // #Empresa
 
-// Busca -  Guia Comercial
+.ui-dialog .ui-dialog-content{ padding:0.2em 0.0em !important; }
+.ui-button-icon-only .ui-icon{ margin-left: -9px !important; }
+.ui-dialog .ui-dialog-titlebar{ padding:0 !important; }
+
+.ui-dialog .ui-dialog-title{
+  @include tipography(#{bold 14px 'Asap',Arial,sans-serif},rgb(100,100,100));
+  text-transform:uppercase;
+  padding:5px 5px 3px 5px;
+}
+
+// Busca - Guia Comercial
 .container-guia-comercial{
   margin:0 43px 0 13px;
 
@@ -1902,6 +1916,7 @@ a:hover{
 .publicide-dir-bottom{
   height:122px;
   float:left;
+  display:block;
 }
 
 .enquete{
@@ -2163,6 +2178,13 @@ a:hover{
 }
 
 /***** layout *****************/
+
+object,
+area,
+param{
+  visibility:visible;
+  display:block;
+}
 
 body{
   margin:0;
