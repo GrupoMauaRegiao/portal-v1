@@ -128,6 +128,74 @@
   padding:5px 5px 3px 5px;
 }
 
+.mais-empresas{
+  padding:5px;
+  float:left;
+  margin:5px 0 10px 0;
+  border-radius:10px 10px 0 0;
+  background:rgb(240,240,240);
+  width:650px;
+
+  .header{
+    h2{
+      @include tipography(#{bold 26px 'Asap',Arial,sans-serif},rgb(54,136,199));
+      text-transform: uppercase;
+      margin: 0 0 20px 0;
+    }
+  }
+}
+
+.outras-empresas{
+  margin:0 0 0 4px;
+  float:left;
+  width:648px;
+
+  .empresa-peq{
+    text-align:center;
+    margin:0 5px 5px 0;
+    float:left;
+    background:rgb(232,238,245);
+    border-bottom:5px solid rgb(28,83,137);
+    -webkit-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+    @include widthHeight(157px,215px);
+
+    .imagem{
+      img{
+        -webkit-transition:all 0.2s linear;
+        border-bottom:3px double rgb(28,83,137);
+        transition:all 0.2s linear;
+        opacity:0.8;
+      }
+
+      img:hover{ opacity:1; }
+    }
+
+    .informacoes{
+      .nome-empresa{
+        p{
+          @include tipography(#{bold 12px "Lato",Arial,sans-serif},rgb(28,83,137));
+          text-transform:uppercase;
+          text-shadow:1px 1px 0 rgb(255,255,255);
+          margin:0;
+          padding:5px;
+          height:55px;
+        }
+      }
+
+      .telefone{
+        p{
+          @include tipography(#{bold 12px 'Lato',Arial,sans-serif},rgb(51,51,51));
+          margin:0;
+          padding:0 5px 0 0;
+        }
+      }
+    } // #Informações
+  } // #Empresa pequena
+
+  .empresa-peq:hover{ border-bottom:5px solid rgb(232,238,245); }
+} // #Outras empresas
+
 // Busca - Guia Comercial
 .container-guia-comercial{
   margin:0 43px 0 13px;
