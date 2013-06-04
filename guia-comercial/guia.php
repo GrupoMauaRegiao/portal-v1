@@ -95,7 +95,7 @@
 
     <?php if (!empty($dados5[video])) { ?>
       <div class="video">
-        <h3>Vídeo:</h3>
+        <h3>V&iacute;deo:</h3>
         <div class="player">
           <?php echo "
             <object width='600' height='360'>
@@ -128,7 +128,7 @@
 
   <div class="mais-empresas">
     <div class="header">
-      <h2>Outras empresas</h2>
+      <h2>+ Empresas</h2>
     </div>
     <?php
       $largura = 120;
