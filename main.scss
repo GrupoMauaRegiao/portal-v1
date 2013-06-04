@@ -4,8 +4,8 @@
 @mixin tipography($fxSizeTypo,$color){ font:$fxSizeTypo; color:$color; }
 
 *::selection{
-  background:rgb(255,0,255);
-  color:rgb(242,248,255);
+  background:rgb(245,131,61);
+  color:rgb(0,0,0);
 }
 
 // Página Empresa - Guia Comercial
@@ -588,9 +588,7 @@
       background:url('../images/headers/dialogo-bg.png') repeat-x;
       padding:20px 0 15px 0;
 
-      span{
-        font-weight:300;
-      }
+      span{ font-weight:300; }
     }
   }
 }
@@ -2358,9 +2356,7 @@ img{ border:0; }
   color:rgb(0,0,0);
 }
 
-.style10{
-  font:15px "Trebuchet MS",Verdana,Arial;
-}
+.style10{ font:15px "Trebuchet MS",Verdana,Arial; }
 
 .style9,
 .revista-online{
@@ -2941,8 +2937,6 @@ a.titulodestaque:hover{ text-decoration:underline; }
   text-transform:uppercase;
   color:rgb(153,153,153);
 }
-
-
 
 a.noticiadestaque{ font:bold 12px "Trebuchet MS",Arial,Helvetica,sans-serif; }
 
