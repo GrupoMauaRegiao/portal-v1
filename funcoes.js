@@ -1,8 +1,6 @@
-"use strict";
 jQuery(document).ready(function () {
-
+  "use strict";
   var linkTopo, areaSetas, setaEsquerda, setaDireita;
-
   linkTopo = jQuery('.menu-base ul li:last a');
   areaSetas = jQuery('.setas_area');
   setaEsquerda = jQuery('.seta_anterior');
@@ -262,18 +260,14 @@ jQuery(document).ready(function () {
     }
 
     botAumentar.on('click', function () {
-      expr = sizeAtual < SIZEMAX
-        ? sizeAtual += FATOR
-        : sizeAtual;
+      expr = sizeAtual < SIZEMAX ? sizeAtual += FATOR : sizeAtual;
       for (i = 0, len = txt.length; i < len; i += 1) {
         txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
       }
     });
 
     botDiminuir.on('click', function () {
-      expr = sizeAtual > SIZEPADRAO
-        ? sizeAtual -= FATOR
-        : sizeAtual;
+      expr = sizeAtual > SIZEPADRAO ? sizeAtual -= FATOR : sizeAtual;
       for (i = 0, len = txt.length; i < len; i += 1) {
         txt.eq(i).attr('style', "font:" + sizeAtual + "px 'Asap',Arial,sans-serif !important;");
       }

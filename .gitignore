@@ -1,4 +1,5 @@
 .gitignore
+.jshint-globals
 funcoes.min.js
 main.min.css
 main-ie.css
