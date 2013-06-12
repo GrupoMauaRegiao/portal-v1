@@ -143,7 +143,7 @@ if ($acao == "ultimo_filme") {
 </table>
 <?php
 if ($paginacao == "S") {
-  include "paginas/paginacao.php";
+  include "paginas/x'.php";
 }
 ?>
 <?php } else { ?>

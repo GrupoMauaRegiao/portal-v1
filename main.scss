@@ -8,6 +8,45 @@
   color:rgb(30,75,122);
 }
 
+// Botão Voltar
+.voltar{
+  .botao-voltar{
+    box-shadow:0 3px 0 rgb(220,220,220);
+    background:rgb(230,230,230);
+    padding:10px;
+    margin:0 auto;
+    margin-top:50px;
+    text-align:center;
+    border-radius:10px;
+    transition:all 0.2s linear;
+    -webkit-transition:all 0.2s linear;
+    @include widthHeight(275px,17px);
+
+    .imagem{
+      float:left;
+      margin:-7px 8px 0 0;
+      @include widthHeight(32px,32px);
+
+      img{ @include widthHeight(32px,32px); }
+    }
+
+    a{
+      text-decoration:none;
+      font:bold 15px 'Asap',Arial,sans-serif;
+      text-shadow:1px 1px 0 rgb(255,255,255);
+      text-transform:uppercase;
+      color:rgb(40,125,175);
+    }
+  }
+
+  .botao-voltar:hover{
+    background:rgb(243,255,226);
+    box-shadow:0 3px 0 rgb(243,255,226);
+
+    a{ color:rgb(28,83,137); }
+  }
+}
+
 // Página Empresa - Guia Comercial
 .empresa{
   margin:0 30px 0 0;
