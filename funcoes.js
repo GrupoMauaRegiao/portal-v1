@@ -425,6 +425,41 @@ jQuery(document).ready(function () {
     }
   }
 
+  function abrirModalFilmes() {
+    var imagens, i, modalNum, len, abreModal;
+    imagens = jQuery('.shot-filme');
+    modalNum = 0;
+
+    abreModal = function (evt) {
+      var novaURL, novaTag;
+      novaURL = jQuery(this).html().replace('100', '381').replace('100', '235');
+      novaTag = jQuery(this).append('<div class="modal-' + (modalNum += 1) + '">' + novaURL + '</div>');
+
+      jQuery('.modal-' + modalNum).dialog({
+        title: 'Filme',
+        modal: true,
+        width: 382,
+        height: 284,
+        draggable: false,
+        resizable: false,
+        show: function () {
+          jQuery(this).effect('fadeIn', 5000);
+        },
+        hide: function () {
+          jQuery(this).effect('fadeOut', 1000);
+        }
+      });
+
+      evt.stopPropagation();
+      evt.stopImmediatePropagation();
+      evt.preventDefault();
+    };
+
+    for (i = 0, len = imagens.length; i < len; i += 1) {
+      imagens.eq(i).on('click', abreModal);
+    }
+  }
+
   cleanField('#nome');
   cleanField('#email');
   cleanField('#campo-nome');
@@ -442,6 +477,7 @@ jQuery(document).ready(function () {
   removeNegrito1stPalavra();
   obtemPostsColunistas();
   abrirModalGuiaComercial();
+  abrirModalFilmes();
 });
 
 // IE
