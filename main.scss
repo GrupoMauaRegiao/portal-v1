@@ -2217,6 +2217,8 @@ a:hover{
   @include widthHeight(139px,20px);
 }
 
+.newsletter{ margin:-10px 0 0 0;}
+
 .tabela-newsletter{
   border-collapse:collapse;
   width:183px;
@@ -2531,7 +2533,7 @@ img{ border:0; }
 }
 
 .posicaobanner{ padding-top:0px; }
-.box-data{ padding:7px 0 30px 0; }
+.box-data{ padding:7px 0 0 0; }
 
 .ddata{
   font:bold 13px 'Lato',Arial,sans-serif;
